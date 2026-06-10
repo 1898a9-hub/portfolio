@@ -1,0 +1,62 @@
+{
+  "name": "Inventory Tracking System",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Every Sunday 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "parameters": {
+        "rule": { "interval": [{ "field": "weeks", "weeksInterval": 1, "triggerAtDay": [0], "triggerAtHour": 9 }] }
+      },
+      "position": [240, 300]
+    },
+    {
+      "id": "2",
+      "name": "Read Stock Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "parameters": {
+        "operation": "readRows",
+        "documentId": "YOUR_SHEET_ID",
+        "sheetName": "inventory"
+      },
+      "position": [460, 300]
+    },
+    {
+      "id": "3",
+      "name": "Filter Low Stock",
+      "type": "n8n-nodes-base.filter",
+      "parameters": {
+        "conditions": {
+          "number": [{ "value1": "={{ $json.quantity }}", "operation": "smallerEqual", "value2": "={{ $json.minimum_threshold }}" }]
+        }
+      },
+      "position": [680, 300]
+    },
+    {
+      "id": "4",
+      "name": "Build Report",
+      "type": "n8n-nodes-base.code",
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst report = items.map(i => `- ${i.json.item}: ${i.json.quantity} remaining (min: ${i.json.minimum_threshold})`).join('\\n');\nreturn [{ json: { report, count: items.length } }];"
+      },
+      "position": [900, 300]
+    },
+    {
+      "id": "5",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "parameters": {
+        "toEmail": "procurement@company.com",
+        "subject": "📦 Weekly Inventory Alert — {{ $json.count }} items need restocking",
+        "text": "Low stock items this week:\n\n{{ $json.report }}"
+      },
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Every Sunday 9AM": { "main": [[{ "node": "Read Stock Sheet", "type": "main", "index": 0 }]] },
+    "Read Stock Sheet": { "main": [[{ "node": "Filter Low Stock", "type": "main", "index": 0 }]] },
+    "Filter Low Stock": { "main": [[{ "node": "Build Report", "type": "main", "index": 0 }]] },
+    "Build Report": { "main": [[{ "node": "Send Email", "type": "main", "index": 0 }]] }
+  }
+}

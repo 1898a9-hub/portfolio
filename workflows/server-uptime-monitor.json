@@ -1,0 +1,68 @@
+{
+  "name": "Server Uptime Monitor",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Every Minute",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "parameters": { "rule": { "interval": [{ "field": "minutes", "minutesInterval": 1 }] } },
+      "position": [240, 300]
+    },
+    {
+      "id": "2",
+      "name": "HTTP Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "parameters": {
+        "url": "={{ $json.endpoint }}",
+        "method": "GET",
+        "timeout": 5000,
+        "ignoreResponseCode": true
+      },
+      "position": [460, 300]
+    },
+    {
+      "id": "3",
+      "name": "Check Status",
+      "type": "n8n-nodes-base.if",
+      "parameters": {
+        "conditions": {
+          "number": [{ "value1": "={{ $json.statusCode }}", "operation": "notEqual", "value2": 200 }]
+        }
+      },
+      "position": [680, 300]
+    },
+    {
+      "id": "4",
+      "name": "Send Alert",
+      "type": "n8n-nodes-base.emailSend",
+      "parameters": {
+        "toEmail": "admin@company.com",
+        "subject": "⚠️ Service Down: {{ $json.endpoint }}",
+        "text": "Service {{ $json.endpoint }} returned status {{ $json.statusCode }} at {{ $now }}"
+      },
+      "position": [900, 200]
+    },
+    {
+      "id": "5",
+      "name": "Log to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "parameters": {
+        "operation": "append",
+        "documentId": "YOUR_SHEET_ID",
+        "sheetName": "uptime_log",
+        "columns": { "mappingMode": "autoMapInputData" }
+      },
+      "position": [900, 400]
+    }
+  ],
+  "connections": {
+    "Every Minute": { "main": [[{ "node": "HTTP Check", "type": "main", "index": 0 }]] },
+    "HTTP Check": { "main": [[{ "node": "Check Status", "type": "main", "index": 0 }]] },
+    "Check Status": {
+      "main": [
+        [{ "node": "Send Alert", "type": "main", "index": 0 }],
+        [{ "node": "Log to Sheet", "type": "main", "index": 0 }]
+      ]
+    }
+  }
+}

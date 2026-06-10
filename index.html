@@ -1,712 +1,1100 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdulaziz Arnous — IT Engineer & Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
+/* ─── TOKENS ─────────────────────────────────────── */
 :root {
-  --bg: #0a0e1a;
-  --card: #111827;
-  --card2: #1a2236;
+  --bg:     #070c18;
+  --bg2:    #0d1424;
+  --card:   #111827;
+  --card2:  #16213a;
   --border: #1e2d47;
-  --blue: #3b82f6;
-  --green: #10b981;
+  --blue:   #3b82f6;
+  --cyan:   #06b6d4;
+  --green:  #10b981;
   --yellow: #f59e0b;
-  --red: #ef4444;
+  --red:    #ef4444;
   --purple: #8b5cf6;
-  --cyan: #06b6d4;
-  --text: #e2e8f0;
-  --muted: #64748b;
-  --accent: #3b82f6;
+  --text:   #e2e8f0;
+  --muted:  #64748b;
+  --light:  #94a3b8;
+  --grad:   linear-gradient(135deg, #3b82f6, #06b6d4);
+  --glow:   0 0 40px rgba(59,130,246,.15);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--text); font-family:'Segoe UI',Arial,sans-serif; min-height:100vh; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Cairo','Inter',sans-serif;
+  min-height:100vh;
+  line-height:1.6;
+}
+[data-lang="en"] body,[data-lang="en"] *{font-family:'Inter','Cairo',sans-serif}
 
-/* NAV */
-nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(10,14,26,.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 32px; height:56px; display:flex; align-items:center; justify-content:space-between; }
-.nav-brand { font-size:15px; font-weight:700; color:#fff; letter-spacing:.5px; }
-.nav-brand span { color:var(--blue); }
-.nav-links { display:flex; gap:4px; }
-.nav-links a { color:var(--muted); font-size:13px; padding:6px 12px; border-radius:6px; cursor:pointer; text-decoration:none; transition:all .2s; }
-.nav-links a:hover, .nav-links a.active { color:#fff; background:var(--card2); }
+/* ─── NAV ─────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(7,12,24,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(30,45,71,.6);
+  padding:0 32px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{font-size:16px;font-weight:800;color:#fff;letter-spacing:.3px}
+.nav-brand span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-center{display:flex;gap:4px}
+.nav-center a{
+  color:var(--muted);font-size:13px;padding:6px 14px;
+  border-radius:8px;cursor:pointer;text-decoration:none;
+  transition:all .2s;font-weight:500;
+}
+.nav-center a:hover,.nav-center a.active{color:#fff;background:rgba(59,130,246,.12)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-btn{
+  display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px;
+}
+.lang-btn button{
+  padding:5px 12px;background:transparent;color:var(--muted);border:none;cursor:pointer;transition:all .2s;
+}
+.lang-btn button.active{background:var(--blue);color:#fff}
+.cv-btn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--grad);color:#fff;
+  padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;transition:opacity .2s;
+}
+.cv-btn:hover{opacity:.85}
 
-/* HERO */
-.hero { padding:120px 40px 60px; text-align:center; max-width:900px; margin:0 auto; }
-.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.25); border-radius:20px; padding:6px 16px; font-size:12px; color:var(--blue); margin-bottom:24px; }
-.pulse { width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-.hero h1 { font-size:clamp(28px,5vw,52px); font-weight:800; line-height:1.15; margin-bottom:16px; letter-spacing:-1px; }
-.hero h1 span { background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.hero-sub { font-size:16px; color:var(--muted); max-width:600px; margin:0 auto 32px; line-height:1.7; }
-.hero-tags { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-.tag { background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:6px 14px; font-size:12px; color:var(--muted); }
-.hero-stats { display:flex; gap:40px; justify-content:center; }
-.stat { text-align:center; }
-.stat-n { font-size:28px; font-weight:800; color:#fff; }
-.stat-l { font-size:11px; color:var(--muted); margin-top:2px; }
+/* ─── HERO ────────────────────────────────────────── */
+.hero{
+  position:relative;overflow:hidden;
+  padding:130px 40px 80px;text-align:center;
+  max-width:1000px;margin:0 auto;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:800px;height:400px;
+  background:radial-gradient(ellipse at 50% 0%, rgba(59,130,246,.18) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,130,246,.1);
+  border:1px solid rgba(59,130,246,.25);
+  border-radius:20px;padding:6px 18px;
+  font-size:12px;color:var(--blue);
+  margin-bottom:28px;font-weight:600;
+}
+.pulse{
+  width:8px;height:8px;background:var(--green);border-radius:50%;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.hero h1{
+  font-size:clamp(30px,5.5vw,58px);font-weight:800;
+  line-height:1.1;margin-bottom:20px;letter-spacing:-1.5px;
+}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:16px;color:var(--light);max-width:620px;margin:0 auto 36px;line-height:1.75}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--grad);color:#fff;padding:12px 26px;
+  border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;
+  box-shadow:0 8px 32px rgba(59,130,246,.3);transition:transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(59,130,246,.4)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--text);
+  padding:12px 26px;border-radius:10px;
+  border:1px solid var(--border);font-size:14px;font-weight:600;
+  text-decoration:none;transition:all .2s;
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.hero-stats{
+  display:flex;gap:0;justify-content:center;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;max-width:600px;margin:0 auto;
+}
+.stat{
+  flex:1;padding:20px 16px;text-align:center;
+  border-right:1px solid var(--border);
+}
+[dir="rtl"] .stat{border-right:none;border-left:1px solid var(--border)}
+.stat:last-child{border:none}
+.stat-n{font-size:26px;font-weight:800;color:#fff}
+.stat-l{font-size:11px;color:var(--muted);margin-top:3px}
 
-/* SECTION */
-section { padding:60px 24px; max-width:1200px; margin:0 auto; }
-.section-title { font-size:11px; color:var(--blue); font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
-.section-h2 { font-size:clamp(20px,3vw,32px); font-weight:700; margin-bottom:40px; }
+/* ─── SECTIONS ────────────────────────────────────── */
+.section{padding:72px 24px;max-width:1200px;margin:0 auto}
+.section-label{
+  font-size:11px;color:var(--blue);font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;
+}
+.section-h2{font-size:clamp(22px,3vw,34px);font-weight:800;margin-bottom:48px;letter-spacing:-.5px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
 
-/* DEMOS TABS */
-.demos-tabs { display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
-.demo-tab { padding:8px 18px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--muted); font-size:13px; cursor:pointer; transition:all .2s; }
-.demo-tab.active { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }
-.demo-panel { display:none; animation:fadeIn .3s ease; }
-.demo-panel.active { display:block; }
-@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+/* ─── TECH STACK ──────────────────────────────────── */
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:12px;
+}
+.stack-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:16px 12px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;color:var(--light);
+  transition:all .25s;cursor:default;text-align:center;
+}
+.stack-item:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-3px);background:rgba(59,130,246,.05)}
+.stack-icon{font-size:24px}
+.stack-level{
+  font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;
+}
+.lvl-adv{background:rgba(16,185,129,.1);color:var(--green)}
+.lvl-mid{background:rgba(59,130,246,.1);color:var(--blue)}
+.lvl-prac{background:rgba(139,92,246,.1);color:var(--purple)}
 
-/* CARDS */
-.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-@media(max-width:768px){ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr} }
+/* ─── DEMOS ───────────────────────────────────────── */
+.demos-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.demo-tab{
+  padding:9px 20px;border-radius:10px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);font-size:13px;
+  cursor:pointer;transition:all .2s;font-weight:600;
+}
+.demo-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.demo-panel{display:none;animation:fadeUp .3s ease}
+.demo-panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
-.card-title { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
-.card-value { font-size:28px; font-weight:800; }
-.card-sub { font-size:12px; color:var(--muted); margin-top:4px; }
+/* ─── CARDS ───────────────────────────────────────── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
 
-.badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
-.badge-green { background:rgba(16,185,129,.15); color:var(--green); }
-.badge-red { background:rgba(239,68,68,.15); color:var(--red); }
-.badge-yellow { background:rgba(245,158,11,.15); color:var(--yellow); }
-.badge-blue { background:rgba(59,130,246,.15); color:var(--blue); }
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:20px;
+}
+.card-title{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.card-value{font-size:28px;font-weight:800}
+.card-sub{font-size:12px;color:var(--muted);margin-top:4px}
 
-/* STATUS DOT */
-.dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
-.dot-green { background:var(--green); box-shadow:0 0 8px var(--green); }
-.dot-red { background:var(--red); }
-.dot-yellow { background:var(--yellow); }
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,.12);color:var(--green)}
+.badge-red{background:rgba(239,68,68,.12);color:var(--red)}
+.badge-yellow{background:rgba(245,158,11,.12);color:var(--yellow)}
+.badge-blue{background:rgba(59,130,246,.12);color:var(--blue)}
 
-/* TABLE */
-.tbl { width:100%; border-collapse:collapse; font-size:13px; }
-.tbl th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.5px; padding:8px 12px; border-bottom:1px solid var(--border); text-align:right; }
-.tbl td { padding:10px 12px; border-bottom:1px solid rgba(30,45,71,.5); }
-.tbl tr:last-child td { border:none; }
-.tbl tr:hover td { background:rgba(255,255,255,.02); }
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot-green{background:var(--green);box-shadow:0 0 8px var(--green)}
+.dot-red{background:var(--red)}
+.dot-yellow{background:var(--yellow)}
 
-/* PROGRESS */
-.prog-bar { height:6px; background:rgba(255,255,255,.06); border-radius:3px; overflow:hidden; margin-top:6px; }
-.prog-fill { height:100%; border-radius:3px; transition:width .5s ease; }
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:8px 12px;border-bottom:1px solid var(--border);text-align:right}
+[data-lang="en"] .tbl th{text-align:left}
+.tbl td{padding:10px 12px;border-bottom:1px solid rgba(30,45,71,.5)}
+.tbl tr:last-child td{border:none}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
 
-/* CHART CONTAINER */
-.chart-wrap { position:relative; height:200px; }
-.chart-wrap-sm { position:relative; height:140px; }
+.chart-wrap{position:relative;height:200px}
+.alert{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:10px;margin-bottom:10px;font-size:13px}
+.alert-red{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+.alert-yellow{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2)}
+.alert-green{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.alert-blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2)}
+.alert-icon{font-size:16px;margin-top:1px;flex-shrink:0}
 
-/* ALERT */
-.alert { display:flex; align-items:flex-start; gap:12px; padding:12px 16px; border-radius:8px; margin-bottom:10px; font-size:13px; }
-.alert-red { background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.2); }
-.alert-yellow { background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.2); }
-.alert-green { background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.2); }
-.alert-icon { font-size:16px; margin-top:1px; }
+.room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:8px}
+.room-cell{
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:10px;padding:10px 6px;text-align:center;font-size:11px;
+  cursor:default;transition:all .3s;
+}
+.room-cell.online{border-color:rgba(16,185,129,.3)}
+.room-cell.offline{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.05)}
+.room-cell.warn{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.05);animation:warnPulse 2s infinite}
+@keyframes warnPulse{0%,100%{border-color:rgba(245,158,11,.4)}50%{border-color:rgba(245,158,11,.9)}}
+.room-num{font-weight:700;font-size:13px;margin-bottom:4px}
+.price-up{color:var(--red)}
+.price-dn{color:var(--green)}
 
-/* ROOM GRID */
-.room-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); gap:8px; }
-.room-cell { background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:10px 6px; text-align:center; font-size:11px; cursor:default; transition:all .3s; }
-.room-cell.online { border-color:rgba(16,185,129,.3); }
-.room-cell.offline { border-color:rgba(239,68,68,.3); background:rgba(239,68,68,.05); }
-.room-cell.alert { border-color:rgba(245,158,11,.4); background:rgba(245,158,11,.05); animation:alertPulse 2s infinite; }
-@keyframes alertPulse { 0%,100%{border-color:rgba(245,158,11,.4)} 50%{border-color:rgba(245,158,11,.9)} }
-.room-num { font-weight:700; font-size:13px; margin-bottom:4px; }
+/* ─── WORKFLOW SECTION ────────────────────────────── */
+.wf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
+@media(max-width:600px){.wf-grid{grid-template-columns:1fr}}
 
-/* GAUGE */
-.gauge-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
-.gauge-val { font-size:32px; font-weight:800; }
-.gauge-unit { font-size:12px; color:var(--muted); }
-.gauge-bar { width:100%; height:8px; background:rgba(255,255,255,.06); border-radius:4px; overflow:hidden; }
+.wf-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  transition:border-color .25s,box-shadow .25s;
+}
+.wf-card:hover{border-color:rgba(59,130,246,.4);box-shadow:var(--glow)}
+.wf-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:12px}
+.wf-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.wf-title{font-size:14px;font-weight:700;margin-bottom:3px}
+.wf-desc{font-size:12px;color:var(--muted);line-height:1.5}
 
-/* PRICE TABLE */
-.price-up { color:var(--red); }
-.price-dn { color:var(--green); }
-.price-flat { color:var(--muted); }
+/* Node pipeline */
+.pipeline{display:flex;align-items:center;gap:0;margin-top:18px;overflow-x:auto;padding-bottom:4px}
+.pnode{
+  display:flex;flex-direction:column;align-items:center;
+  min-width:72px;flex-shrink:0;
+}
+.pnode-box{
+  width:64px;height:44px;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:9px;font-weight:700;text-align:center;
+  border:1.5px solid;gap:2px;padding:4px;line-height:1.2;
+}
+.pnode-label{font-size:9px;color:var(--muted);margin-top:5px;text-align:center;max-width:72px;line-height:1.3}
+.parrow{
+  width:24px;height:2px;background:var(--border);
+  position:relative;flex-shrink:0;margin-top:-10px;
+}
+.parrow::after{
+  content:'';position:absolute;right:-5px;top:-3px;
+  border:4px solid transparent;border-left-color:var(--border);
+}
+[dir="rtl"] .parrow::after{
+  right:auto;left:-5px;
+  border-left-color:transparent;border-right-color:var(--border);
+}
 
-/* ABOUT */
-.about-grid { display:grid; grid-template-columns:1fr 2fr; gap:32px; align-items:start; }
-@media(max-width:768px){ .about-grid{grid-template-columns:1fr} }
-.about-photo { width:100%; aspect-ratio:1; background:linear-gradient(135deg,var(--card2),var(--card)); border:1px solid var(--border); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:80px; }
-.skill-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
-.skill-row:last-child { border:none; }
-.skill-level { font-size:11px; color:var(--blue); }
+.n-trigger{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.5);color:var(--blue)}
+.n-action{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.4);color:var(--green)}
+.n-logic{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.4);color:var(--yellow)}
+.n-output{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.4);color:var(--purple)}
+.n-data{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.4);color:var(--cyan)}
 
-/* CONTACT */
-.contact-card { background:linear-gradient(135deg,var(--card),var(--card2)); border:1px solid var(--border); border-radius:16px; padding:40px; text-align:center; }
-.contact-card h3 { font-size:22px; font-weight:700; margin-bottom:8px; }
-.contact-card p { color:var(--muted); margin-bottom:28px; }
-.contact-links { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-.contact-link { display:flex; align-items:center; gap:8px; padding:10px 20px; background:var(--bg); border:1px solid var(--border); border-radius:10px; font-size:13px; color:var(--text); text-decoration:none; transition:all .2s; }
-.contact-link:hover { border-color:var(--blue); color:var(--blue); }
+.wf-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+.wf-trigger-info{font-size:11px;color:var(--muted)}
+.wf-dl{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;color:var(--blue);font-weight:600;
+  text-decoration:none;transition:opacity .2s;
+}
+.wf-dl:hover{opacity:.7}
 
-/* FOOTER */
-footer { text-align:center; padding:32px; color:var(--muted); font-size:12px; border-top:1px solid var(--border); }
+/* ─── EXPERIENCE TIMELINE ─────────────────────────── */
+.timeline{position:relative;padding-right:32px}
+[data-lang="en"] .timeline{padding-right:0;padding-left:32px}
+.timeline::before{
+  content:'';position:absolute;right:0;top:8px;bottom:8px;
+  width:2px;background:linear-gradient(to bottom, var(--blue), transparent);
+}
+[data-lang="en"] .timeline::before{right:auto;left:0}
+.tl-item{position:relative;margin-bottom:40px;padding-right:28px}
+[data-lang="en"] .tl-item{padding-right:0;padding-left:28px}
+.tl-item::before{
+  content:'';position:absolute;right:-5px;top:6px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--blue);border:3px solid var(--bg);
+  box-shadow:0 0 0 2px var(--blue);
+}
+[data-lang="en"] .tl-item::before{right:auto;left:-5px}
+.tl-date{font-size:12px;color:var(--blue);font-weight:700;margin-bottom:6px}
+.tl-role{font-size:16px;font-weight:700;margin-bottom:3px}
+.tl-org{font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:8px}
+.tl-bullets{list-style:none;padding:0}
+.tl-bullets li{
+  font-size:13px;color:var(--light);padding:4px 0 4px 18px;
+  position:relative;line-height:1.5;
+}
+[dir="rtl"] .tl-bullets li{padding-left:0;padding-right:18px}
+.tl-bullets li::before{
+  content:'›';position:absolute;left:0;color:var(--blue);font-weight:700;
+}
+[dir="rtl"] .tl-bullets li::before{left:auto;right:0}
 
-/* TIMESTAMP */
-#ts { font-size:11px; color:var(--muted); }
+/* ─── CONTACT ─────────────────────────────────────── */
+.contact-wrap{
+  background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(6,182,212,.04));
+  border:1px solid rgba(59,130,246,.2);
+  border-radius:20px;padding:48px;text-align:center;
+}
+.contact-wrap h3{font-size:26px;font-weight:800;margin-bottom:8px}
+.contact-wrap p{color:var(--muted);margin-bottom:32px;font-size:15px}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.contact-link{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 22px;background:var(--card);
+  border:1px solid var(--border);border-radius:12px;
+  font-size:13px;color:var(--text);text-decoration:none;
+  font-weight:600;transition:all .2s;
+}
+.contact-link:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.contact-link.whatsapp:hover{border-color:var(--green);color:var(--green)}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer{text-align:center;padding:32px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+footer a{color:var(--blue);text-decoration:none}
+
+/* ─── SCROLL REVEAL ───────────────────────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-center{display:none}
+  .hero{padding:100px 20px 60px}
+  .section{padding:48px 16px}
+  .hero-stats{max-width:100%}
+  .contact-wrap{padding:28px 20px}
+  .timeline{padding-right:24px}
+}
 </style>
 </head>
 <body>
 
+<!-- ═══════════ NAV ═══════════ -->
 <nav>
   <div class="nav-brand">Abdulaziz <span>Arnous</span></div>
-  <div class="nav-links">
-    <a href="#demos" class="active">المشاريع</a>
-    <a href="#about">المهارات</a>
-    <a href="#contact">التواصل</a>
+  <div class="nav-center">
+    <a href="#demos" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+    <a href="#workflows" data-ar="الأتمتة" data-en="Workflows">الأتمتة</a>
+    <a href="#stack" data-ar="المهارات" data-en="Skills">المهارات</a>
+    <a href="#contact" data-ar="التواصل" data-en="Contact">التواصل</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-btn">
+      <button id="btn-ar" class="active" onclick="setLang('ar')">ع</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="cv-btn" href="https://1898a9-hub.github.io/portfolio/cv/Abdulaziz_Arnous_CV_2026.pdf" target="_blank" download>
+      ⬇ <span data-ar="السيرة الذاتية" data-en="Download CV">السيرة الذاتية</span>
+    </a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════ HERO ═══════════ -->
 <div class="hero" id="home">
-  <div class="hero-badge"><span class="pulse"></span> متاح للعمل — مكة المكرمة وجدة</div>
-  <h1>IT Engineer &<br><span>Automation Specialist</span></h1>
-  <p class="hero-sub">بنيت أنظمة تشغيل حية خلال موسم الحج لوزارة الصحة — zero downtime. أبني أدوات مراقبة وأتمتة مخصصة لكل قطاع.</p>
-  <div class="hero-tags">
-    <span class="tag">Python Automation</span>
-    <span class="tag">IoT Systems</span>
-    <span class="tag">Network Monitoring</span>
-    <span class="tag">AI Integration</span>
-    <span class="tag">Web Scraping</span>
-    <span class="tag">Windows Server</span>
-    <span class="tag">Linux</span>
-    <span class="tag">Active Directory</span>
+  <div class="hero-badge">
+    <span class="pulse"></span>
+    <span data-ar="متاح للعمل — مكة المكرمة · جدة" data-en="Open to work — Makkah · Jeddah">متاح للعمل — مكة المكرمة · جدة</span>
+  </div>
+  <h1>
+    <span data-ar="مهندس IT" data-en="IT Engineer &">مهندس IT</span><br>
+    <span class="grad" data-ar="وأتمتة الأنظمة" data-en="Systems Automation">وأتمتة الأنظمة</span>
+  </h1>
+  <p class="hero-sub" data-ar="شبكة أجهزة استشعار IoT لمستشفى طوارئ منى · وزارة الصحة · موسم الحج — zero downtime. أبني أدوات مراقبة ولوحات تحكم وسكريبتات أتمتة مخصصة لكل قطاع." data-en="Built an IoT sensor network for Mina Emergency Hospital · Ministry of Health · Hajj season — zero downtime. I build custom monitoring dashboards, automation workflows, and IT systems for any sector.">شبكة أجهزة استشعار IoT لمستشفى طوارئ منى · وزارة الصحة · موسم الحج — zero downtime. أبني أدوات مراقبة ولوحات تحكم وسكريبتات أتمتة مخصصة لكل قطاع.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#contact">
+      <span data-ar="تواصل معي" data-en="Get in Touch">تواصل معي</span> →
+    </a>
+    <a class="btn-ghost" href="#demos">
+      <span data-ar="مشاهدة المشاريع" data-en="View Live Demos">مشاهدة المشاريع</span>
+    </a>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-n">1</div><div class="stat-l">مشروع وزارة الصحة</div></div>
-    <div class="stat"><div class="stat-n">3+</div><div class="stat-l">سنوات خبرة</div></div>
-    <div class="stat"><div class="stat-n">4</div><div class="stat-l">قطاعات</div></div>
-    <div class="stat"><div class="stat-n">0</div><div class="stat-l">downtime خلال الحج</div></div>
+    <div class="stat">
+      <div class="stat-n">1</div>
+      <div class="stat-l" data-ar="مشروع وزارة الصحة" data-en="MoH Project">مشروع وزارة الصحة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3+</div>
+      <div class="stat-l" data-ar="سنوات خبرة" data-en="Years Experience">سنوات خبرة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">4</div>
+      <div class="stat-l" data-ar="قطاعات مغطاة" data-en="Sectors">قطاعات مغطاة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l" data-ar="توقف خلال الحج" data-en="Downtime @ Hajj">توقف خلال الحج</div>
+    </div>
   </div>
 </div>
 
-<!-- DEMOS -->
-<section id="demos">
-  <div class="section-title">معرض الأعمال التفاعلي</div>
-  <h2 class="section-h2">أنظمة حية — جميعها تعمل الآن <span id="ts"></span></h2>
+<hr class="divider">
+
+<!-- ═══════════ LIVE DEMOS ═══════════ -->
+<section class="section" id="demos">
+  <div class="section-label" data-ar="معرض الأعمال التفاعلي" data-en="Live Portfolio">معرض الأعمال التفاعلي</div>
+  <h2 class="section-h2">
+    <span data-ar="أنظمة حية — جميعها تعمل الآن" data-en="Live Systems — Running Now">أنظمة حية — جميعها تعمل الآن</span>
+    <span id="ts" style="font-size:13px;color:var(--muted);font-weight:400"></span>
+  </h2>
 
   <div class="demos-tabs">
-    <div class="demo-tab active" onclick="switchDemo('medical')">❄️ مراقبة التبريد</div>
-    <div class="demo-tab" onclick="switchDemo('hotel')">🏨 الفنادق والضيافة</div>
-    <div class="demo-tab" onclick="switchDemo('materials')">🏗️ مواد البناء</div>
-    <div class="demo-tab" onclick="switchDemo('site')">📊 العمليات الميدانية</div>
+    <div class="demo-tab active" onclick="switchDemo('medical',this)">❄️ <span data-ar="مراقبة التبريد" data-en="Cold Storage">مراقبة التبريد</span></div>
+    <div class="demo-tab" onclick="switchDemo('hotel',this)">🏨 <span data-ar="الفنادق والضيافة" data-en="Hotel Network">الفنادق والضيافة</span></div>
+    <div class="demo-tab" onclick="switchDemo('materials',this)">🏗️ <span data-ar="مواد البناء" data-en="Materials Tracker">مواد البناء</span></div>
+    <div class="demo-tab" onclick="switchDemo('site',this)">📊 <span data-ar="العمليات الميدانية" data-en="Site Operations">العمليات الميدانية</span></div>
   </div>
 
-  <!-- ═══════════════════════════════════
-       DEMO 1 — MEDICAL MONITORING
-  ═══════════════════════════════════ -->
+  <!-- DEMO 1: MEDICAL -->
   <div class="demo-panel active" id="demo-medical">
-    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
       <div>
-        <div style="font-size:14px;font-weight:700">نظام مراقبة ثلاجات الحفظ الطبية</div>
-        <div style="font-size:12px;color:var(--muted)">المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج</div>
+        <div style="font-size:15px;font-weight:700" data-ar="نظام مراقبة ثلاجات الحفظ الطبية" data-en="Medical Cold Storage Monitor">نظام مراقبة ثلاجات الحفظ الطبية</div>
+        <div style="font-size:12px;color:var(--muted)" data-ar="المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج" data-en="Real project — Mina Emergency Hospital, Ministry of Health | Hajj season">المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
     </div>
-
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
-        <div class="card-title">درجة حرارة التبريد</div>
+        <div class="card-title" data-ar="درجة حرارة التبريد" data-en="Cooling Temp">درجة حرارة التبريد</div>
         <div class="card-value" id="m-temp" style="color:var(--cyan)">2.8°C</div>
-        <div class="card-sub">النطاق المطلوب: 2°C – 4°C</div>
+        <div class="card-sub" data-ar="النطاق: 2°C – 4°C" data-en="Range: 2°C – 4°C">النطاق: 2°C – 4°C</div>
       </div>
       <div class="card">
-        <div class="card-title">رطوبة الغرفة</div>
+        <div class="card-title" data-ar="رطوبة الغرفة" data-en="Humidity">رطوبة الغرفة</div>
         <div class="card-value" id="m-humid" style="color:var(--blue)">72%</div>
-        <div class="card-sub">النطاق المطلوب: 65–80%</div>
+        <div class="card-sub" data-ar="النطاق: 65–80%" data-en="Range: 65–80%">النطاق: 65–80%</div>
       </div>
       <div class="card">
-        <div class="card-title">وحدات التبريد</div>
+        <div class="card-title" data-ar="وحدات التبريد" data-en="Units Online">وحدات التبريد</div>
         <div class="card-value" id="m-devices" style="color:var(--green)">12/12</div>
-        <div class="card-sub">جميعها متصلة بالخادم</div>
+        <div class="card-sub" data-ar="جميعها متصلة بالخادم" data-en="All connected to server">جميعها متصلة بالخادم</div>
       </div>
       <div class="card">
-        <div class="card-title">Uptime النظام</div>
-        <div class="card-value" id="m-uptime" style="color:var(--green);font-size:18px">99.8%</div>
-        <div class="card-sub">خلال موسم الحج كاملاً</div>
+        <div class="card-title" data-ar="Uptime النظام" data-en="System Uptime">Uptime النظام</div>
+        <div class="card-value" style="color:var(--green);font-size:20px">99.8%</div>
+        <div class="card-sub" data-ar="موسم الحج كاملاً" data-en="Full Hajj season">موسم الحج كاملاً</div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">مخطط حرارة التبريد والرطوبة (آخر 60 دقيقة)</div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="حرارة التبريد والرطوبة — آخر 60 دقيقة" data-en="Temp & Humidity — last 60 min">حرارة التبريد والرطوبة — آخر 60 دقيقة</div>
         <div class="chart-wrap"><canvas id="chart-medical"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">حالة وحدات التبريد (12 وحدة)</div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="حالة وحدات التبريد (12 وحدة)" data-en="Unit Status (12 units)">حالة وحدات التبريد (12 وحدة)</div>
         <div class="room-grid" id="med-rooms"></div>
       </div>
     </div>
-
     <div class="card" style="margin-top:16px">
-      <div class="card-title" style="margin-bottom:12px">سجل التنبيهات</div>
+      <div class="card-title" style="margin-bottom:12px" data-ar="سجل التنبيهات" data-en="Alert Log">سجل التنبيهات</div>
       <div id="med-alerts"></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════
-       DEMO 2 — HOTEL MONITORING
-  ═══════════════════════════════════ -->
+  <!-- DEMO 2: HOTEL -->
   <div class="demo-panel" id="demo-hotel">
-    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
       <div>
-        <div style="font-size:14px;font-weight:700">نظام مراقبة شبكة الفندق</div>
-        <div style="font-size:12px;color:var(--muted)">WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال</div>
+        <div style="font-size:15px;font-weight:700" data-ar="نظام مراقبة شبكة الفندق" data-en="Hotel Network Monitor">نظام مراقبة شبكة الفندق</div>
+        <div style="font-size:12px;color:var(--muted)" data-ar="WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال" data-en="Guest WiFi · Floor devices · Instant failure alerts">WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
     </div>
-
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
-        <div class="card-title">الضيوف المتصلون</div>
+        <div class="card-title" data-ar="الضيوف المتصلون" data-en="Connected Guests">الضيوف المتصلون</div>
         <div class="card-value" id="h-guests" style="color:var(--green)">247</div>
-        <div class="card-sub">عبر شبكة الفندق</div>
+        <div class="card-sub" data-ar="عبر شبكة الفندق" data-en="on hotel network">عبر شبكة الفندق</div>
       </div>
       <div class="card">
         <div class="card-title">Access Points</div>
         <div class="card-value" id="h-ap" style="color:var(--blue)">48/50</div>
-        <div class="card-sub"><span id="h-ap-bad" style="color:var(--red)">2 تحتاج مراجعة</span></div>
+        <div class="card-sub"><span id="h-ap-warn" style="color:var(--red)" data-ar="2 تحتاج مراجعة" data-en="2 need review">2 تحتاج مراجعة</span></div>
       </div>
       <div class="card">
-        <div class="card-title">متوسط السرعة</div>
+        <div class="card-title" data-ar="متوسط السرعة" data-en="Avg Speed">متوسط السرعة</div>
         <div class="card-value" id="h-speed" style="color:var(--cyan)">87 Mbps</div>
-        <div class="card-sub">لكل ضيف</div>
+        <div class="card-sub" data-ar="لكل ضيف" data-en="per guest">لكل ضيف</div>
       </div>
       <div class="card">
         <div class="card-title">Network Uptime</div>
         <div class="card-value" style="color:var(--green);font-size:20px">99.6%</div>
-        <div class="card-sub">هذا الشهر</div>
+        <div class="card-sub" data-ar="هذا الشهر" data-en="this month">هذا الشهر</div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">استخدام الشبكة (ساعة)</div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="استخدام الشبكة — 24 ساعة" data-en="Network Usage — 24h">استخدام الشبكة — 24 ساعة</div>
         <div class="chart-wrap"><canvas id="chart-hotel"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-title" style="margin-bottom:14px">حالة الطوابق</div>
+        <div class="card-title" style="margin-bottom:12px" data-ar="حالة الطوابق" data-en="Floor Status">حالة الطوابق</div>
         <table class="tbl">
-          <tr><th>الطابق</th><th>APs</th><th>الضيوف</th><th>الحالة</th></tr>
+          <tr>
+            <th data-ar="الطابق" data-en="Floor">الطابق</th>
+            <th>APs</th>
+            <th data-ar="الضيوف" data-en="Guests">الضيوف</th>
+            <th data-ar="الحالة" data-en="Status">الحالة</th>
+          </tr>
           <tbody id="hotel-floors"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="card" style="margin-top:16px">
-      <div class="card-title" style="margin-bottom:12px">تنبيهات الشبكة</div>
-      <div id="hotel-alerts"></div>
-    </div>
   </div>
 
-  <!-- ═══════════════════════════════════
-       DEMO 3 — MATERIALS TRACKER
-  ═══════════════════════════════════ -->
+  <!-- DEMO 3: MATERIALS -->
   <div class="demo-panel" id="demo-materials">
-    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
       <div>
-        <div style="font-size:14px;font-weight:700">متتبع أسعار مواد البناء</div>
-        <div style="font-size:12px;color:var(--muted)">يتحقق تلقائياً من الموردين كل 24 ساعة · حديد · أسمنت · رمل · بلاط</div>
+        <div style="font-size:15px;font-weight:700" data-ar="متتبع أسعار مواد البناء" data-en="Construction Materials Tracker">متتبع أسعار مواد البناء</div>
+        <div style="font-size:12px;color:var(--muted)" data-ar="يتحقق تلقائياً من الموردين كل 24 ساعة" data-en="Auto-checks suppliers every 24 hours">يتحقق تلقائياً من الموردين كل 24 ساعة</div>
       </div>
-      <span class="badge badge-yellow">تحديث يومي تلقائي</span>
+      <span class="badge badge-yellow" data-ar="تحديث يومي تلقائي" data-en="Auto Daily Update">تحديث يومي تلقائي</span>
     </div>
-
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
-        <div class="card-title">حديد التسليح (طن)</div>
-        <div class="card-value" id="p-steel" style="color:var(--text)">3,250</div>
-        <div class="card-sub" id="p-steel-ch" class="price-up">▲ 2.3% هذا الأسبوع</div>
+        <div class="card-title" data-ar="حديد التسليح (طن)" data-en="Rebar (ton/SAR)">حديد التسليح (طن)</div>
+        <div class="card-value" id="p-steel">3,250</div>
+        <div class="card-sub price-up" id="p-steel-ch">▲ 2.3%</div>
       </div>
       <div class="card">
-        <div class="card-title">أسمنت (طن)</div>
-        <div class="card-value" id="p-cement" style="color:var(--text)">285</div>
-        <div class="card-sub" id="p-cement-ch" class="price-dn">▼ 1.1% هذا الأسبوع</div>
+        <div class="card-title" data-ar="أسمنت (طن)" data-en="Cement (ton/SAR)">أسمنت (طن)</div>
+        <div class="card-value" id="p-cement">285</div>
+        <div class="card-sub price-dn" id="p-cement-ch">▼ 1.1%</div>
       </div>
       <div class="card">
-        <div class="card-title">رمل (م³)</div>
-        <div class="card-value" id="p-sand" style="color:var(--text)">42</div>
-        <div class="card-sub" style="color:var(--muted)">— مستقر</div>
+        <div class="card-title" data-ar="رمل (م³)" data-en="Sand (m³/SAR)">رمل (م³)</div>
+        <div class="card-value" id="p-sand">42</div>
+        <div class="card-sub" style="color:var(--muted)" data-ar="— مستقر" data-en="— stable">— مستقر</div>
       </div>
       <div class="card">
-        <div class="card-title">بلاط (م²)</div>
-        <div class="card-value" id="p-tile" style="color:var(--text)">68</div>
-        <div class="card-sub" id="p-tile-ch" class="price-dn">▼ 0.8% هذا الأسبوع</div>
+        <div class="card-title" data-ar="بلاط (م²)" data-en="Tile (m²/SAR)">بلاط (م²)</div>
+        <div class="card-value" id="p-tile">68</div>
+        <div class="card-sub price-dn" id="p-tile-ch">▼ 0.8%</div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">تغير السعر — آخر 30 يوم (ريال سعودي)</div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="تغير السعر — آخر 30 يوم (ريال)" data-en="Price change — last 30 days (SAR)">تغير السعر — آخر 30 يوم (ريال)</div>
         <div class="chart-wrap"><canvas id="chart-materials"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-title" style="margin-bottom:14px">أفضل أسعار الموردين الآن</div>
+        <div class="card-title" style="margin-bottom:12px" data-ar="أفضل أسعار الموردين الآن" data-en="Best supplier prices now">أفضل أسعار الموردين الآن</div>
         <table class="tbl">
-          <tr><th>المورد</th><th>المادة</th><th>السعر</th><th></th></tr>
+          <tr>
+            <th data-ar="المورد" data-en="Supplier">المورد</th>
+            <th data-ar="المادة" data-en="Item">المادة</th>
+            <th data-ar="السعر (ر.س)" data-en="Price (SAR)">السعر (ر.س)</th>
+          </tr>
           <tbody id="suppliers-tbl"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="card" style="margin-top:16px;background:linear-gradient(135deg,rgba(16,185,129,.05),rgba(59,130,246,.05));border-color:rgba(59,130,246,.2)">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-        <div>
-          <div style="font-size:14px;font-weight:700;margin-bottom:4px">تقرير أسعار تلقائي</div>
-          <div style="font-size:12px;color:var(--muted)">يُرسل كل إثنين على واتساب/إيميل مدير المشتريات</div>
-        </div>
-        <span class="badge badge-green">✓ مجدول</span>
-      </div>
-    </div>
   </div>
 
-  <!-- ═══════════════════════════════════
-       DEMO 4 — SITE OPERATIONS
-  ═══════════════════════════════════ -->
+  <!-- DEMO 4: SITE OPS -->
   <div class="demo-panel" id="demo-site">
-    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">
       <div>
-        <div style="font-size:14px;font-weight:700">لوحة العمليات الميدانية</div>
-        <div style="font-size:12px;color:var(--muted)">حضور العمالة · المعدات · تقدم المشروع · تقارير يومية تلقائية</div>
+        <div style="font-size:15px;font-weight:700" data-ar="لوحة العمليات الميدانية" data-en="Site Operations Dashboard">لوحة العمليات الميدانية</div>
+        <div style="font-size:12px;color:var(--muted)" data-ar="حضور العمالة · المعدات · تقارير يومية تلقائية" data-en="Labor attendance · Equipment · Auto daily reports">حضور العمالة · المعدات · تقارير يومية تلقائية</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
     </div>
-
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
-        <div class="card-title">العمالة الحاضرة</div>
+        <div class="card-title" data-ar="العمالة الحاضرة" data-en="Workers Present">العمالة الحاضرة</div>
         <div class="card-value" id="s-workers" style="color:var(--green)">142</div>
-        <div class="card-sub" id="s-workers-sub">من أصل 155</div>
+        <div class="card-sub" id="s-workers-sub" data-ar="من أصل 155" data-en="out of 155">من أصل 155</div>
       </div>
       <div class="card">
-        <div class="card-title">المعدات النشطة</div>
+        <div class="card-title" data-ar="المعدات النشطة" data-en="Active Equipment">المعدات النشطة</div>
         <div class="card-value" id="s-equip" style="color:var(--blue)">8/10</div>
-        <div class="card-sub">2 في الصيانة</div>
+        <div class="card-sub" data-ar="2 في الصيانة" data-en="2 in maintenance">2 في الصيانة</div>
       </div>
       <div class="card">
-        <div class="card-title">تقدم المشروع</div>
+        <div class="card-title" data-ar="تقدم المشروع" data-en="Project Progress">تقدم المشروع</div>
         <div class="card-value" id="s-prog" style="color:var(--yellow)">67%</div>
-        <div class="card-sub">الهدف: 70% بنهاية الأسبوع</div>
+        <div class="card-sub" data-ar="الهدف: 70% بنهاية الأسبوع" data-en="Target: 70% by week end">الهدف: 70% بنهاية الأسبوع</div>
       </div>
       <div class="card">
-        <div class="card-title">الساعات اليوم</div>
+        <div class="card-title" data-ar="ساعات العمل اليوم" data-en="Work Hours Today">ساعات العمل اليوم</div>
         <div class="card-value" id="s-hours" style="color:var(--cyan)">1,136</div>
-        <div class="card-sub">ساعة عمل مجمعة</div>
+        <div class="card-sub" data-ar="ساعة مجمعة" data-en="combined hours">ساعة مجمعة</div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">نسبة الإنجاز — آخر 4 أسابيع</div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="نسبة الإنجاز — آخر 4 أسابيع" data-en="Completion — last 4 weeks">نسبة الإنجاز — آخر 4 أسابيع</div>
         <div class="chart-wrap"><canvas id="chart-site"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-title" style="margin-bottom:14px">حالة المعدات</div>
+        <div class="card-title" style="margin-bottom:12px" data-ar="حالة المعدات" data-en="Equipment Status">حالة المعدات</div>
         <table class="tbl">
-          <tr><th>المعدة</th><th>الحالة</th><th>المشغّل</th></tr>
+          <tr>
+            <th data-ar="المعدة" data-en="Equipment">المعدة</th>
+            <th data-ar="الحالة" data-en="Status">الحالة</th>
+            <th data-ar="المشغّل" data-en="Operator">المشغّل</th>
+          </tr>
           <tbody id="equip-tbl"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="card" style="margin-top:16px">
-      <div class="card-title" style="margin-bottom:12px">تقرير اليوم — يُرسل تلقائياً للإدارة</div>
-      <div style="background:var(--card2);border-radius:8px;padding:16px;font-size:13px;line-height:1.8;direction:rtl">
-        <strong>تقرير يومي — <span id="s-date"></span></strong><br>
-        الحضور: <span id="sr-att"></span> من 155 عامل<br>
-        المعدات: 8 نشطة، 2 في الصيانة<br>
-        نسبة الإنجاز: 67% (الهدف الأسبوعي 70%)<br>
-        ملاحظات: لا حوادث · الطقس مناسب · الإنجاز ضمن الجدول<br>
-        <span style="color:var(--muted)">— أُنشئ تلقائياً · 18:00 يومياً</span>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="border-top:1px solid var(--border)">
-  <div class="section-title">من أنا</div>
-  <h2 class="section-h2">المهارات والخبرة</h2>
-  <div class="about-grid">
-    <div>
-      <div class="about-photo">👨‍💻</div>
-      <div class="card" style="margin-top:16px;text-align:center">
-        <div style="font-size:16px;font-weight:700;margin-bottom:4px">عبدالعزيز عرنوس</div>
-        <div style="font-size:12px;color:var(--blue);margin-bottom:12px">IT Support & Automation Engineer</div>
-        <div style="font-size:12px;color:var(--muted)">📍 مكة المكرمة، المملكة العربية السعودية</div>
+<hr class="divider">
+
+<!-- ═══════════ WORKFLOWS ═══════════ -->
+<section class="section reveal" id="workflows">
+  <div class="section-label" data-ar="أتمتة العمليات" data-en="Process Automation">أتمتة العمليات</div>
+  <h2 class="section-h2" data-ar="سكريبتات وسير عمل قابلة للتنزيل" data-en="Downloadable Workflows & Scripts">سكريبتات وسير عمل قابلة للتنزيل</h2>
+
+  <div class="wf-grid">
+
+    <!-- WF 1 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(6,182,212,.1)">❄️</div>
+          <div>
+            <div class="wf-title" data-ar="تنبيه التبريد الطبي" data-en="Medical Cold Storage Alert">تنبيه التبريد الطبي</div>
+            <div class="wf-desc" data-ar="يراقب حرارة ثلاجات الحفظ كل 30 ثانية — ينبّه تلقائياً عند تجاوز 4.5°C" data-en="Monitors cold storage temps every 30s — auto-alerts when temp exceeds 4.5°C">يراقب حرارة ثلاجات الحفظ كل 30 ثانية — ينبّه تلقائياً عند تجاوز 4.5°C</div>
+          </div>
+        </div>
+        <span class="badge badge-blue">n8n</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">⏱<br>30s</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">📡<br>IoT</div><div class="pnode-label" data-ar="قراءة المستشعر" data-en="Read Sensor">قراءة المستشعر</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-logic">🔀<br>IF</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Threshold">فحص الحد</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">📱<br>SMS</div><div class="pnode-label" data-ar="إرسال تنبيه" data-en="Send Alert">إرسال تنبيه</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">📊<br>Log</div><div class="pnode-label" data-ar="تسجيل السجل" data-en="Log Event">تسجيل السجل</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="⏱ كل 30 ثانية" data-en="⏱ Every 30 seconds">⏱ كل 30 ثانية</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/blob/master/workflows/cold-storage-alert.json" target="_blank">⬇ <span data-ar="تحميل JSON" data-en="Download JSON">تحميل JSON</span></a>
+      </div>
+    </div>
+
+    <!-- WF 2 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(59,130,246,.1)">🏨</div>
+          <div>
+            <div class="wf-title" data-ar="مراقبة شبكة الفندق" data-en="Hotel WiFi Monitor">مراقبة شبكة الفندق</div>
+            <div class="wf-desc" data-ar="يكتشف access points المعطوبة ويرسل تقريراً فورياً لمسؤول الشبكة" data-en="Detects failed access points and sends instant report to network admin">يكتشف access points المعطوبة ويرسل تقريراً فورياً لمسؤول الشبكة</div>
+          </div>
+        </div>
+        <span class="badge badge-blue">n8n</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">⏱<br>5min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">🌐<br>Ping</div><div class="pnode-label" data-ar="اختبار APs" data-en="Test APs">اختبار APs</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Filter</div><div class="pnode-label" data-ar="فرز الأعطال" data-en="Filter Failures">فرز الأعطال</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Notify Admin">إشعار فوري</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">📈<br>Sheet</div><div class="pnode-label" data-ar="تحديث السجل" data-en="Update Log">تحديث السجل</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="⏱ كل 5 دقائق" data-en="⏱ Every 5 minutes">⏱ كل 5 دقائق</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/blob/master/workflows/hotel-wifi-monitor.json" target="_blank">⬇ <span data-ar="تحميل JSON" data-en="Download JSON">تحميل JSON</span></a>
+      </div>
+    </div>
+
+    <!-- WF 3 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(245,158,11,.1)">🏗️</div>
+          <div>
+            <div class="wf-title" data-ar="تتبع أسعار مواد البناء" data-en="Materials Price Tracker">تتبع أسعار مواد البناء</div>
+            <div class="wf-desc" data-ar="يجمع أسعار الموردين يومياً ويرسل مقارنة تلقائية لمدير المشتريات على واتساب" data-en="Collects supplier prices daily and sends auto comparison to procurement manager via WhatsApp">يجمع أسعار الموردين يومياً ويرسل مقارنة تلقائية لمدير المشتريات على واتساب</div>
+          </div>
+        </div>
+        <span class="badge badge-blue">n8n</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">📅<br>Daily</div><div class="pnode-label" data-ar="جدول يومي" data-en="Daily Schedule">جدول يومي</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">🕷<br>Scrape</div><div class="pnode-label" data-ar="جمع الأسعار" data-en="Fetch Prices">جمع الأسعار</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Compare</div><div class="pnode-label" data-ar="مقارنة الأسعار" data-en="Compare">مقارنة الأسعار</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">📊<br>Excel</div><div class="pnode-label" data-ar="تحديث الجدول" data-en="Update Sheet">تحديث الجدول</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">💬<br>WA</div><div class="pnode-label" data-ar="إرسال واتساب" data-en="Send WhatsApp">إرسال واتساب</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="📅 كل إثنين 08:00" data-en="📅 Every Monday 08:00">📅 كل إثنين 08:00</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/blob/master/workflows/materials-price-tracker.json" target="_blank">⬇ <span data-ar="تحميل JSON" data-en="Download JSON">تحميل JSON</span></a>
+      </div>
+    </div>
+
+    <!-- WF 4 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(139,92,246,.1)">📊</div>
+          <div>
+            <div class="wf-title" data-ar="تقرير الموقع اليومي" data-en="Daily Site Report">تقرير الموقع اليومي</div>
+            <div class="wf-desc" data-ar="يجمع بيانات الحضور والمعدات وينشئ تقرير PDF تلقائي للإدارة" data-en="Aggregates attendance and equipment data, auto-generates PDF report for management">يجمع بيانات الحضور والمعدات وينشئ تقرير PDF تلقائي للإدارة</div>
+          </div>
+        </div>
+        <span class="badge badge-blue">n8n</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">⏰<br>18:00</div><div class="pnode-label" data-ar="كل يوم" data-en="Daily">كل يوم</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">📋<br>Forms</div><div class="pnode-label" data-ar="جمع البيانات" data-en="Collect Data">جمع البيانات</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">🔧<br>Format</div><div class="pnode-label" data-ar="تنسيق التقرير" data-en="Format Report">تنسيق التقرير</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">📄<br>PDF</div><div class="pnode-label" data-ar="إنشاء PDF" data-en="Generate PDF">إنشاء PDF</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">📧<br>Send</div><div class="pnode-label" data-ar="إرسال للإدارة" data-en="Send to Mgmt">إرسال للإدارة</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="⏰ يومياً 18:00" data-en="⏰ Daily at 18:00">⏰ يومياً 18:00</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/blob/master/workflows/daily-site-report.json" target="_blank">⬇ <span data-ar="تحميل JSON" data-en="Download JSON">تحميل JSON</span></a>
+      </div>
+    </div>
+
+    <!-- WF 5 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(16,185,129,.1)">🖥️</div>
+          <div>
+            <div class="wf-title" data-ar="مراقبة Uptime الخادم" data-en="Server Uptime Monitor">مراقبة Uptime الخادم</div>
+            <div class="wf-desc" data-ar="يختبر الخوادم والمواقع كل دقيقة — ينبّه فوراً عند توقف أي خدمة" data-en="Tests servers and websites every minute — instantly alerts when any service goes down">يختبر الخوادم والمواقع كل دقيقة — ينبّه فوراً عند توقف أي خدمة</div>
+          </div>
+        </div>
+        <span class="badge badge-purple">Python</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">⏱<br>1min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">🌐<br>HTTP</div><div class="pnode-label" data-ar="اختبار الخدمات" data-en="Check Services">اختبار الخدمات</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Status</div><div class="pnode-label" data-ar="تحقق الحالة" data-en="Check Status">تحقق الحالة</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">🔔<br>Alert</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Instant Alert">إشعار فوري</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">📊<br>Stats</div><div class="pnode-label" data-ar="تحديث الإحصاء" data-en="Update Stats">تحديث الإحصاء</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="⏱ كل دقيقة" data-en="⏱ Every minute">⏱ كل دقيقة</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/tree/master/workflows" target="_blank">⬇ <span data-ar="GitHub Repo" data-en="GitHub Repo">GitHub Repo</span></a>
+      </div>
+    </div>
+
+    <!-- WF 6 -->
+    <div class="wf-card">
+      <div class="wf-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="wf-icon" style="background:rgba(239,68,68,.1)">📦</div>
+          <div>
+            <div class="wf-title" data-ar="نظام تتبع المخزون" data-en="Inventory Tracking System">نظام تتبع المخزون</div>
+            <div class="wf-desc" data-ar="يتتبع مخزون المواد تلقائياً ويرسل تنبيهاً عند وصول المخزون للحد الأدنى" data-en="Automatically tracks material stock and alerts when minimum threshold is reached">يتتبع مخزون المواد تلقائياً ويرسل تنبيهاً عند وصول المخزون للحد الأدنى</div>
+          </div>
+        </div>
+        <span class="badge badge-blue">n8n</span>
+      </div>
+      <div class="pipeline">
+        <div class="pnode"><div class="pnode-box n-trigger">📅<br>Weekly</div><div class="pnode-label" data-ar="أسبوعي" data-en="Weekly">أسبوعي</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-data">📋<br>Sheet</div><div class="pnode-label" data-ar="قراءة المخزون" data-en="Read Stock">قراءة المخزون</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Low?</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Level">فحص الحد</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="طلب تزويد" data-en="Restock Alert">طلب تزويد</div></div>
+        <div class="parrow"></div>
+        <div class="pnode"><div class="pnode-box n-action">📊<br>Report</div><div class="pnode-label" data-ar="تقرير المخزون" data-en="Stock Report">تقرير المخزون</div></div>
+      </div>
+      <div class="wf-footer">
+        <span class="wf-trigger-info" data-ar="📅 كل أحد 09:00" data-en="📅 Every Sunday 09:00">📅 كل أحد 09:00</span>
+        <a class="wf-dl" href="https://github.com/1898a9-hub/portfolio/tree/master/workflows" target="_blank">⬇ <span data-ar="GitHub Repo" data-en="GitHub Repo">GitHub Repo</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ TECH STACK ═══════════ -->
+<section class="section reveal" id="stack">
+  <div class="section-label" data-ar="الأدوات والمهارات" data-en="Tools & Skills">الأدوات والمهارات</div>
+  <h2 class="section-h2" data-ar="ما أعمل به يومياً" data-en="What I Work With Daily">ما أعمل به يومياً</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><div class="stack-icon">🐍</div>Python<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🔧</div>n8n Workflows<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🪟</div>Windows Server<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🐧</div>Linux / VPS<span class="stack-level lvl-mid" data-ar="متوسط-متقدم" data-en="Mid-Advanced">متوسط-متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🌐</div>TCP/IP · DNS<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
+    <div class="stack-item"><div class="stack-icon">📡</div>IoT · MQTT<span class="stack-level lvl-prac" data-ar="عملي" data-en="Practical">عملي</span></div>
+    <div class="stack-item"><div class="stack-icon">🤖</div>AI APIs<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🎭</div>Playwright<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">🗄️</div>SQL Server<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
+    <div class="stack-item"><div class="stack-icon">🔀</div>Active Directory<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
+    <div class="stack-item"><div class="stack-icon">📊</div>Excel / Power BI<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
+    <div class="stack-item"><div class="stack-icon">🐙</div>Git / GitHub<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section class="section reveal" id="experience">
+  <div class="section-label" data-ar="المسيرة المهنية" data-en="Experience">المسيرة المهنية</div>
+  <h2 class="section-h2" data-ar="الخبرة العملية" data-en="Work History">الخبرة العملية</h2>
+  <div class="grid-2">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2024</div>
+        <div class="tl-role" data-ar="تقني أنظمة IoT وIT" data-en="IoT & IT Systems Technician">تقني أنظمة IoT وIT</div>
+        <div class="tl-org" data-ar="وزارة الصحة — مستشفى طوارئ منى" data-en="Ministry of Health — Mina Emergency Hospital">وزارة الصحة — مستشفى طوارئ منى</div>
+        <ul class="tl-bullets">
+          <li data-ar="تركيب وربط أجهزة استشعار تبريد ورطوبة بالخادم المركزي" data-en="Installed and connected cooling/humidity sensors to central server">تركيب وربط أجهزة استشعار تبريد ورطوبة بالخادم المركزي</li>
+          <li data-ar="بناء لوحة مراقبة مباشرة لثلاجات الحفظ الطبية" data-en="Built live monitoring dashboard for medical cold storage units">بناء لوحة مراقبة مباشرة لثلاجات الحفظ الطبية</li>
+          <li data-ar="عرض المشروع أمام مدير الوزارة في الرياض ومكة" data-en="Presented project to Ministry Director in Riyadh and Makkah">عرض المشروع أمام مدير الوزارة في الرياض ومكة</li>
+          <li data-ar="zero downtime طوال موسم الحج" data-en="Zero downtime throughout the entire Hajj season">zero downtime طوال موسم الحج</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2022</div>
+        <div class="tl-role" data-ar="منسق علاقات عامة رقمي" data-en="Digital PR & Operations Coordinator">منسق علاقات عامة رقمي</div>
+        <div class="tl-org" data-ar="مؤسسة الخليج بالم للمقاولات" data-en="Gulf Palm Contracting Establishment">مؤسسة الخليج بالم للمقاولات</div>
+        <ul class="tl-bullets">
+          <li data-ar="إدارة أنظمة إدخال البيانات ومعالجة 500+ سجل شهرياً" data-en="Managed data entry systems processing 500+ records monthly">إدارة أنظمة إدخال البيانات ومعالجة 500+ سجل شهرياً</li>
+          <li data-ar="بناء تقارير Excel مالية وتشغيلية — تقليل وقت التقارير بـ 40%" data-en="Built Excel financial/operational reports — reduced reporting time 40%">بناء تقارير Excel مالية وتشغيلية — تقليل وقت التقارير بـ 40%</li>
+        </ul>
       </div>
     </div>
     <div>
       <div class="card" style="margin-bottom:16px">
-        <div class="card-title" style="margin-bottom:16px">الخبرة العملية</div>
-        <div class="alert alert-green">
-          <span class="alert-icon">✅</span>
-          <div><strong>وزارة الصحة — مستشفى طوارئ منى | موسم الحج</strong><br>
-          <span style="font-size:12px;color:var(--muted)">تركيب وتشغيل شبكة أجهزة استشعار تبريد ورطوبة · ربطها بالخادم المركزي · لوحة مراقبة مباشرة · عرض المشروع أمام مدير الوزارة في الرياض ومكة</span></div>
-        </div>
-        <div class="alert alert-blue" style="margin-top:8px">
+        <div class="card-title" style="margin-bottom:14px" data-ar="مشاريع مستقلة" data-en="Independent Projects">مشاريع مستقلة</div>
+        <div class="alert alert-blue">
           <span class="alert-icon">🤖</span>
-          <div><strong>مشاريع أتمتة وذكاء اصطناعي مستقلة</strong><br>
-          <span style="font-size:12px;color:var(--muted)">سكرابينج أسعار · بوتات تلجرام وواتساب · تكاملات API · أنظمة نشر تلقائي · معالجة بيانات</span></div>
+          <div>
+            <strong data-ar="PROMID — منتج AI Prompt-Book" data-en="PROMID — AI Prompt-Book Product">PROMID — منتج AI Prompt-Book</strong><br>
+            <span style="font-size:12px;color:var(--muted)" data-ar="265 صفحة · 250 prompt ثنائي اللغة · pipeline Playwright + Chromium تلقائي" data-en="265 pages · 250 bilingual prompts · automated Playwright + Chromium pipeline">265 صفحة · 250 prompt ثنائي اللغة · pipeline Playwright + Chromium تلقائي</span>
+          </div>
+        </div>
+        <div class="alert alert-green" style="margin-top:8px">
+          <span class="alert-icon">📈</span>
+          <div>
+            <strong data-ar="منصة تجارة إلكترونية آلية" data-en="Automated E-Commerce Pipeline">منصة تجارة إلكترونية آلية</strong><br>
+            <span style="font-size:12px;color:var(--muted)" data-ar="Python · SBERT · EAN matching · نشر تلقائي · VPS بـ pm2 وcron" data-en="Python · SBERT · EAN matching · auto-publishing · VPS with pm2 & cron">Python · SBERT · EAN matching · نشر تلقائي · VPS بـ pm2 وcron</span>
+          </div>
         </div>
       </div>
       <div class="card">
-        <div class="card-title" style="margin-bottom:16px">المهارات التقنية</div>
-        <div class="skill-row"><span>Python — أتمتة وسكرابينج وAPI</span><span class="skill-level">متقدم</span></div>
-        <div class="skill-row"><span>Windows Server · Active Directory</span><span class="skill-level">متقدم</span></div>
-        <div class="skill-row"><span>Linux (Ubuntu / VPS)</span><span class="skill-level">متوسط-متقدم</span></div>
-        <div class="skill-row"><span>Networking — TCP/IP · DNS · DHCP</span><span class="skill-level">متوسط</span></div>
-        <div class="skill-row"><span>IoT Systems · MQTT · Sensors</span><span class="skill-level">عملي</span></div>
-        <div class="skill-row"><span>AI Integration — Claude · OpenAI API</span><span class="skill-level">متقدم</span></div>
+        <div class="card-title" style="margin-bottom:14px" data-ar="التعليم والشهادات" data-en="Education & Certifications">التعليم والشهادات</div>
+        <div style="margin-bottom:12px">
+          <div style="font-weight:700;font-size:13px" data-ar="بكالوريوس نظم معلومات حاسوبية" data-en="B.Sc. Computer Information Systems">بكالوريوس نظم معلومات حاسوبية</div>
+          <div style="font-size:12px;color:var(--muted)" data-ar="جامعة الشرق الأدنى (NEU) — 2021" data-en="Near East University (NEU) — 2021">جامعة الشرق الأدنى (NEU) — 2021</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="badge badge-yellow" data-ar="CompTIA A+ — قيد الإنجاز 2026" data-en="CompTIA A+ — In Progress 2026">CompTIA A+ — قيد الإنجاز 2026</span>
+          <span class="badge badge-yellow" data-ar="CCNA — قيد الإنجاز 2026" data-en="CCNA — In Progress 2026">CCNA — قيد الإنجاز 2026</span>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px">
+          <span class="badge badge-green" data-ar="عربي — اللغة الأم" data-en="Arabic — Native">عربي — اللغة الأم</span>
+          <span class="badge badge-blue" data-ar="إنجليزي — طلاقة" data-en="English — Fluent">إنجليزي — طلاقة</span>
+          <span class="badge badge-blue" data-ar="تركي — طلاقة" data-en="Turkish — Fluent">تركي — طلاقة</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="border-top:1px solid var(--border)">
-  <div class="contact-card">
-    <h3>تواصل معي</h3>
-    <p>متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة</p>
+<hr class="divider">
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="section reveal" id="contact">
+  <div class="contact-wrap">
+    <h3 data-ar="تواصل معي" data-en="Let's Connect">تواصل معي</h3>
+    <p data-ar="متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة بسعر ثابت" data-en="Available for full-time in Makkah or Jeddah — or fixed-price freelance automation services">متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة بسعر ثابت</p>
     <div class="contact-links">
-      <a class="contact-link" href="tel:+966531577741">📞 0531577741</a>
+      <a class="contact-link whatsapp" href="https://wa.me/966531577741" target="_blank">
+        💬 <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+      </a>
+      <a class="contact-link" href="tel:+966531577741">📞 0531 577 741</a>
       <a class="contact-link" href="mailto:1898.a9@gmail.com">✉️ 1898.a9@gmail.com</a>
       <a class="contact-link" href="https://linkedin.com/in/abdulaziz-arnous-513530257" target="_blank">💼 LinkedIn</a>
+      <a class="contact-link" href="https://github.com/1898a9-hub/portfolio" target="_blank">⚙️ GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  عبدالعزيز عرنوس · IT Support & Automation Engineer · مكة المكرمة &nbsp;|&nbsp;
-  جميع الأنظمة المعروضة قابلة للبناء والتخصيص حسب احتياج المنشأة
+  <span data-ar="عبدالعزيز عرنوس · IT Engineer & Automation · مكة المكرمة" data-en="Abdulaziz Arnous · IT Engineer & Automation · Makkah, Saudi Arabia">عبدالعزيز عرنوس · IT Engineer & Automation · مكة المكرمة</span>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/1898a9-hub/portfolio" target="_blank">GitHub</a>
 </footer>
 
 <script>
-// ════════════════════════════════════════
-// UTILITIES
-// ════════════════════════════════════════
-function rand(min, max) { return Math.random() * (max - min) + min; }
-function randInt(min, max) { return Math.floor(rand(min, max+1)); }
-function fmt(n, dec=1) { return n.toFixed(dec); }
-function fmtN(n) { return n.toLocaleString('ar-SA'); }
+// ─── LANGUAGE ──────────────────────────────────────
+function setLang(lang) {
+  const html = document.documentElement;
+  html.setAttribute('data-lang', lang);
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    const attr = el.tagName === 'INPUT' ? 'placeholder' : 'textContent';
+    if (attr === 'textContent') el.textContent = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+    else el.placeholder = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+  });
+}
 
-function updateTS() {
-  const now = new Date();
+// ─── UTILS ─────────────────────────────────────────
+function rand(a,b){return Math.random()*(b-a)+a}
+function randInt(a,b){return Math.floor(rand(a,b+1))}
+function fmt(n,d=1){return n.toFixed(d)}
+
+function updateTS(){
   document.getElementById('ts').textContent =
-    '· آخر تحديث: ' + now.toLocaleTimeString('ar-SA');
+    ' · ' + new Date().toLocaleTimeString('ar-SA');
 }
-setInterval(updateTS, 1000); updateTS();
+setInterval(updateTS,1000); updateTS();
 
-// ════════════════════════════════════════
-// TABS
-// ════════════════════════════════════════
-function switchDemo(name) {
-  document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('demo-' + name).classList.add('active');
-  event.target.classList.add('active');
+// ─── TABS ──────────────────────────────────────────
+function switchDemo(name,el){
+  document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('demo-'+name).classList.add('active');
+  el.classList.add('active');
 }
 
-// ════════════════════════════════════════
-// CHART DEFAULTS
-// ════════════════════════════════════════
-Chart.defaults.color = '#64748b';
-Chart.defaults.borderColor = '#1e2d47';
-Chart.defaults.font.family = 'Segoe UI, Arial, sans-serif';
-Chart.defaults.font.size = 11;
-
-function makeLineChart(id, labels, datasets) {
-  return new Chart(document.getElementById(id), {
-    type: 'line',
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 16 } } },
-      scales: {
-        x: { grid: { color: 'rgba(30,45,71,.4)' } },
-        y: { grid: { color: 'rgba(30,45,71,.4)' } }
-      },
-      elements: { line: { tension: 0.4, borderWidth: 2 }, point: { radius: 0 } },
-      animation: { duration: 600 }
+// ─── CHART DEFAULTS ────────────────────────────────
+Chart.defaults.color='#64748b';
+Chart.defaults.borderColor='#1e2d47';
+Chart.defaults.font.size=11;
+function lineChart(id,labels,datasets){
+  return new Chart(document.getElementById(id),{
+    type:'line',data:{labels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{boxWidth:10,padding:14}}},
+      scales:{x:{grid:{color:'rgba(30,45,71,.4)'}},y:{grid:{color:'rgba(30,45,71,.4)'}}},
+      elements:{line:{tension:.4,borderWidth:2},point:{radius:0}},
+      animation:{duration:500}
+    }
+  });
+}
+function barChart(id,labels,datasets){
+  return new Chart(document.getElementById(id),{
+    type:'bar',data:{labels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{boxWidth:10,padding:14}}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(30,45,71,.4)'}}}
     }
   });
 }
 
-function makeBarChart(id, labels, datasets) {
-  return new Chart(document.getElementById(id), {
-    type: 'bar',
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 16 } } },
-      scales: {
-        x: { grid: { display: false } },
-        y: { grid: { color: 'rgba(30,45,71,.4)' } }
-      }
-    }
-  });
-}
-
-// ════════════════════════════════════════
-// DEMO 1: MEDICAL
-// ════════════════════════════════════════
-const medLabels = Array.from({length:60}, (_,i) => i % 10 === 0 ? i + 'min' : '');
-const medTempData = Array.from({length:60}, () => rand(2.0, 3.8));
-const medHumidData = Array.from({length:60}, () => rand(66, 78));
-
-const medChart = makeLineChart('chart-medical', medLabels, [
-  { label:'حرارة °C', data:[...medTempData], borderColor:'#06b6d4', backgroundColor:'rgba(6,182,212,.08)', fill:true },
-  { label:'رطوبة %', data:[...medHumidData], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.06)', fill:true, yAxisID:'y1' }
+// ─── DEMO 1: MEDICAL ───────────────────────────────
+const medLabels=Array.from({length:60},(_,i)=>i%10===0?i+'m':'');
+const medTempData=Array.from({length:60},()=>rand(2.0,3.8));
+const medHumidData=Array.from({length:60},()=>rand(66,78));
+const medChart=lineChart('chart-medical',medLabels,[
+  {label:'°C',data:[...medTempData],borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.08)',fill:true},
+  {label:'% RH',data:[...medHumidData],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.06)',fill:true,yAxisID:'y1'}
 ]);
-medChart.options.scales.y  = { grid:{color:'rgba(30,45,71,.4)'}, min:0, max:10, title:{display:true,text:'°C',color:'#64748b'} };
-medChart.options.scales.y1 = { grid:{display:false}, min:50, max:100, position:'left', title:{display:true,text:'%',color:'#64748b'} };
+medChart.options.scales.y={grid:{color:'rgba(30,45,71,.4)'},min:0,max:8};
+medChart.options.scales.y1={grid:{display:false},min:50,max:100,position:'left'};
 medChart.update();
 
-const medRooms = [
-  {name:'B-01',ok:true},{name:'B-02',ok:true},{name:'B-03',ok:true},
-  {name:'B-04',alert:true},{name:'B-05',ok:true},{name:'B-06',ok:true},
-  {name:'B-07',ok:true},{name:'B-08',ok:true},{name:'B-09',ok:true},
-  {name:'B-10',ok:true},{name:'B-11',ok:true},{name:'CTRL',ok:true}
+const medRooms=[
+  {n:'B-01',s:'online'},{n:'B-02',s:'online'},{n:'B-03',s:'online'},
+  {n:'B-04',s:'warn'},{n:'B-05',s:'online'},{n:'B-06',s:'online'},
+  {n:'B-07',s:'online'},{n:'B-08',s:'online'},{n:'B-09',s:'online'},
+  {n:'B-10',s:'online'},{n:'B-11',s:'online'},{n:'CTRL',s:'online'}
 ];
-
-function renderMedRooms() {
-  const el = document.getElementById('med-rooms');
-  el.innerHTML = medRooms.map(r => {
-    const cls = r.offline ? 'offline' : r.alert ? 'alert' : 'online';
-    const dotCls = r.offline ? 'dot-red' : r.alert ? 'dot-yellow' : 'dot-green';
-    return `<div class="room-cell ${cls}"><div class="room-num">${r.name}</div><span class="dot ${dotCls}"></span></div>`;
-  }).join('');
-}
-renderMedRooms();
-
-function renderMedAlerts() {
-  document.getElementById('med-alerts').innerHTML = `
-    <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>وحدة B-04</strong> — درجة الحرارة وصلت 4.3°C · اقتربت من الحد الأعلى (5°C) <span style="color:var(--muted);font-size:11px">منذ 4 دقائق</span></div></div>
-    <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>النظام</strong> — تحديث كل 30 ثانية · جميع وحدات التبريد متصلة بالخادم <span style="color:var(--muted);font-size:11px">الآن</span></div></div>
-    <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>الخادم المركزي</strong> — نسخ احتياطي كل 6 ساعات · zero downtime خلال موسم الحج <span style="color:var(--muted);font-size:11px">04:00</span></div></div>
-  `;
-}
-renderMedAlerts();
-
-let medT = 2.8, medH = 72;
-function tickMedical() {
-  medT = Math.max(1.8, Math.min(4.8, medT + rand(-0.15, 0.15)));
-  medH = Math.max(65, Math.min(80, medH + rand(-0.8, 0.8)));
-  document.getElementById('m-temp').textContent = fmt(medT) + '°C';
-  document.getElementById('m-humid').textContent = Math.round(medH) + '%';
-  document.getElementById('m-temp').style.color = medT > 4.2 ? 'var(--yellow)' : 'var(--cyan)';
-
-  medChart.data.datasets[0].data.shift(); medChart.data.datasets[0].data.push(medT);
-  medChart.data.datasets[1].data.shift(); medChart.data.datasets[1].data.push(medH);
-  medChart.update('none');
-}
-setInterval(tickMedical, 2000);
-
-// ════════════════════════════════════════
-// DEMO 2: HOTEL
-// ════════════════════════════════════════
-const hotelLabels = Array.from({length:24}, (_,i) => i + ':00');
-const hotelBW = Array.from({length:24}, (_,i) => {
-  const h = i; const peak = h >= 8 && h <= 23;
-  return peak ? rand(40, 120) : rand(5, 30);
-});
-
-const hotelChart = makeLineChart('chart-hotel', hotelLabels, [
-  { label:'Mbps استخدام', data:hotelBW, borderColor:'#8b5cf6', backgroundColor:'rgba(139,92,246,.1)', fill:true }
-]);
-
-function renderHotelFloors() {
-  const floors = [
-    {f:'B1 (مواقف)',ap:4,guests:0,st:'ok'},{f:'الأرضي',ap:8,guests:42,st:'ok'},
-    {f:'الأول',ap:6,guests:38,st:'ok'},{f:'الثاني',ap:6,guests:35,st:'ok'},
-    {f:'الثالث',ap:6,guests:41,st:'warn'},{f:'الرابع',ap:6,guests:38,st:'ok'},
-    {f:'الخامس',ap:6,guests:33,st:'warn'},{f:'VIP',ap:8,guests:20,st:'ok'}
-  ];
-  document.getElementById('hotel-floors').innerHTML = floors.map(f =>
-    `<tr><td>${f.f}</td><td>${f.ap}</td><td>${f.guests}</td><td>
-      <span class="badge ${f.st==='ok'?'badge-green':'badge-yellow'}">
-        ${f.st==='ok'?'✓ سليم':'⚠ تحقق'}
-      </span></td></tr>`
+function renderMedRooms(){
+  const dots={online:'dot-green',warn:'dot-yellow',offline:'dot-red'};
+  document.getElementById('med-rooms').innerHTML=medRooms.map(r=>
+    `<div class="room-cell ${r.s}"><div class="room-num">${r.n}</div><span class="dot ${dots[r.s]}"></span></div>`
   ).join('');
 }
-renderHotelFloors();
+renderMedRooms();
+document.getElementById('med-alerts').innerHTML=`
+  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>B-04</strong> — 4.3°C · اقتربت من الحد الأعلى <span style="color:var(--muted);font-size:11px">منذ 4 دقائق</span></div></div>
+  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>النظام</strong> — تحديث كل 30 ثانية · 12/12 وحدة متصلة</div></div>
+  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>الخادم</strong> — نسخ احتياطي كل 6 ساعات · zero downtime موسم الحج</div></div>`;
 
-document.getElementById('hotel-alerts').innerHTML = `
-  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>AP-307 (الطابق الثالث)</strong> — إشارة ضعيفة · 12 ضيف متأثر · يحتاج إعادة تشغيل <span style="color:var(--muted);font-size:11px">منذ 8 دقائق</span></div></div>
-  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>AP-512 (الخامس)</strong> — حمل عالي · 94% استخدام <span style="color:var(--muted);font-size:11px">منذ 22 دقيقة</span></div></div>
-  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>باقي الـ 48 نقطة</strong> — تعمل بشكل طبيعي <span style="color:var(--muted);font-size:11px">الآن</span></div></div>
-`;
+let medT=2.8,medH=72;
+setInterval(()=>{
+  medT=Math.max(1.9,Math.min(4.8,medT+rand(-0.12,0.12)));
+  medH=Math.max(65,Math.min(80,medH+rand(-0.7,0.7)));
+  document.getElementById('m-temp').textContent=fmt(medT)+'°C';
+  document.getElementById('m-humid').textContent=Math.round(medH)+'%';
+  document.getElementById('m-temp').style.color=medT>4.2?'var(--yellow)':'var(--cyan)';
+  medChart.data.datasets[0].data.shift();medChart.data.datasets[0].data.push(medT);
+  medChart.data.datasets[1].data.shift();medChart.data.datasets[1].data.push(medH);
+  medChart.update('none');
+},2000);
 
-let hGuests = 247;
-function tickHotel() {
-  hGuests = Math.max(200, Math.min(300, hGuests + randInt(-3, 3)));
-  document.getElementById('h-guests').textContent = hGuests;
-  document.getElementById('h-speed').textContent = randInt(75, 100) + ' Mbps';
-}
-setInterval(tickHotel, 3000);
-
-// ════════════════════════════════════════
-// DEMO 3: MATERIALS
-// ════════════════════════════════════════
-const matLabels = Array.from({length:30}, (_,i) => 'يوم '+(i+1));
-let steelBase=3200, cementBase=290;
-const steelData = Array.from({length:30}, (_,i) => { steelBase += rand(-30,40); return Math.round(steelBase); });
-const cementData = Array.from({length:30}, (_,i) => { cementBase += rand(-3,4); return Math.round(cementBase); });
-
-const matChart = makeLineChart('chart-materials', matLabels, [
-  { label:'حديد (ر.س/طن)', data:steelData, borderColor:'#ef4444', backgroundColor:'rgba(239,68,68,.08)', fill:false, yAxisID:'y' },
-  { label:'أسمنت (ر.س/طن)', data:cementData, borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,.08)', fill:false, yAxisID:'y1' }
-]);
-matChart.options.scales.y = { grid:{color:'rgba(30,45,71,.4)'}, position:'right' };
-matChart.options.scales.y1 = { grid:{display:false}, position:'left' };
-matChart.update();
-
-document.getElementById('suppliers-tbl').innerHTML = `
-  <tr><td>شركة الراجحي للحديد</td><td>حديد T16</td><td style="color:var(--green)">3,210 ر.س</td><td><span class="badge badge-green">الأرخص</span></td></tr>
-  <tr><td>مصنع الجزيرة</td><td>حديد T16</td><td>3,250 ر.س</td><td><span class="badge badge-blue">جاري</span></td></tr>
-  <tr><td>أسمنت اليمامة</td><td>أسمنت OPC</td><td style="color:var(--green)">279 ر.س</td><td><span class="badge badge-green">الأرخص</span></td></tr>
-  <tr><td>أسمنت السعودية</td><td>أسمنت OPC</td><td>285 ر.س</td><td><span class="badge badge-blue">جاري</span></td></tr>
-`;
-
-// ════════════════════════════════════════
-// DEMO 4: SITE OPERATIONS
-// ════════════════════════════════════════
-const siteLabels = ['الأسبوع 1','الأسبوع 2','الأسبوع 3','الأسبوع 4'];
-const siteChart = makeBarChart('chart-site', siteLabels, [
-  { label:'الإنجاز الفعلي %', data:[38,52,61,67], backgroundColor:'rgba(59,130,246,.7)', borderRadius:4 },
-  { label:'الهدف %', data:[40,55,62,70], backgroundColor:'rgba(100,116,139,.3)', borderRadius:4 }
-]);
-
-document.getElementById('equip-tbl').innerHTML = `
-  <tr><td>رافعة برجية #1</td><td><span class="badge badge-green">✓ نشطة</span></td><td>أحمد سالم</td></tr>
-  <tr><td>رافعة برجية #2</td><td><span class="badge badge-green">✓ نشطة</span></td><td>محمد علي</td></tr>
-  <tr><td>خلاطة خرسانة #1</td><td><span class="badge badge-green">✓ نشطة</span></td><td>—</td></tr>
-  <tr><td>خلاطة خرسانة #2</td><td><span class="badge badge-yellow">⚙ صيانة</span></td><td>—</td></tr>
-  <tr><td>حفارة JD-310</td><td><span class="badge badge-green">✓ نشطة</span></td><td>سعد ناصر</td></tr>
-  <tr><td>شاحنة نقل #3</td><td><span class="badge badge-yellow">⚙ صيانة</span></td><td>—</td></tr>
-`;
-
-const now = new Date();
-document.getElementById('s-date').textContent = now.toLocaleDateString('ar-SA');
-document.getElementById('sr-att').textContent = '142';
-
-let sWorkers = 142;
-function tickSite() {
-  sWorkers = Math.max(130, Math.min(155, sWorkers + randInt(-1,1)));
-  document.getElementById('s-workers').textContent = sWorkers;
-  document.getElementById('s-workers-sub').textContent = 'من أصل 155';
-  document.getElementById('s-hours').textContent = fmtN(sWorkers * 8);
-}
-setInterval(tickSite, 4000);
-
-// Smooth nav scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-  });
+// ─── DEMO 2: HOTEL ─────────────────────────────────
+const hotelLabels=Array.from({length:24},(_,i)=>i+':00');
+const hotelBW=Array.from({length:24},(_,i)=>{
+  const h=i;const peak=h>=8&&h<=23;return peak?rand(40,120):rand(5,30);
 });
+const hotelChart=lineChart('chart-hotel',hotelLabels,[
+  {label:'Mbps',data:hotelBW,borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,.1)',fill:true}
+]);
+const floors=[
+  {f:'B1',ap:4,g:0,s:'ok'},{f:'الأرضي',ap:8,g:42,s:'ok'},{f:'الأول',ap:6,g:38,s:'ok'},
+  {f:'الثاني',ap:6,g:35,s:'ok'},{f:'الثالث',ap:6,g:41,s:'warn'},{f:'الرابع',ap:6,g:38,s:'ok'},
+  {f:'الخامس',ap:6,g:33,s:'warn'},{f:'VIP',ap:8,g:20,s:'ok'}
+];
+document.getElementById('hotel-floors').innerHTML=floors.map(f=>
+  `<tr><td>${f.f}</td><td>${f.ap}</td><td>${f.g}</td>
+   <td><span class="badge ${f.s==='ok'?'badge-green':'badge-yellow'}">${f.s==='ok'?'✓ سليم':'⚠ تحقق'}</span></td></tr>`
+).join('');
+let hGuests=247;
+setInterval(()=>{
+  hGuests=Math.max(200,Math.min(280,hGuests+randInt(-3,3)));
+  document.getElementById('h-guests').textContent=hGuests;
+},3000);
+
+// ─── DEMO 3: MATERIALS ─────────────────────────────
+const matLabels=Array.from({length:30},(_,i)=>'D-'+(30-i));
+const steelData=Array.from({length:30},(_,i)=>3100+i*5+rand(-20,20));
+const cementData=Array.from({length:30},(_,i)=>290-i*0.2+rand(-3,3));
+const matChart=lineChart('chart-materials',matLabels,[
+  {label:'حديد',data:steelData,borderColor:'#ef4444',backgroundColor:'transparent'},
+  {label:'أسمنت×10',data:cementData.map(v=>v*10),borderColor:'#f59e0b',backgroundColor:'transparent'}
+]);
+document.getElementById('suppliers-tbl').innerHTML=`
+  <tr><td>شركة الرياض للحديد</td><td>حديد</td><td style="color:var(--green)">3,180</td></tr>
+  <tr><td>مصنع أسمنت المدينة</td><td>أسمنت</td><td style="color:var(--green)">278</td></tr>
+  <tr><td>مورد مواد البناء STC</td><td>رمل</td><td>40</td></tr>
+  <tr><td>بلاط فارس</td><td>بلاط</td><td style="color:var(--green)">65</td></tr>`;
+
+// ─── DEMO 4: SITE ──────────────────────────────────
+const siteLabels=['الأسبوع -4','الأسبوع -3','الأسبوع -2','الأسبوع السابق','هذا الأسبوع'];
+const siteChart=barChart('chart-site',siteLabels,[
+  {label:'% الإنجاز',data:[48,54,60,64,67],backgroundColor:'rgba(59,130,246,.6)',borderColor:'#3b82f6',borderWidth:1}
+]);
+document.getElementById('equip-tbl').innerHTML=`
+  <tr><td>حفارة CAT 320</td><td><span class="badge badge-green">✓ نشطة</span></td><td>محمد أ.</td></tr>
+  <tr><td>رافعة Liebherr</td><td><span class="badge badge-green">✓ نشطة</span></td><td>خالد م.</td></tr>
+  <tr><td>خلاطة الإسمنت</td><td><span class="badge badge-red">صيانة</span></td><td>—</td></tr>
+  <tr><td>مضخة المياه</td><td><span class="badge badge-green">✓ نشطة</span></td><td>سالم ع.</td></tr>
+  <tr><td>مولد الكهرباء</td><td><span class="badge badge-yellow">⚠ فحص</span></td><td>—</td></tr>`;
+
+// ─── SCROLL REVEAL ─────────────────────────────────
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
