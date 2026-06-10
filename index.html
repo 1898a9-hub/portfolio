@@ -232,8 +232,7 @@ nav{
 .price-dn{color:var(--green)}
 
 /* ─── WORKFLOW SECTION ────────────────────────────── */
-.wf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
-@media(max-width:600px){.wf-grid{grid-template-columns:1fr}}
+.wf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(350px,100%),1fr));gap:20px}
 
 .wf-card{
   background:var(--card);border:1px solid var(--border);
@@ -457,15 +456,141 @@ footer a{color:var(--blue);text-decoration:none}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ─── HAMBURGER MENU (pure CSS checkbox hack) ─────── */
+.nav-toggle{display:none}
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;
+  gap:5px;cursor:pointer;padding:8px;min-width:44px;min-height:44px;
+  align-items:center;border-radius:8px;transition:background .2s;
+}
+.hamburger:hover{background:var(--card2)}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--text);border-radius:2px;
+  transition:all .3s ease;
+}
+.nav-toggle:checked ~ .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle:checked ~ .hamburger span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle:checked ~ .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  display:none;
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:768px){
-  nav{padding:0 16px}
+  /* Nav */
+  nav{
+    padding:0 16px;flex-wrap:wrap;height:auto;min-height:56px;
+    align-items:center;gap:0;position:relative;
+  }
+  .nav-brand{padding:14px 0;flex:1}
   .nav-center{display:none}
-  .hero{padding:100px 20px 60px}
+  .nav-right{display:none}
+  .hamburger{display:flex}
+
+  /* Mobile dropdown */
+  .nav-toggle:checked ~ .mobile-menu{
+    display:flex;flex-direction:column;
+    width:100%;padding:8px 0 16px;
+    border-top:1px solid var(--border);
+  }
+  .mobile-menu{flex-direction:column;gap:2px}
+  .mobile-menu a{
+    color:var(--text);font-size:15px;font-weight:600;
+    padding:12px 16px;border-radius:10px;text-decoration:none;
+    display:block;transition:background .2s;min-height:44px;
+    display:flex;align-items:center;
+  }
+  .mobile-menu a:hover{background:var(--card2)}
+  .mobile-menu .mob-divider{
+    height:1px;background:var(--border);margin:8px 0;
+  }
+  .mobile-menu .mob-actions{
+    display:flex;gap:8px;padding:8px 16px 0;
+  }
+  .mobile-menu .lang-btn{flex:1}
+  .mobile-menu .lang-btn button{flex:1;padding:10px;min-height:44px}
+  .mobile-menu .cv-btn{flex:1;justify-content:center;min-height:44px}
+
+  /* Hero */
+  .hero{padding:80px 20px 48px}
+  .hero h1{font-size:clamp(28px,8vw,42px)}
+  .hero-sub{font-size:14px}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-primary,.btn-ghost{width:100%;max-width:280px;justify-content:center;min-height:48px}
+
+  /* Stats 2×2 */
+  .hero-stats{
+    display:grid;grid-template-columns:1fr 1fr;
+    max-width:100%;
+  }
+  .stat{border-left:none !important;border-right:none !important;border-bottom:1px solid var(--border)}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
+  .stat:nth-child(1){border-left:1px solid var(--border) !important}
+  .stat:nth-child(3){border-left:1px solid var(--border) !important}
+  .stat:nth-child(3),.stat:nth-child(4){border-bottom:none}
+
+  /* Value strip 2×2 already handled */
+
+  /* Sections */
   .section{padding:48px 16px}
-  .hero-stats{max-width:100%}
-  .contact-wrap{padding:28px 20px}
+  .section-h2{margin-bottom:28px}
+
+  /* Demo tabs scroll */
+  .demos-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;gap:6px}
+  .demo-tab{white-space:nowrap;min-height:40px}
+
+  /* Grid → 1 col */
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+
+  /* Pipeline: vertical on mobile */
+  .pipeline{flex-direction:column;align-items:flex-start;gap:0;overflow-x:visible}
+  .pnode{flex-direction:row;align-items:center;min-width:auto;gap:12px;width:100%}
+  .pnode-box{width:52px;height:40px;flex-shrink:0}
+  .pnode-label{margin-top:0;text-align:right}
+  .parrow{width:2px;height:16px;background:var(--border);margin:0 0 0 24px;align-self:flex-start}
+  .parrow::after{display:none}
+  .parrow .flow-dot{display:none}
+
+  /* Workflow grid */
+  .wf-grid{grid-template-columns:1fr}
+
+  /* Sector grid */
+  .sector-grid{grid-template-columns:1fr}
+
+  /* Stack grid */
+  .stack-grid{grid-template-columns:repeat(3,1fr)}
+
+  /* Tables → scrollable */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tbl{min-width:340px}
+
+  /* Timeline */
   .timeline{padding-right:24px}
+  [data-lang="en"] .timeline{padding-left:24px;padding-right:0}
+
+  /* Experience grid */
+  .exp-grid-2{grid-template-columns:1fr !important}
+
+  /* Contact */
+  .contact-wrap{padding:28px 16px}
+  .contact-links{flex-direction:column;align-items:stretch}
+  .contact-link{justify-content:center;min-height:48px}
+
+  /* Urgency bar */
+  .urgency-bar{flex-direction:column;text-align:center}
+  .ub-left{justify-content:center}
+
+  /* Chart height */
+  .chart-wrap{height:160px}
+
+  /* Room grid */
+  .room-grid{grid-template-columns:repeat(auto-fill,minmax(60px,1fr))}
+}
+
+@media(max-width:400px){
+  .stack-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats .stat-n{font-size:20px}
 }
 </style>
 </head>
@@ -473,6 +598,7 @@ footer a{color:var(--blue);text-decoration:none}
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
   <div class="nav-brand">Abdulaziz <span>Arnous</span></div>
   <div class="nav-center">
     <a href="#solutions" data-ar="للشركات" data-en="For Companies">للشركات</a>
@@ -489,6 +615,27 @@ footer a{color:var(--blue);text-decoration:none}
     <a class="cv-btn" href="https://1898a9-hub.github.io/portfolio/cv/Abdulaziz_Arnous_CV_2026.pdf" target="_blank" download>
       ⬇ <span data-ar="السيرة الذاتية" data-en="Download CV">السيرة الذاتية</span>
     </a>
+  </div>
+  <label for="nav-toggle" class="hamburger" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </label>
+  <!-- Mobile dropdown -->
+  <div class="mobile-menu">
+    <a href="#solutions" onclick="document.getElementById('nav-toggle').checked=false" data-ar="للشركات" data-en="For Companies">للشركات</a>
+    <a href="#demos" onclick="document.getElementById('nav-toggle').checked=false" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+    <a href="#workflows" onclick="document.getElementById('nav-toggle').checked=false" data-ar="الأتمتة" data-en="Workflows">الأتمتة</a>
+    <a href="#stack" onclick="document.getElementById('nav-toggle').checked=false" data-ar="المهارات" data-en="Skills">المهارات</a>
+    <a href="#contact" onclick="document.getElementById('nav-toggle').checked=false" data-ar="التواصل" data-en="Contact">التواصل</a>
+    <div class="mob-divider"></div>
+    <div class="mob-actions">
+      <div class="lang-btn">
+        <button id="btn-ar-m" class="active" onclick="setLang('ar')">ع</button>
+        <button id="btn-en-m" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="cv-btn" href="https://1898a9-hub.github.io/portfolio/cv/Abdulaziz_Arnous_CV_2026.pdf" target="_blank" download>
+        ⬇ CV
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -657,6 +804,7 @@ footer a{color:var(--blue);text-decoration:none}
       </div>
       <div class="card">
         <div class="card-title" style="margin-bottom:12px" data-ar="حالة الطوابق" data-en="Floor Status">حالة الطوابق</div>
+        <div class="tbl-wrap">
         <table class="tbl">
           <tr>
             <th data-ar="الطابق" data-en="Floor">الطابق</th>
@@ -666,6 +814,7 @@ footer a{color:var(--blue);text-decoration:none}
           </tr>
           <tbody id="hotel-floors"></tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>
@@ -708,6 +857,7 @@ footer a{color:var(--blue);text-decoration:none}
       </div>
       <div class="card">
         <div class="card-title" style="margin-bottom:12px" data-ar="أفضل أسعار الموردين الآن" data-en="Best supplier prices now">أفضل أسعار الموردين الآن</div>
+        <div class="tbl-wrap">
         <table class="tbl">
           <tr>
             <th data-ar="المورد" data-en="Supplier">المورد</th>
@@ -716,6 +866,7 @@ footer a{color:var(--blue);text-decoration:none}
           </tr>
           <tbody id="suppliers-tbl"></tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>
@@ -1117,7 +1268,7 @@ footer a{color:var(--blue);text-decoration:none}
 <section class="section reveal" id="experience">
   <div class="section-label" data-ar="المسيرة المهنية" data-en="Experience">المسيرة المهنية</div>
   <h2 class="section-h2" data-ar="الخبرة العملية" data-en="Work History">الخبرة العملية</h2>
-  <div class="grid-2">
+  <div class="grid-2 exp-grid-2">
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-role" data-ar="تقني أنظمة IoT وIT" data-en="IoT & IT Systems Technician">تقني أنظمة IoT وIT</div>
@@ -1208,8 +1359,8 @@ function setLang(lang) {
   html.setAttribute('data-lang', lang);
   html.setAttribute('lang', lang);
   html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-  document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  ['btn-ar','btn-ar-m'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',lang==='ar')});
+  ['btn-en','btn-en-m'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',lang==='en')});
   document.querySelectorAll('[data-ar]').forEach(el => {
     const attr = el.tagName === 'INPUT' ? 'placeholder' : 'textContent';
     if (attr === 'textContent') el.textContent = lang === 'ar' ? el.dataset.ar : el.dataset.en;
