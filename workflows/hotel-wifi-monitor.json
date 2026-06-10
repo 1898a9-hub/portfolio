@@ -1,0 +1,12 @@
+{
+  "name": "Hotel WiFi Uptime Monitor",
+  "nodes": [
+    {"id":"1","name":"Every 5 Minutes","type":"n8n-nodes-base.scheduleTrigger","position":[240,300],"parameters":{"rule":{"interval":[{"field":"minutes","minutesInterval":5}]}}},
+    {"id":"2","name":"Ping All Access Points","type":"n8n-nodes-base.httpRequest","position":[460,300],"parameters":{"url":"http://network-controller/api/aps","method":"GET"}},
+    {"id":"3","name":"Filter Offline APs","type":"n8n-nodes-base.code","position":[680,300],"parameters":{"jsCode":"return items.filter(i=>i.json.status==='offline').map(i=>({json:i.json}))"}},
+    {"id":"4","name":"Any Offline?","type":"n8n-nodes-base.if","position":[900,300],"parameters":{"conditions":{"number":[{"value1":"={{$items().length}}","operation":"larger","value2":0}]}}},
+    {"id":"5","name":"Alert IT Manager","type":"n8n-nodes-base.httpRequest","position":[1120,200],"parameters":{"url":"https://api.whatsapp.com/send","method":"POST","body":{"message":"⚠️ {{$json.ap_name}} offline — الطابق {{$json.floor}} · {{$json.affected_guests}} ضيف متأثر"}}},
+    {"id":"6","name":"Log to Dashboard","type":"n8n-nodes-base.googleSheets","position":[1120,400],"parameters":{"operation":"appendOrUpdate"}}
+  ],
+  "connections":{"1":{"main":[[{"node":"2","type":"main","index":0}]]},"2":{"main":[[{"node":"3","type":"main","index":0}]]},"3":{"main":[[{"node":"4","type":"main","index":0}]]},"4":{"main":[[{"node":"5","type":"main","index":0}],[{"node":"6","type":"main","index":0}]]}}
+}

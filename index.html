@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulaziz Arnous — IT Engineer & Automation</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #111827;
+  --card2: #1a2236;
+  --border: #1e2d47;
+  --blue: #3b82f6;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --red: #ef4444;
+  --purple: #8b5cf6;
+  --cyan: #06b6d4;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --accent: #3b82f6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI',Arial,sans-serif; min-height:100vh; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(10,14,26,.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 32px; height:56px; display:flex; align-items:center; justify-content:space-between; }
+.nav-brand { font-size:15px; font-weight:700; color:#fff; letter-spacing:.5px; }
+.nav-brand span { color:var(--blue); }
+.nav-links { display:flex; gap:4px; }
+.nav-links a { color:var(--muted); font-size:13px; padding:6px 12px; border-radius:6px; cursor:pointer; text-decoration:none; transition:all .2s; }
+.nav-links a:hover, .nav-links a.active { color:#fff; background:var(--card2); }
+
+/* HERO */
+.hero { padding:120px 40px 60px; text-align:center; max-width:900px; margin:0 auto; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.25); border-radius:20px; padding:6px 16px; font-size:12px; color:var(--blue); margin-bottom:24px; }
+.pulse { width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+.hero h1 { font-size:clamp(28px,5vw,52px); font-weight:800; line-height:1.15; margin-bottom:16px; letter-spacing:-1px; }
+.hero h1 span { background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:16px; color:var(--muted); max-width:600px; margin:0 auto 32px; line-height:1.7; }
+.hero-tags { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+.tag { background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:6px 14px; font-size:12px; color:var(--muted); }
+.hero-stats { display:flex; gap:40px; justify-content:center; }
+.stat { text-align:center; }
+.stat-n { font-size:28px; font-weight:800; color:#fff; }
+.stat-l { font-size:11px; color:var(--muted); margin-top:2px; }
+
+/* SECTION */
+section { padding:60px 24px; max-width:1200px; margin:0 auto; }
+.section-title { font-size:11px; color:var(--blue); font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+.section-h2 { font-size:clamp(20px,3vw,32px); font-weight:700; margin-bottom:40px; }
+
+/* DEMOS TABS */
+.demos-tabs { display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
+.demo-tab { padding:8px 18px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--muted); font-size:13px; cursor:pointer; transition:all .2s; }
+.demo-tab.active { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }
+.demo-panel { display:none; animation:fadeIn .3s ease; }
+.demo-panel.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* CARDS */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+@media(max-width:768px){ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr} }
+
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.card-title { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+.card-value { font-size:28px; font-weight:800; }
+.card-sub { font-size:12px; color:var(--muted); margin-top:4px; }
+
+.badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+.badge-green { background:rgba(16,185,129,.15); color:var(--green); }
+.badge-red { background:rgba(239,68,68,.15); color:var(--red); }
+.badge-yellow { background:rgba(245,158,11,.15); color:var(--yellow); }
+.badge-blue { background:rgba(59,130,246,.15); color:var(--blue); }
+
+/* STATUS DOT */
+.dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.dot-green { background:var(--green); box-shadow:0 0 8px var(--green); }
+.dot-red { background:var(--red); }
+.dot-yellow { background:var(--yellow); }
+
+/* TABLE */
+.tbl { width:100%; border-collapse:collapse; font-size:13px; }
+.tbl th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.5px; padding:8px 12px; border-bottom:1px solid var(--border); text-align:right; }
+.tbl td { padding:10px 12px; border-bottom:1px solid rgba(30,45,71,.5); }
+.tbl tr:last-child td { border:none; }
+.tbl tr:hover td { background:rgba(255,255,255,.02); }
+
+/* PROGRESS */
+.prog-bar { height:6px; background:rgba(255,255,255,.06); border-radius:3px; overflow:hidden; margin-top:6px; }
+.prog-fill { height:100%; border-radius:3px; transition:width .5s ease; }
+
+/* CHART CONTAINER */
+.chart-wrap { position:relative; height:200px; }
+.chart-wrap-sm { position:relative; height:140px; }
+
+/* ALERT */
+.alert { display:flex; align-items:flex-start; gap:12px; padding:12px 16px; border-radius:8px; margin-bottom:10px; font-size:13px; }
+.alert-red { background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.2); }
+.alert-yellow { background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.2); }
+.alert-green { background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.2); }
+.alert-icon { font-size:16px; margin-top:1px; }
+
+/* ROOM GRID */
+.room-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); gap:8px; }
+.room-cell { background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:10px 6px; text-align:center; font-size:11px; cursor:default; transition:all .3s; }
+.room-cell.online { border-color:rgba(16,185,129,.3); }
+.room-cell.offline { border-color:rgba(239,68,68,.3); background:rgba(239,68,68,.05); }
+.room-cell.alert { border-color:rgba(245,158,11,.4); background:rgba(245,158,11,.05); animation:alertPulse 2s infinite; }
+@keyframes alertPulse { 0%,100%{border-color:rgba(245,158,11,.4)} 50%{border-color:rgba(245,158,11,.9)} }
+.room-num { font-weight:700; font-size:13px; margin-bottom:4px; }
+
+/* GAUGE */
+.gauge-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.gauge-val { font-size:32px; font-weight:800; }
+.gauge-unit { font-size:12px; color:var(--muted); }
+.gauge-bar { width:100%; height:8px; background:rgba(255,255,255,.06); border-radius:4px; overflow:hidden; }
+
+/* PRICE TABLE */
+.price-up { color:var(--red); }
+.price-dn { color:var(--green); }
+.price-flat { color:var(--muted); }
+
+/* ABOUT */
+.about-grid { display:grid; grid-template-columns:1fr 2fr; gap:32px; align-items:start; }
+@media(max-width:768px){ .about-grid{grid-template-columns:1fr} }
+.about-photo { width:100%; aspect-ratio:1; background:linear-gradient(135deg,var(--card2),var(--card)); border:1px solid var(--border); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:80px; }
+.skill-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.skill-row:last-child { border:none; }
+.skill-level { font-size:11px; color:var(--blue); }
+
+/* CONTACT */
+.contact-card { background:linear-gradient(135deg,var(--card),var(--card2)); border:1px solid var(--border); border-radius:16px; padding:40px; text-align:center; }
+.contact-card h3 { font-size:22px; font-weight:700; margin-bottom:8px; }
+.contact-card p { color:var(--muted); margin-bottom:28px; }
+.contact-links { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.contact-link { display:flex; align-items:center; gap:8px; padding:10px 20px; background:var(--bg); border:1px solid var(--border); border-radius:10px; font-size:13px; color:var(--text); text-decoration:none; transition:all .2s; }
+.contact-link:hover { border-color:var(--blue); color:var(--blue); }
+
+/* FOOTER */
+footer { text-align:center; padding:32px; color:var(--muted); font-size:12px; border-top:1px solid var(--border); }
+
+/* TIMESTAMP */
+#ts { font-size:11px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Abdulaziz <span>Arnous</span></div>
+  <div class="nav-links">
+    <a href="#demos" class="active">المشاريع</a>
+    <a href="#about">المهارات</a>
+    <a href="#contact">التواصل</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-badge"><span class="pulse"></span> متاح للعمل — مكة المكرمة وجدة</div>
+  <h1>IT Engineer &<br><span>Automation Specialist</span></h1>
+  <p class="hero-sub">بنيت أنظمة تشغيل حية خلال موسم الحج لوزارة الصحة — zero downtime. أبني أدوات مراقبة وأتمتة مخصصة لكل قطاع.</p>
+  <div class="hero-tags">
+    <span class="tag">Python Automation</span>
+    <span class="tag">IoT Systems</span>
+    <span class="tag">Network Monitoring</span>
+    <span class="tag">AI Integration</span>
+    <span class="tag">Web Scraping</span>
+    <span class="tag">Windows Server</span>
+    <span class="tag">Linux</span>
+    <span class="tag">Active Directory</span>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">1</div><div class="stat-l">مشروع وزارة الصحة</div></div>
+    <div class="stat"><div class="stat-n">3+</div><div class="stat-l">سنوات خبرة</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">قطاعات</div></div>
+    <div class="stat"><div class="stat-n">0</div><div class="stat-l">downtime خلال الحج</div></div>
+  </div>
+</div>
+
+<!-- DEMOS -->
+<section id="demos">
+  <div class="section-title">معرض الأعمال التفاعلي</div>
+  <h2 class="section-h2">أنظمة حية — جميعها تعمل الآن <span id="ts"></span></h2>
+
+  <div class="demos-tabs">
+    <div class="demo-tab active" onclick="switchDemo('medical')">❄️ مراقبة التبريد</div>
+    <div class="demo-tab" onclick="switchDemo('hotel')">🏨 الفنادق والضيافة</div>
+    <div class="demo-tab" onclick="switchDemo('materials')">🏗️ مواد البناء</div>
+    <div class="demo-tab" onclick="switchDemo('site')">📊 العمليات الميدانية</div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DEMO 1 — MEDICAL MONITORING
+  ═══════════════════════════════════ -->
+  <div class="demo-panel active" id="demo-medical">
+    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:14px;font-weight:700">نظام مراقبة ثلاجات الحفظ الطبية</div>
+        <div style="font-size:12px;color:var(--muted)">المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج</div>
+      </div>
+      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-title">درجة حرارة التبريد</div>
+        <div class="card-value" id="m-temp" style="color:var(--cyan)">2.8°C</div>
+        <div class="card-sub">النطاق المطلوب: 2°C – 4°C</div>
+      </div>
+      <div class="card">
+        <div class="card-title">رطوبة الغرفة</div>
+        <div class="card-value" id="m-humid" style="color:var(--blue)">72%</div>
+        <div class="card-sub">النطاق المطلوب: 65–80%</div>
+      </div>
+      <div class="card">
+        <div class="card-title">وحدات التبريد</div>
+        <div class="card-value" id="m-devices" style="color:var(--green)">12/12</div>
+        <div class="card-sub">جميعها متصلة بالخادم</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Uptime النظام</div>
+        <div class="card-value" id="m-uptime" style="color:var(--green);font-size:18px">99.8%</div>
+        <div class="card-sub">خلال موسم الحج كاملاً</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">مخطط حرارة التبريد والرطوبة (آخر 60 دقيقة)</div>
+        <div class="chart-wrap"><canvas id="chart-medical"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">حالة وحدات التبريد (12 وحدة)</div>
+        <div class="room-grid" id="med-rooms"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="card-title" style="margin-bottom:12px">سجل التنبيهات</div>
+      <div id="med-alerts"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DEMO 2 — HOTEL MONITORING
+  ═══════════════════════════════════ -->
+  <div class="demo-panel" id="demo-hotel">
+    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:14px;font-weight:700">نظام مراقبة شبكة الفندق</div>
+        <div style="font-size:12px;color:var(--muted)">WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال</div>
+      </div>
+      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-title">الضيوف المتصلون</div>
+        <div class="card-value" id="h-guests" style="color:var(--green)">247</div>
+        <div class="card-sub">عبر شبكة الفندق</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Access Points</div>
+        <div class="card-value" id="h-ap" style="color:var(--blue)">48/50</div>
+        <div class="card-sub"><span id="h-ap-bad" style="color:var(--red)">2 تحتاج مراجعة</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">متوسط السرعة</div>
+        <div class="card-value" id="h-speed" style="color:var(--cyan)">87 Mbps</div>
+        <div class="card-sub">لكل ضيف</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Network Uptime</div>
+        <div class="card-value" style="color:var(--green);font-size:20px">99.6%</div>
+        <div class="card-sub">هذا الشهر</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">استخدام الشبكة (ساعة)</div>
+        <div class="chart-wrap"><canvas id="chart-hotel"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:14px">حالة الطوابق</div>
+        <table class="tbl">
+          <tr><th>الطابق</th><th>APs</th><th>الضيوف</th><th>الحالة</th></tr>
+          <tbody id="hotel-floors"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="card-title" style="margin-bottom:12px">تنبيهات الشبكة</div>
+      <div id="hotel-alerts"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DEMO 3 — MATERIALS TRACKER
+  ═══════════════════════════════════ -->
+  <div class="demo-panel" id="demo-materials">
+    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:14px;font-weight:700">متتبع أسعار مواد البناء</div>
+        <div style="font-size:12px;color:var(--muted)">يتحقق تلقائياً من الموردين كل 24 ساعة · حديد · أسمنت · رمل · بلاط</div>
+      </div>
+      <span class="badge badge-yellow">تحديث يومي تلقائي</span>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-title">حديد التسليح (طن)</div>
+        <div class="card-value" id="p-steel" style="color:var(--text)">3,250</div>
+        <div class="card-sub" id="p-steel-ch" class="price-up">▲ 2.3% هذا الأسبوع</div>
+      </div>
+      <div class="card">
+        <div class="card-title">أسمنت (طن)</div>
+        <div class="card-value" id="p-cement" style="color:var(--text)">285</div>
+        <div class="card-sub" id="p-cement-ch" class="price-dn">▼ 1.1% هذا الأسبوع</div>
+      </div>
+      <div class="card">
+        <div class="card-title">رمل (م³)</div>
+        <div class="card-value" id="p-sand" style="color:var(--text)">42</div>
+        <div class="card-sub" style="color:var(--muted)">— مستقر</div>
+      </div>
+      <div class="card">
+        <div class="card-title">بلاط (م²)</div>
+        <div class="card-value" id="p-tile" style="color:var(--text)">68</div>
+        <div class="card-sub" id="p-tile-ch" class="price-dn">▼ 0.8% هذا الأسبوع</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">تغير السعر — آخر 30 يوم (ريال سعودي)</div>
+        <div class="chart-wrap"><canvas id="chart-materials"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:14px">أفضل أسعار الموردين الآن</div>
+        <table class="tbl">
+          <tr><th>المورد</th><th>المادة</th><th>السعر</th><th></th></tr>
+          <tbody id="suppliers-tbl"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;background:linear-gradient(135deg,rgba(16,185,129,.05),rgba(59,130,246,.05));border-color:rgba(59,130,246,.2)">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px">تقرير أسعار تلقائي</div>
+          <div style="font-size:12px;color:var(--muted)">يُرسل كل إثنين على واتساب/إيميل مدير المشتريات</div>
+        </div>
+        <span class="badge badge-green">✓ مجدول</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DEMO 4 — SITE OPERATIONS
+  ═══════════════════════════════════ -->
+  <div class="demo-panel" id="demo-site">
+    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:14px;font-weight:700">لوحة العمليات الميدانية</div>
+        <div style="font-size:12px;color:var(--muted)">حضور العمالة · المعدات · تقدم المشروع · تقارير يومية تلقائية</div>
+      </div>
+      <span class="badge badge-green"><span class="dot dot-green"></span> مباشر</span>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-title">العمالة الحاضرة</div>
+        <div class="card-value" id="s-workers" style="color:var(--green)">142</div>
+        <div class="card-sub" id="s-workers-sub">من أصل 155</div>
+      </div>
+      <div class="card">
+        <div class="card-title">المعدات النشطة</div>
+        <div class="card-value" id="s-equip" style="color:var(--blue)">8/10</div>
+        <div class="card-sub">2 في الصيانة</div>
+      </div>
+      <div class="card">
+        <div class="card-title">تقدم المشروع</div>
+        <div class="card-value" id="s-prog" style="color:var(--yellow)">67%</div>
+        <div class="card-sub">الهدف: 70% بنهاية الأسبوع</div>
+      </div>
+      <div class="card">
+        <div class="card-title">الساعات اليوم</div>
+        <div class="card-value" id="s-hours" style="color:var(--cyan)">1,136</div>
+        <div class="card-sub">ساعة عمل مجمعة</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">نسبة الإنجاز — آخر 4 أسابيع</div>
+        <div class="chart-wrap"><canvas id="chart-site"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:14px">حالة المعدات</div>
+        <table class="tbl">
+          <tr><th>المعدة</th><th>الحالة</th><th>المشغّل</th></tr>
+          <tbody id="equip-tbl"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="card-title" style="margin-bottom:12px">تقرير اليوم — يُرسل تلقائياً للإدارة</div>
+      <div style="background:var(--card2);border-radius:8px;padding:16px;font-size:13px;line-height:1.8;direction:rtl">
+        <strong>تقرير يومي — <span id="s-date"></span></strong><br>
+        الحضور: <span id="sr-att"></span> من 155 عامل<br>
+        المعدات: 8 نشطة، 2 في الصيانة<br>
+        نسبة الإنجاز: 67% (الهدف الأسبوعي 70%)<br>
+        ملاحظات: لا حوادث · الطقس مناسب · الإنجاز ضمن الجدول<br>
+        <span style="color:var(--muted)">— أُنشئ تلقائياً · 18:00 يومياً</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="border-top:1px solid var(--border)">
+  <div class="section-title">من أنا</div>
+  <h2 class="section-h2">المهارات والخبرة</h2>
+  <div class="about-grid">
+    <div>
+      <div class="about-photo">👨‍💻</div>
+      <div class="card" style="margin-top:16px;text-align:center">
+        <div style="font-size:16px;font-weight:700;margin-bottom:4px">عبدالعزيز عرنوس</div>
+        <div style="font-size:12px;color:var(--blue);margin-bottom:12px">IT Support & Automation Engineer</div>
+        <div style="font-size:12px;color:var(--muted)">📍 مكة المكرمة، المملكة العربية السعودية</div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title" style="margin-bottom:16px">الخبرة العملية</div>
+        <div class="alert alert-green">
+          <span class="alert-icon">✅</span>
+          <div><strong>وزارة الصحة — مستشفى طوارئ منى | موسم الحج</strong><br>
+          <span style="font-size:12px;color:var(--muted)">تركيب وتشغيل شبكة أجهزة استشعار تبريد ورطوبة · ربطها بالخادم المركزي · لوحة مراقبة مباشرة · عرض المشروع أمام مدير الوزارة في الرياض ومكة</span></div>
+        </div>
+        <div class="alert alert-blue" style="margin-top:8px">
+          <span class="alert-icon">🤖</span>
+          <div><strong>مشاريع أتمتة وذكاء اصطناعي مستقلة</strong><br>
+          <span style="font-size:12px;color:var(--muted)">سكرابينج أسعار · بوتات تلجرام وواتساب · تكاملات API · أنظمة نشر تلقائي · معالجة بيانات</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px">المهارات التقنية</div>
+        <div class="skill-row"><span>Python — أتمتة وسكرابينج وAPI</span><span class="skill-level">متقدم</span></div>
+        <div class="skill-row"><span>Windows Server · Active Directory</span><span class="skill-level">متقدم</span></div>
+        <div class="skill-row"><span>Linux (Ubuntu / VPS)</span><span class="skill-level">متوسط-متقدم</span></div>
+        <div class="skill-row"><span>Networking — TCP/IP · DNS · DHCP</span><span class="skill-level">متوسط</span></div>
+        <div class="skill-row"><span>IoT Systems · MQTT · Sensors</span><span class="skill-level">عملي</span></div>
+        <div class="skill-row"><span>AI Integration — Claude · OpenAI API</span><span class="skill-level">متقدم</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="border-top:1px solid var(--border)">
+  <div class="contact-card">
+    <h3>تواصل معي</h3>
+    <p>متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة</p>
+    <div class="contact-links">
+      <a class="contact-link" href="tel:+966531577741">📞 0531577741</a>
+      <a class="contact-link" href="mailto:1898.a9@gmail.com">✉️ 1898.a9@gmail.com</a>
+      <a class="contact-link" href="https://linkedin.com/in/abdulaziz-arnous-513530257" target="_blank">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  عبدالعزيز عرنوس · IT Support & Automation Engineer · مكة المكرمة &nbsp;|&nbsp;
+  جميع الأنظمة المعروضة قابلة للبناء والتخصيص حسب احتياج المنشأة
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// UTILITIES
+// ════════════════════════════════════════
+function rand(min, max) { return Math.random() * (max - min) + min; }
+function randInt(min, max) { return Math.floor(rand(min, max+1)); }
+function fmt(n, dec=1) { return n.toFixed(dec); }
+function fmtN(n) { return n.toLocaleString('ar-SA'); }
+
+function updateTS() {
+  const now = new Date();
+  document.getElementById('ts').textContent =
+    '· آخر تحديث: ' + now.toLocaleTimeString('ar-SA');
+}
+setInterval(updateTS, 1000); updateTS();
+
+// ════════════════════════════════════════
+// TABS
+// ════════════════════════════════════════
+function switchDemo(name) {
+  document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('demo-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ════════════════════════════════════════
+// CHART DEFAULTS
+// ════════════════════════════════════════
+Chart.defaults.color = '#64748b';
+Chart.defaults.borderColor = '#1e2d47';
+Chart.defaults.font.family = 'Segoe UI, Arial, sans-serif';
+Chart.defaults.font.size = 11;
+
+function makeLineChart(id, labels, datasets) {
+  return new Chart(document.getElementById(id), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 16 } } },
+      scales: {
+        x: { grid: { color: 'rgba(30,45,71,.4)' } },
+        y: { grid: { color: 'rgba(30,45,71,.4)' } }
+      },
+      elements: { line: { tension: 0.4, borderWidth: 2 }, point: { radius: 0 } },
+      animation: { duration: 600 }
+    }
+  });
+}
+
+function makeBarChart(id, labels, datasets) {
+  return new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 16 } } },
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: 'rgba(30,45,71,.4)' } }
+      }
+    }
+  });
+}
+
+// ════════════════════════════════════════
+// DEMO 1: MEDICAL
+// ════════════════════════════════════════
+const medLabels = Array.from({length:60}, (_,i) => i % 10 === 0 ? i + 'min' : '');
+const medTempData = Array.from({length:60}, () => rand(2.0, 3.8));
+const medHumidData = Array.from({length:60}, () => rand(66, 78));
+
+const medChart = makeLineChart('chart-medical', medLabels, [
+  { label:'حرارة °C', data:[...medTempData], borderColor:'#06b6d4', backgroundColor:'rgba(6,182,212,.08)', fill:true },
+  { label:'رطوبة %', data:[...medHumidData], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.06)', fill:true, yAxisID:'y1' }
+]);
+medChart.options.scales.y  = { grid:{color:'rgba(30,45,71,.4)'}, min:0, max:10, title:{display:true,text:'°C',color:'#64748b'} };
+medChart.options.scales.y1 = { grid:{display:false}, min:50, max:100, position:'left', title:{display:true,text:'%',color:'#64748b'} };
+medChart.update();
+
+const medRooms = [
+  {name:'B-01',ok:true},{name:'B-02',ok:true},{name:'B-03',ok:true},
+  {name:'B-04',alert:true},{name:'B-05',ok:true},{name:'B-06',ok:true},
+  {name:'B-07',ok:true},{name:'B-08',ok:true},{name:'B-09',ok:true},
+  {name:'B-10',ok:true},{name:'B-11',ok:true},{name:'CTRL',ok:true}
+];
+
+function renderMedRooms() {
+  const el = document.getElementById('med-rooms');
+  el.innerHTML = medRooms.map(r => {
+    const cls = r.offline ? 'offline' : r.alert ? 'alert' : 'online';
+    const dotCls = r.offline ? 'dot-red' : r.alert ? 'dot-yellow' : 'dot-green';
+    return `<div class="room-cell ${cls}"><div class="room-num">${r.name}</div><span class="dot ${dotCls}"></span></div>`;
+  }).join('');
+}
+renderMedRooms();
+
+function renderMedAlerts() {
+  document.getElementById('med-alerts').innerHTML = `
+    <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>وحدة B-04</strong> — درجة الحرارة وصلت 4.3°C · اقتربت من الحد الأعلى (5°C) <span style="color:var(--muted);font-size:11px">منذ 4 دقائق</span></div></div>
+    <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>النظام</strong> — تحديث كل 30 ثانية · جميع وحدات التبريد متصلة بالخادم <span style="color:var(--muted);font-size:11px">الآن</span></div></div>
+    <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>الخادم المركزي</strong> — نسخ احتياطي كل 6 ساعات · zero downtime خلال موسم الحج <span style="color:var(--muted);font-size:11px">04:00</span></div></div>
+  `;
+}
+renderMedAlerts();
+
+let medT = 2.8, medH = 72;
+function tickMedical() {
+  medT = Math.max(1.8, Math.min(4.8, medT + rand(-0.15, 0.15)));
+  medH = Math.max(65, Math.min(80, medH + rand(-0.8, 0.8)));
+  document.getElementById('m-temp').textContent = fmt(medT) + '°C';
+  document.getElementById('m-humid').textContent = Math.round(medH) + '%';
+  document.getElementById('m-temp').style.color = medT > 4.2 ? 'var(--yellow)' : 'var(--cyan)';
+
+  medChart.data.datasets[0].data.shift(); medChart.data.datasets[0].data.push(medT);
+  medChart.data.datasets[1].data.shift(); medChart.data.datasets[1].data.push(medH);
+  medChart.update('none');
+}
+setInterval(tickMedical, 2000);
+
+// ════════════════════════════════════════
+// DEMO 2: HOTEL
+// ════════════════════════════════════════
+const hotelLabels = Array.from({length:24}, (_,i) => i + ':00');
+const hotelBW = Array.from({length:24}, (_,i) => {
+  const h = i; const peak = h >= 8 && h <= 23;
+  return peak ? rand(40, 120) : rand(5, 30);
+});
+
+const hotelChart = makeLineChart('chart-hotel', hotelLabels, [
+  { label:'Mbps استخدام', data:hotelBW, borderColor:'#8b5cf6', backgroundColor:'rgba(139,92,246,.1)', fill:true }
+]);
+
+function renderHotelFloors() {
+  const floors = [
+    {f:'B1 (مواقف)',ap:4,guests:0,st:'ok'},{f:'الأرضي',ap:8,guests:42,st:'ok'},
+    {f:'الأول',ap:6,guests:38,st:'ok'},{f:'الثاني',ap:6,guests:35,st:'ok'},
+    {f:'الثالث',ap:6,guests:41,st:'warn'},{f:'الرابع',ap:6,guests:38,st:'ok'},
+    {f:'الخامس',ap:6,guests:33,st:'warn'},{f:'VIP',ap:8,guests:20,st:'ok'}
+  ];
+  document.getElementById('hotel-floors').innerHTML = floors.map(f =>
+    `<tr><td>${f.f}</td><td>${f.ap}</td><td>${f.guests}</td><td>
+      <span class="badge ${f.st==='ok'?'badge-green':'badge-yellow'}">
+        ${f.st==='ok'?'✓ سليم':'⚠ تحقق'}
+      </span></td></tr>`
+  ).join('');
+}
+renderHotelFloors();
+
+document.getElementById('hotel-alerts').innerHTML = `
+  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>AP-307 (الطابق الثالث)</strong> — إشارة ضعيفة · 12 ضيف متأثر · يحتاج إعادة تشغيل <span style="color:var(--muted);font-size:11px">منذ 8 دقائق</span></div></div>
+  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>AP-512 (الخامس)</strong> — حمل عالي · 94% استخدام <span style="color:var(--muted);font-size:11px">منذ 22 دقيقة</span></div></div>
+  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>باقي الـ 48 نقطة</strong> — تعمل بشكل طبيعي <span style="color:var(--muted);font-size:11px">الآن</span></div></div>
+`;
+
+let hGuests = 247;
+function tickHotel() {
+  hGuests = Math.max(200, Math.min(300, hGuests + randInt(-3, 3)));
+  document.getElementById('h-guests').textContent = hGuests;
+  document.getElementById('h-speed').textContent = randInt(75, 100) + ' Mbps';
+}
+setInterval(tickHotel, 3000);
+
+// ════════════════════════════════════════
+// DEMO 3: MATERIALS
+// ════════════════════════════════════════
+const matLabels = Array.from({length:30}, (_,i) => 'يوم '+(i+1));
+let steelBase=3200, cementBase=290;
+const steelData = Array.from({length:30}, (_,i) => { steelBase += rand(-30,40); return Math.round(steelBase); });
+const cementData = Array.from({length:30}, (_,i) => { cementBase += rand(-3,4); return Math.round(cementBase); });
+
+const matChart = makeLineChart('chart-materials', matLabels, [
+  { label:'حديد (ر.س/طن)', data:steelData, borderColor:'#ef4444', backgroundColor:'rgba(239,68,68,.08)', fill:false, yAxisID:'y' },
+  { label:'أسمنت (ر.س/طن)', data:cementData, borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,.08)', fill:false, yAxisID:'y1' }
+]);
+matChart.options.scales.y = { grid:{color:'rgba(30,45,71,.4)'}, position:'right' };
+matChart.options.scales.y1 = { grid:{display:false}, position:'left' };
+matChart.update();
+
+document.getElementById('suppliers-tbl').innerHTML = `
+  <tr><td>شركة الراجحي للحديد</td><td>حديد T16</td><td style="color:var(--green)">3,210 ر.س</td><td><span class="badge badge-green">الأرخص</span></td></tr>
+  <tr><td>مصنع الجزيرة</td><td>حديد T16</td><td>3,250 ر.س</td><td><span class="badge badge-blue">جاري</span></td></tr>
+  <tr><td>أسمنت اليمامة</td><td>أسمنت OPC</td><td style="color:var(--green)">279 ر.س</td><td><span class="badge badge-green">الأرخص</span></td></tr>
+  <tr><td>أسمنت السعودية</td><td>أسمنت OPC</td><td>285 ر.س</td><td><span class="badge badge-blue">جاري</span></td></tr>
+`;
+
+// ════════════════════════════════════════
+// DEMO 4: SITE OPERATIONS
+// ════════════════════════════════════════
+const siteLabels = ['الأسبوع 1','الأسبوع 2','الأسبوع 3','الأسبوع 4'];
+const siteChart = makeBarChart('chart-site', siteLabels, [
+  { label:'الإنجاز الفعلي %', data:[38,52,61,67], backgroundColor:'rgba(59,130,246,.7)', borderRadius:4 },
+  { label:'الهدف %', data:[40,55,62,70], backgroundColor:'rgba(100,116,139,.3)', borderRadius:4 }
+]);
+
+document.getElementById('equip-tbl').innerHTML = `
+  <tr><td>رافعة برجية #1</td><td><span class="badge badge-green">✓ نشطة</span></td><td>أحمد سالم</td></tr>
+  <tr><td>رافعة برجية #2</td><td><span class="badge badge-green">✓ نشطة</span></td><td>محمد علي</td></tr>
+  <tr><td>خلاطة خرسانة #1</td><td><span class="badge badge-green">✓ نشطة</span></td><td>—</td></tr>
+  <tr><td>خلاطة خرسانة #2</td><td><span class="badge badge-yellow">⚙ صيانة</span></td><td>—</td></tr>
+  <tr><td>حفارة JD-310</td><td><span class="badge badge-green">✓ نشطة</span></td><td>سعد ناصر</td></tr>
+  <tr><td>شاحنة نقل #3</td><td><span class="badge badge-yellow">⚙ صيانة</span></td><td>—</td></tr>
+`;
+
+const now = new Date();
+document.getElementById('s-date').textContent = now.toLocaleDateString('ar-SA');
+document.getElementById('sr-att').textContent = '142';
+
+let sWorkers = 142;
+function tickSite() {
+  sWorkers = Math.max(130, Math.min(155, sWorkers + randInt(-1,1)));
+  document.getElementById('s-workers').textContent = sWorkers;
+  document.getElementById('s-workers-sub').textContent = 'من أصل 155';
+  document.getElementById('s-hours').textContent = fmtN(sWorkers * 8);
+}
+setInterval(tickSite, 4000);
+
+// Smooth nav scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

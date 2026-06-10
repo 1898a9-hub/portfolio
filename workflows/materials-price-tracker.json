@@ -1,0 +1,13 @@
+{
+  "name": "Daily Materials Price Tracker",
+  "nodes": [
+    {"id":"1","name":"Every Day 7AM","type":"n8n-nodes-base.scheduleTrigger","position":[240,300],"parameters":{"rule":{"interval":[{"field":"hours","hoursInterval":24}]}}},
+    {"id":"2","name":"Scrape Steel Price","type":"n8n-nodes-base.httpRequest","position":[460,200],"parameters":{"url":"https://materials-site.sa/steel","method":"GET"}},
+    {"id":"3","name":"Scrape Cement Price","type":"n8n-nodes-base.httpRequest","position":[460,400],"parameters":{"url":"https://materials-site.sa/cement","method":"GET"}},
+    {"id":"4","name":"Compare with Yesterday","type":"n8n-nodes-base.code","position":[680,300],"parameters":{"jsCode":"const steel=items[0].json; const change=((steel.price-steel.prev)/steel.prev*100).toFixed(1); return [{json:{...steel,change_pct:change,alert:Math.abs(change)>3}}]"}},
+    {"id":"5","name":"Price Changed >3%?","type":"n8n-nodes-base.if","position":[900,300],"parameters":{"conditions":{"boolean":[{"value1":"={{$json.alert}}","operation":"equal","value2":true}]}}},
+    {"id":"6","name":"Send WhatsApp Report","type":"n8n-nodes-base.httpRequest","position":[1120,200],"parameters":{"url":"https://api.whatsapp.com/send","method":"POST"}},
+    {"id":"7","name":"Save to Sheets","type":"n8n-nodes-base.googleSheets","position":[1120,400],"parameters":{"operation":"appendOrUpdate"}}
+  ],
+  "connections":{"1":{"main":[[{"node":"2","type":"main","index":0},{"node":"3","type":"main","index":0}]]},"2":{"main":[[{"node":"4","type":"main","index":0}]]},"4":{"main":[[{"node":"5","type":"main","index":0}]]},"5":{"main":[[{"node":"6","type":"main","index":0}],[{"node":"7","type":"main","index":0}]]}}
+}

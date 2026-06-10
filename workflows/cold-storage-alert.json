@@ -1,0 +1,12 @@
+{
+  "name": "Cold Storage Temperature Alert",
+  "nodes": [
+    {"id":"1","name":"Every 30 Seconds","type":"n8n-nodes-base.scheduleTrigger","position":[240,300],"parameters":{"rule":{"interval":[{"field":"seconds","secondsInterval":30}]}}},
+    {"id":"2","name":"Read Sensor Data","type":"n8n-nodes-base.httpRequest","position":[460,300],"parameters":{"url":"http://server/api/sensors","method":"GET"}},
+    {"id":"3","name":"Check Threshold","type":"n8n-nodes-base.if","position":[680,300],"parameters":{"conditions":{"number":[{"value1":"={{$json.temperature}}","operation":"largerEqual","value2":5}]}}},
+    {"id":"4","name":"WhatsApp Alert","type":"n8n-nodes-base.httpRequest","position":[900,200],"parameters":{"url":"https://api.whatsapp.com/send","method":"POST","body":{"message":"⚠️ تنبيه: وحدة {{$json.unit_id}} — الحرارة {{$json.temperature}}°C تجاوزت 5°C"}}},
+    {"id":"5","name":"Log to Google Sheets","type":"n8n-nodes-base.googleSheets","position":[900,400],"parameters":{"operation":"appendOrUpdate","sheetId":"SHEET_ID"}},
+    {"id":"6","name":"Log Normal Reading","type":"n8n-nodes-base.googleSheets","position":[900,500],"parameters":{"operation":"appendOrUpdate","sheetId":"SHEET_ID"}}
+  ],
+  "connections":{"1":{"main":[[{"node":"2","type":"main","index":0}]]},"2":{"main":[[{"node":"3","type":"main","index":0}]]},"3":{"main":[[{"node":"4","type":"main","index":0},{"node":"5","type":"main","index":0}],[{"node":"6","type":"main","index":0}]]}}
+}
