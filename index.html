@@ -344,6 +344,115 @@ nav{
 footer{text-align:center;padding:32px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
 footer a{color:var(--blue);text-decoration:none}
 
+/* ─── VALUE STRIP ─────────────────────────────────── */
+.value-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin:48px auto 0;max-width:900px;
+}
+@media(max-width:768px){.value-strip{grid-template-columns:repeat(2,1fr)}}
+.vs-item{
+  background:var(--card);padding:20px 16px;text-align:center;
+  transition:background .2s;
+}
+.vs-item:hover{background:var(--card2)}
+.vs-icon{font-size:26px;margin-bottom:8px}
+.vs-title{font-size:13px;font-weight:700;margin-bottom:4px;color:#fff}
+.vs-sub{font-size:11px;color:var(--muted);line-height:1.4}
+
+/* ─── SECTOR CARDS ────────────────────────────────── */
+.sector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sector-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  position:relative;overflow:hidden;
+  transition:all .3s;cursor:default;
+}
+.sector-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:120px;height:120px;border-radius:50%;
+  opacity:.06;transform:translate(30%,-30%);
+}
+.sector-card.s-medical::before{background:var(--cyan)}
+.sector-card.s-hotel::before{background:var(--purple)}
+.sector-card.s-contractor::before{background:var(--yellow)}
+.sector-card.s-it::before{background:var(--blue)}
+.sector-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.35);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sc-emoji{font-size:32px;margin-bottom:14px}
+.sc-sector{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sc-headline{font-size:16px;font-weight:800;margin-bottom:8px;line-height:1.3}
+.sc-problem{font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.sc-delivers{list-style:none;padding:0;margin-bottom:16px}
+.sc-delivers li{font-size:12px;padding:3px 0;display:flex;gap:6px;align-items:flex-start;line-height:1.4}
+.sc-delivers li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.sc-timeline{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);
+  border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--blue);
+}
+
+/* ─── WORKFLOW LIVE STATS ─────────────────────────── */
+.wf-live-bar{
+  display:flex;align-items:center;gap:12px;
+  padding:8px 12px;background:rgba(16,185,129,.06);
+  border:1px solid rgba(16,185,129,.15);border-radius:8px;
+  margin-bottom:14px;font-size:11px;flex-wrap:wrap;gap:10px;
+}
+.wf-live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 6px var(--green);
+  animation:pulse 2s infinite;flex-shrink:0;
+}
+.wf-stat-item{color:var(--muted);display:flex;align-items:center;gap:4px}
+.wf-stat-item strong{color:var(--text)}
+
+/* ─── PIPELINE FLOW ANIMATION ─────────────────────── */
+.parrow{position:relative}
+.parrow .flow-dot{
+  position:absolute;top:-4px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--blue);box-shadow:0 0 8px var(--blue);
+  animation:flowRight 1.8s linear infinite;opacity:0;
+}
+[dir="rtl"] .parrow .flow-dot{animation:flowLeft 1.8s linear infinite}
+@keyframes flowRight{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:20px;opacity:0}}
+@keyframes flowLeft{0%{right:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{right:20px;opacity:0}}
+.wf-card:nth-child(1) .flow-dot{animation-delay:0s}
+.wf-card:nth-child(2) .flow-dot{animation-delay:.3s}
+.wf-card:nth-child(3) .flow-dot{animation-delay:.6s}
+.wf-card:nth-child(4) .flow-dot{animation-delay:.9s}
+.wf-card:nth-child(5) .flow-dot{animation-delay:1.2s}
+.wf-card:nth-child(6) .flow-dot{animation-delay:1.5s}
+.parrow:nth-child(2) .flow-dot{animation-delay:.4s}
+.parrow:nth-child(4) .flow-dot{animation-delay:.8s}
+.parrow:nth-child(6) .flow-dot{animation-delay:1.2s}
+.parrow:nth-child(8) .flow-dot{animation-delay:1.6s}
+
+/* ─── HERO GRID BG ────────────────────────────────── */
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(59,130,246,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  pointer-events:none;
+}
+
+/* ─── URGENCY BAR ─────────────────────────────────── */
+.urgency-bar{
+  background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(59,130,246,.08));
+  border:1px solid rgba(16,185,129,.2);
+  border-radius:12px;padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-top:48px;
+}
+.urgency-bar .ub-left{display:flex;align-items:center;gap:12px}
+.ub-pulse{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite;flex-shrink:0}
+.ub-text{font-size:14px;font-weight:700}
+.ub-sub{font-size:12px;color:var(--muted)}
+
 /* ─── SCROLL REVEAL ───────────────────────────────── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -366,6 +475,7 @@ footer a{color:var(--blue);text-decoration:none}
 <nav>
   <div class="nav-brand">Abdulaziz <span>Arnous</span></div>
   <div class="nav-center">
+    <a href="#solutions" data-ar="للشركات" data-en="For Companies">للشركات</a>
     <a href="#demos" data-ar="المشاريع" data-en="Projects">المشاريع</a>
     <a href="#workflows" data-ar="الأتمتة" data-en="Workflows">الأتمتة</a>
     <a href="#stack" data-ar="المهارات" data-en="Skills">المهارات</a>
@@ -384,6 +494,7 @@ footer a{color:var(--blue);text-decoration:none}
 
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero" id="home">
+  <div class="hero-grid-bg"></div>
   <div class="hero-badge">
     <span class="pulse"></span>
     <span data-ar="متاح للعمل — مكة المكرمة · جدة" data-en="Open to work — Makkah · Jeddah">متاح للعمل — مكة المكرمة · جدة</span>
@@ -418,7 +529,30 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="stat-n">0</div>
       <div class="stat-l" data-ar="توقف خلال الحج" data-en="Downtime @ Hajj">توقف خلال الحج</div>
     </div>
+    <!-- VALUE STRIP -->
+  <div class="value-strip" style="position:relative;z-index:1">
+    <div class="vs-item">
+      <div class="vs-icon">⚡</div>
+      <div class="vs-title" data-ar="نشر خلال أسبوع" data-en="Live in One Week">نشر خلال أسبوع</div>
+      <div class="vs-sub" data-ar="من الفكرة لنظام شغّال" data-en="From idea to running system">من الفكرة لنظام شغّال</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-icon">🔧</div>
+      <div class="vs-title" data-ar="دعم فني مستمر" data-en="Ongoing Support">دعم فني مستمر</div>
+      <div class="vs-sub" data-ar="صيانة وتطوير بعد التسليم" data-en="Maintenance after delivery">صيانة وتطوير بعد التسليم</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-icon">🎯</div>
+      <div class="vs-title" data-ar="مخصص لك" data-en="Built for You">مخصص لك</div>
+      <div class="vs-sub" data-ar="حل يناسب عمليات منشأتك" data-en="Fits your operations exactly">حل يناسب عمليات منشأتك</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-icon">📍</div>
+      <div class="vs-title" data-ar="مكة وجدة" data-en="Makkah & Jeddah">مكة وجدة</div>
+      <div class="vs-sub" data-ar="حضوري أو عن بُعد" data-en="On-site or remote">حضوري أو عن بُعد</div>
+    </div>
   </div>
+</div>
 </div>
 
 <hr class="divider">
@@ -639,6 +773,84 @@ footer a{color:var(--blue);text-decoration:none}
 
 <hr class="divider">
 
+<!-- ═══════════ SECTOR PITCH ═══════════ -->
+<section class="section reveal" id="solutions">
+  <div class="section-label" data-ar="ما أبنيه لك" data-en="What I Build For You">ما أبنيه لك</div>
+  <h2 class="section-h2" data-ar="حلول جاهزة لكل قطاع" data-en="Ready Solutions for Every Sector">حلول جاهزة لكل قطاع</h2>
+  <div class="sector-grid">
+
+    <div class="sector-card s-medical">
+      <div class="sc-emoji">🏥</div>
+      <div class="sc-sector" data-ar="مستشفيات وعيادات" data-en="Hospitals & Clinics">مستشفيات وعيادات</div>
+      <div class="sc-headline" data-ar="مراقبة التبريد الطبي على مدار الساعة" data-en="24/7 Medical Cold Storage Monitoring">مراقبة التبريد الطبي على مدار الساعة</div>
+      <div class="sc-problem" data-ar="ثلاجات الأدوية والعينات بلا مراقبة = خطر حقيقي ومسؤولية قانونية" data-en="Unmonitored medicine fridges = real risk and legal liability">ثلاجات الأدوية والعينات بلا مراقبة = خطر حقيقي ومسؤولية قانونية</div>
+      <ul class="sc-delivers">
+        <li data-ar="تنبيه فوري عند تجاوز درجة الحرارة المسموحة" data-en="Instant alert when temperature exceeds limit">تنبيه فوري عند تجاوز درجة الحرارة المسموحة</li>
+        <li data-ar="لوحة مراقبة مباشرة لجميع الوحدات" data-en="Live dashboard for all units">لوحة مراقبة مباشرة لجميع الوحدات</li>
+        <li data-ar="تقرير يومي تلقائي للإدارة" data-en="Automated daily report for management">تقرير يومي تلقائي للإدارة</li>
+        <li data-ar="سجل كامل للقراءات لأغراض الامتثال" data-en="Full readings log for compliance">سجل كامل للقراءات لأغراض الامتثال</li>
+      </ul>
+      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال 3–5 أيام" data-en="Ready in 3–5 days">جاهز خلال 3–5 أيام</span></div>
+    </div>
+
+    <div class="sector-card s-hotel">
+      <div class="sc-emoji">🏨</div>
+      <div class="sc-sector" data-ar="فنادق وضيافة" data-en="Hotels & Hospitality">فنادق وضيافة</div>
+      <div class="sc-headline" data-ar="لا شكاوى WiFi من الضيوف مرة ثانية" data-en="No More Guest WiFi Complaints">لا شكاوى WiFi من الضيوف مرة ثانية</div>
+      <div class="sc-problem" data-ar="مشكلة الشبكة تُكتشف بعد فوات الأوان — عندما يشكو الضيف" data-en="Network issues found too late — when the guest already complains">مشكلة الشبكة تُكتشف بعد فوات الأوان — عندما يشكو الضيف</div>
+      <ul class="sc-delivers">
+        <li data-ar="اكتشاف تلقائي لأي AP معطوب قبل أن يلاحظه الضيف" data-en="Auto-detect failed AP before guest notices">اكتشاف تلقائي لأي AP معطوب قبل أن يلاحظه الضيف</li>
+        <li data-ar="لوحة تحكم لكل طابق بعدد الضيوف والسرعة" data-en="Per-floor dashboard with guest count and speed">لوحة تحكم لكل طابق بعدد الضيوف والسرعة</li>
+        <li data-ar="تقرير uptime شهري للإدارة" data-en="Monthly uptime report for management">تقرير uptime شهري للإدارة</li>
+      </ul>
+      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال أسبوع" data-en="Ready in 1 week">جاهز خلال أسبوع</span></div>
+    </div>
+
+    <div class="sector-card s-contractor">
+      <div class="sc-emoji">🏗️</div>
+      <div class="sc-sector" data-ar="شركات المقاولات" data-en="Contractors">شركات المقاولات</div>
+      <div class="sc-headline" data-ar="تقارير الموقع والأسعار تلقائياً كل يوم" data-en="Site Reports & Prices — Automated Daily">تقارير الموقع والأسعار تلقائياً كل يوم</div>
+      <div class="sc-problem" data-ar="مدير المشروع يضيع ساعات يجمع البيانات يدوياً كل أسبوع" data-en="Project manager wastes hours collecting data manually every week">مدير المشروع يضيع ساعات يجمع البيانات يدوياً كل أسبوع</div>
+      <ul class="sc-delivers">
+        <li data-ar="تتبع أسعار الحديد والأسمنت يومياً من الموردين" data-en="Daily steel/cement prices from suppliers">تتبع أسعار الحديد والأسمنت يومياً من الموردين</li>
+        <li data-ar="تقرير حضور + إنجاز يُرسل تلقائياً للإدارة" data-en="Attendance + progress report auto-sent to management">تقرير حضور + إنجاز يُرسل تلقائياً للإدارة</li>
+        <li data-ar="تنبيه فوري عند انحراف الميزانية أو الجدول" data-en="Instant alert on budget or schedule deviation">تنبيه فوري عند انحراف الميزانية أو الجدول</li>
+      </ul>
+      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال 3 أيام" data-en="Ready in 3 days">جاهز خلال 3 أيام</span></div>
+    </div>
+
+    <div class="sector-card s-it">
+      <div class="sc-emoji">🖥️</div>
+      <div class="sc-sector" data-ar="شركات IT وتقنية" data-en="IT & Tech Companies">شركات IT وتقنية</div>
+      <div class="sc-headline" data-ar="دعم تقني + أتمتة في موظف واحد" data-en="IT Support + Automation in One Person">دعم تقني + أتمتة في موظف واحد</div>
+      <div class="sc-problem" data-ar="تدفع لموظف دعم تقني وتحتاج أيضاً أتمتة — أنا الاثنين" data-en="You pay for IT support and also need automation — I'm both">تدفع لموظف دعم تقني وتحتاج أيضاً أتمتة — أنا الاثنين</div>
+      <ul class="sc-delivers">
+        <li data-ar="Windows Server · Active Directory · دعم المستخدمين" data-en="Windows Server · Active Directory · user support">Windows Server · Active Directory · دعم المستخدمين</li>
+        <li data-ar="أتمتة المهام المتكررة بـ Python وn8n" data-en="Automate repetitive tasks with Python & n8n">أتمتة المهام المتكررة بـ Python وn8n</li>
+        <li data-ar="تكامل APIs وبناء لوحات تحكم مخصصة" data-en="API integration and custom dashboards">تكامل APIs وبناء لوحات تحكم مخصصة</li>
+      </ul>
+      <div class="sc-timeline">📍 <span data-ar="دوام كامل — متاح فوراً" data-en="Full-time — available now">دوام كامل — متاح فوراً</span></div>
+    </div>
+
+  </div>
+
+  <!-- URGENCY BAR -->
+  <div class="urgency-bar">
+    <div class="ub-left">
+      <div class="ub-pulse"></div>
+      <div>
+        <div class="ub-text" data-ar="متاح للبدء الأسبوع القادم" data-en="Available to start next week">متاح للبدء الأسبوع القادم</div>
+        <div class="ub-sub" data-ar="مكة المكرمة · جدة · أو عن بُعد — تواصل وأبدأ الأسبوع القادم" data-en="Makkah · Jeddah · or remote — contact me and I start next week">مكة المكرمة · جدة · أو عن بُعد — تواصل وأبدأ الأسبوع القادم</div>
+      </div>
+    </div>
+    <a class="btn-primary" href="#contact">
+      <span data-ar="تواصل الآن" data-en="Contact Now">تواصل الآن</span> →
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- ═══════════ WORKFLOWS ═══════════ -->
 <section class="section reveal" id="workflows">
   <div class="section-label" data-ar="أتمتة العمليات" data-en="Process Automation">أتمتة العمليات</div>
@@ -658,15 +870,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-blue">n8n</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="0">منذ 28 ثانية</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="اليوم:" data-en="Today:">اليوم:</span>
+        <span class="wf-stat-item"><strong class="wf-count" data-wf="0">2,880</strong> <span data-ar="تشغيل" data-en="runs">تشغيل</span></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>30s</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">📡<br>IoT</div><div class="pnode-label" data-ar="قراءة المستشعر" data-en="Read Sensor">قراءة المستشعر</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-logic">🔀<br>IF</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Threshold">فحص الحد</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">📱<br>SMS</div><div class="pnode-label" data-ar="إرسال تنبيه" data-en="Send Alert">إرسال تنبيه</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">📊<br>Log</div><div class="pnode-label" data-ar="تسجيل السجل" data-en="Log Event">تسجيل السجل</div></div>
       </div>
       <div class="wf-footer">
@@ -687,15 +908,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-blue">n8n</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="1">منذ 3 دقائق</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="اليوم:" data-en="Today:">اليوم:</span>
+        <span class="wf-stat-item"><strong class="wf-count" data-wf="1">288</strong> <span data-ar="تشغيل" data-en="runs">تشغيل</span></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>5min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">🌐<br>Ping</div><div class="pnode-label" data-ar="اختبار APs" data-en="Test APs">اختبار APs</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-logic">🔀<br>Filter</div><div class="pnode-label" data-ar="فرز الأعطال" data-en="Filter Failures">فرز الأعطال</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Notify Admin">إشعار فوري</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">📈<br>Sheet</div><div class="pnode-label" data-ar="تحديث السجل" data-en="Update Log">تحديث السجل</div></div>
       </div>
       <div class="wf-footer">
@@ -716,15 +946,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-blue">n8n</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="2">اليوم 08:00</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="نجاح:" data-en="Success:">نجاح:</span>
+        <span class="wf-stat-item"><strong style="color:var(--green)">100%</strong></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">📅<br>Daily</div><div class="pnode-label" data-ar="جدول يومي" data-en="Daily Schedule">جدول يومي</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">🕷<br>Scrape</div><div class="pnode-label" data-ar="جمع الأسعار" data-en="Fetch Prices">جمع الأسعار</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-logic">🔀<br>Compare</div><div class="pnode-label" data-ar="مقارنة الأسعار" data-en="Compare">مقارنة الأسعار</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">📊<br>Excel</div><div class="pnode-label" data-ar="تحديث الجدول" data-en="Update Sheet">تحديث الجدول</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">💬<br>WA</div><div class="pnode-label" data-ar="إرسال واتساب" data-en="Send WhatsApp">إرسال واتساب</div></div>
       </div>
       <div class="wf-footer">
@@ -745,15 +984,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-blue">n8n</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="3">أمس 18:00</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="التالي:" data-en="Next:">التالي:</span>
+        <span class="wf-stat-item"><strong>18:00</strong></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏰<br>18:00</div><div class="pnode-label" data-ar="كل يوم" data-en="Daily">كل يوم</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">📋<br>Forms</div><div class="pnode-label" data-ar="جمع البيانات" data-en="Collect Data">جمع البيانات</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">🔧<br>Format</div><div class="pnode-label" data-ar="تنسيق التقرير" data-en="Format Report">تنسيق التقرير</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">📄<br>PDF</div><div class="pnode-label" data-ar="إنشاء PDF" data-en="Generate PDF">إنشاء PDF</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">📧<br>Send</div><div class="pnode-label" data-ar="إرسال للإدارة" data-en="Send to Mgmt">إرسال للإدارة</div></div>
       </div>
       <div class="wf-footer">
@@ -774,15 +1022,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-purple">Python</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="4">منذ 47 ثانية</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="اليوم:" data-en="Today:">اليوم:</span>
+        <span class="wf-stat-item"><strong class="wf-count" data-wf="4">1,440</strong> <span data-ar="تشغيل" data-en="runs">تشغيل</span></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>1min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">🌐<br>HTTP</div><div class="pnode-label" data-ar="اختبار الخدمات" data-en="Check Services">اختبار الخدمات</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-logic">🔀<br>Status</div><div class="pnode-label" data-ar="تحقق الحالة" data-en="Check Status">تحقق الحالة</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">🔔<br>Alert</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Instant Alert">إشعار فوري</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">📊<br>Stats</div><div class="pnode-label" data-ar="تحديث الإحصاء" data-en="Update Stats">تحديث الإحصاء</div></div>
       </div>
       <div class="wf-footer">
@@ -803,15 +1060,24 @@ footer a{color:var(--blue);text-decoration:none}
         </div>
         <span class="badge badge-blue">n8n</span>
       </div>
+      <div class="wf-live-bar">
+        <div class="wf-live-dot"></div>
+        <span class="wf-stat-item" data-ar="يعمل" data-en="Running">يعمل</span>
+        <span class="wf-stat-item" data-ar="آخر تشغيل:" data-en="Last run:">آخر تشغيل:</span>
+        <span class="wf-stat-item"><strong class="wf-last" data-wf="5">الأحد 09:00</strong></span>
+        <span class="wf-stat-item">·</span>
+        <span class="wf-stat-item" data-ar="نجاح:" data-en="Success:">نجاح:</span>
+        <span class="wf-stat-item"><strong style="color:var(--green)">100%</strong></span>
+      </div>
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">📅<br>Weekly</div><div class="pnode-label" data-ar="أسبوعي" data-en="Weekly">أسبوعي</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-data">📋<br>Sheet</div><div class="pnode-label" data-ar="قراءة المخزون" data-en="Read Stock">قراءة المخزون</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-logic">🔀<br>Low?</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Level">فحص الحد</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="طلب تزويد" data-en="Restock Alert">طلب تزويد</div></div>
-        <div class="parrow"></div>
+        <div class="parrow"><div class="flow-dot"></div></div>
         <div class="pnode"><div class="pnode-box n-action">📊<br>Report</div><div class="pnode-label" data-ar="تقرير المخزون" data-en="Stock Report">تقرير المخزون</div></div>
       </div>
       <div class="wf-footer">
@@ -1090,10 +1356,38 @@ document.getElementById('equip-tbl').innerHTML=`
   <tr><td>مضخة المياه</td><td><span class="badge badge-green">✓ نشطة</span></td><td>سالم ع.</td></tr>
   <tr><td>مولد الكهرباء</td><td><span class="badge badge-yellow">⚠ فحص</span></td><td>—</td></tr>`;
 
+// ─── WORKFLOW LIVE STATS ───────────────────────────
+const wfIntervals=[30,300,86400,86400,60,604800]; // seconds between runs
+const wfCounts=[2880,288,1,1,1440,1];
+let wfSecondsAgo=[28,180,0,0,47,0];
+
+function fmtAgo(s,idx){
+  const lang=document.documentElement.getAttribute('data-lang');
+  if(s<60) return lang==='ar'?`منذ ${s} ثانية`:`${s}s ago`;
+  if(s<3600) return lang==='ar'?`منذ ${Math.floor(s/60)} دقيقة`:`${Math.floor(s/60)}m ago`;
+  return lang==='ar'?`منذ ${Math.floor(s/3600)} ساعة`:`${Math.floor(s/3600)}h ago`;
+}
+
+setInterval(()=>{
+  wfSecondsAgo=wfSecondsAgo.map((s,i)=>{
+    s+=2;
+    if(s>=wfIntervals[i]){s=0;wfCounts[i]++}
+    return s;
+  });
+  document.querySelectorAll('.wf-last[data-wf]').forEach(el=>{
+    const i=+el.dataset.wf;
+    if(i===0||i===1||i===4) el.textContent=fmtAgo(wfSecondsAgo[i],i);
+  });
+  document.querySelectorAll('.wf-count[data-wf]').forEach(el=>{
+    const i=+el.dataset.wf;
+    el.textContent=wfCounts[i].toLocaleString();
+  });
+},2000);
+
 // ─── SCROLL REVEAL ─────────────────────────────────
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.1});
+},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
