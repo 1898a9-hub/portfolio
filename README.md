@@ -1,7 +1,5 @@
 # Abdulaziz Arnous — IT Engineer & Automation
 
-**مكة المكرمة، المملكة العربية السعودية**
-📞 0531577741 | ✉️ 1898.a9@gmail.com
 
 ## المشاريع
 
