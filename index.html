@@ -4,6 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdulaziz Arnous — IT Engineer & Automation</title>
+<style>
+.hero{position:relative;overflow:hidden}
+#iot3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.62;pointer-events:none}
+.hero>*:not(#iot3d):not(.hero-grid-bg){position:relative;z-index:2}
+.sc-emoji svg,.sys-ic svg{width:34px;height:34px;stroke:url(#azgrad) #3b82f6;stroke:#3b82f6}
+.icon-line{fill:none;stroke:#06b6d4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.sys-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 24px;position:relative;overflow:hidden}
+.sys-card::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:var(--grad)}
+.sys-ic{margin-bottom:14px}
+.sys-card h4{font-size:16px;font-weight:800;margin:0 0 10px}
+.sys-card p{font-size:12.5px;color:var(--light);line-height:1.7;margin:0 0 16px}
+.sys-chips{display:flex;flex-wrap:wrap;gap:7px}
+.sys-chips span{font-size:10.5px;font-weight:700;padding:4px 11px;border-radius:999px;border:1px solid var(--border);color:var(--cyan);background:var(--bg2)}
+</style>
+
+<meta name="description" content="عبدالعزيز عرنوس — مهندس IT وأتمتة أنظمة في مكة وجدة. مراقبة تبريد طبي IoT (وزارة الصحة)، أتمتة تقارير المقاولات، مراقبة شبكات الفنادق، دعم فني وPython/n8n. Abdulaziz Arnous — IT Engineer & Automation, Makkah/Jeddah.">
+<link rel="canonical" href="https://1898a9-hub.github.io/portfolio/">
+<meta name="theme-color" content="#070c18">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://1898a9-hub.github.io/portfolio/">
+<meta property="og:title" content="Abdulaziz Arnous — IT Engineer & Automation | مكة · جدة">
+<meta property="og:description" content="مراقبة تبريد طبي IoT · أتمتة تقارير المقاولات · مراقبة شبكات الفنادق · دعم فني + Python/n8n — مشروع حقيقي مع وزارة الصحة بموسم الحج، صفر توقف.">
+<meta property="og:image" content="https://1898a9-hub.github.io/portfolio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abdulaziz Arnous — IT Engineer & Automation">
+<meta name="twitter:image" content="https://1898a9-hub.github.io/portfolio/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23070c18'/%3E%3Cpath d='M36 8 16 36h12l-4 20 24-30H34z' fill='url(%23g)'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Abdulaziz Arnous",
+  "alternateName": "عبدالعزيز عرنوس",
+  "jobTitle": "IT Engineer & Automation Specialist",
+  "telephone": "+966531577741",
+  "email": "mailto:1898.a9@gmail.com",
+  "url": "https://1898a9-hub.github.io/portfolio/",
+  "address": {"@type": "PostalAddress", "addressLocality": "Makkah", "addressCountry": "SA"},
+  "sameAs": ["https://linkedin.com/in/abdulaziz-arnous", "https://github.com/1898a9-hub"],
+  "knowsLanguage": ["ar", "en", "tr"],
+  "knowsAbout": ["IT Support", "IoT Monitoring", "Python Automation", "n8n", "Linux", "Networking"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -604,6 +651,9 @@ footer a{color:var(--blue);text-decoration:none}
     <a href="#solutions" data-ar="للشركات" data-en="For Companies">للشركات</a>
     <a href="#demos" data-ar="المشاريع" data-en="Projects">المشاريع</a>
     <a href="#workflows" data-ar="الأتمتة" data-en="Workflows">الأتمتة</a>
+    <a href="#systems" data-ar="الأنظمة" data-en="Systems">الأنظمة</a>
+    <a href="#calculator" data-ar="الحاسبة" data-en="ROI" >الحاسبة</a>
+    <a href="#packages" data-ar="الباقات" data-en="Packages">الباقات</a>
     <a href="#stack" data-ar="المهارات" data-en="Skills">المهارات</a>
     <a href="#contact" data-ar="التواصل" data-en="Contact">التواصل</a>
   </div>
@@ -624,6 +674,9 @@ footer a{color:var(--blue);text-decoration:none}
     <a href="#solutions" onclick="document.getElementById('nav-toggle').checked=false" data-ar="للشركات" data-en="For Companies">للشركات</a>
     <a href="#demos" onclick="document.getElementById('nav-toggle').checked=false" data-ar="المشاريع" data-en="Projects">المشاريع</a>
     <a href="#workflows" onclick="document.getElementById('nav-toggle').checked=false" data-ar="الأتمتة" data-en="Workflows">الأتمتة</a>
+    <a href="#systems" onclick="document.getElementById('nav-toggle').checked=false" data-ar="الأنظمة" data-en="Systems">الأنظمة</a>
+    <a href="#calculator" onclick="document.getElementById('nav-toggle').checked=false" data-ar="الحاسبة" data-en="ROI">الحاسبة</a>
+    <a href="#packages" onclick="document.getElementById('nav-toggle').checked=false" data-ar="الباقات" data-en="Packages">الباقات</a>
     <a href="#stack" onclick="document.getElementById('nav-toggle').checked=false" data-ar="المهارات" data-en="Skills">المهارات</a>
     <a href="#contact" onclick="document.getElementById('nav-toggle').checked=false" data-ar="التواصل" data-en="Contact">التواصل</a>
     <div class="mob-divider"></div>
@@ -642,6 +695,7 @@ footer a{color:var(--blue);text-decoration:none}
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero" id="home">
   <div class="hero-grid-bg"></div>
+  <canvas id="iot3d" aria-hidden="true"></canvas>
   <div class="hero-badge">
     <span class="pulse"></span>
     <span data-ar="متاح للعمل — مكة المكرمة · جدة" data-en="Open to work — Makkah · Jeddah">متاح للعمل — مكة المكرمة · جدة</span>
@@ -679,22 +733,22 @@ footer a{color:var(--blue);text-decoration:none}
     <!-- VALUE STRIP -->
   <div class="value-strip" style="position:relative;z-index:1">
     <div class="vs-item">
-      <div class="vs-icon">⚡</div>
+      <div class="vs-icon"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
       <div class="vs-title" data-ar="نشر خلال أسبوع" data-en="Live in One Week">نشر خلال أسبوع</div>
       <div class="vs-sub" data-ar="من الفكرة لنظام شغّال" data-en="From idea to running system">من الفكرة لنظام شغّال</div>
     </div>
     <div class="vs-item">
-      <div class="vs-icon">🔧</div>
+      <div class="vs-icon"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
       <div class="vs-title" data-ar="دعم فني مستمر" data-en="Ongoing Support">دعم فني مستمر</div>
       <div class="vs-sub" data-ar="صيانة وتطوير بعد التسليم" data-en="Maintenance after delivery">صيانة وتطوير بعد التسليم</div>
     </div>
     <div class="vs-item">
-      <div class="vs-icon">🎯</div>
+      <div class="vs-icon"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="#06b6d4" stroke="none"/></svg></div>
       <div class="vs-title" data-ar="مخصص لك" data-en="Built for You">مخصص لك</div>
       <div class="vs-sub" data-ar="حل يناسب عمليات منشأتك" data-en="Fits your operations exactly">حل يناسب عمليات منشأتك</div>
     </div>
     <div class="vs-item">
-      <div class="vs-icon">📍</div>
+      <div class="vs-icon"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="#06b6d4" stroke="none"/></svg></div>
       <div class="vs-title" data-ar="مكة وجدة" data-en="Makkah & Jeddah">مكة وجدة</div>
       <div class="vs-sub" data-ar="حضوري أو عن بُعد" data-en="On-site or remote">حضوري أو عن بُعد</div>
     </div>
@@ -708,7 +762,7 @@ footer a{color:var(--blue);text-decoration:none}
 <section class="section" id="demos">
   <div class="section-label" data-ar="معرض الأعمال التفاعلي" data-en="Live Portfolio">معرض الأعمال التفاعلي</div>
   <h2 class="section-h2">
-    <span data-ar="أنظمة حية — جميعها تعمل الآن" data-en="Live Systems — Running Now">أنظمة حية — جميعها تعمل الآن</span>
+    <span data-ar="محاكاة تفاعلية لأنظمة حقيقية نفّذتها" data-en="Interactive Simulations of Real Systems I Built">محاكاة تفاعلية لأنظمة حقيقية نفّذتها</span>
     <span id="ts" style="font-size:13px;color:var(--muted);font-weight:400"></span>
   </h2>
 
@@ -726,7 +780,7 @@ footer a{color:var(--blue);text-decoration:none}
         <div style="font-size:15px;font-weight:700" data-ar="نظام مراقبة ثلاجات الحفظ الطبية" data-en="Medical Cold Storage Monitor">نظام مراقبة ثلاجات الحفظ الطبية</div>
         <div style="font-size:12px;color:var(--muted)" data-ar="المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج" data-en="Real project — Mina Emergency Hospital, Ministry of Health | Hajj season">المشروع الحقيقي — مستشفى طوارئ منى، وزارة الصحة | موسم الحج</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="محاكاة حية" data-en="Live Simulation">محاكاة حية</span></span>
     </div>
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
@@ -773,7 +827,7 @@ footer a{color:var(--blue);text-decoration:none}
         <div style="font-size:15px;font-weight:700" data-ar="نظام مراقبة شبكة الفندق" data-en="Hotel Network Monitor">نظام مراقبة شبكة الفندق</div>
         <div style="font-size:12px;color:var(--muted)" data-ar="WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال" data-en="Guest WiFi · Floor devices · Instant failure alerts">WiFi الضيوف · أجهزة الطوابق · تنبيه فوري للأعطال</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="محاكاة حية" data-en="Live Simulation">محاكاة حية</span></span>
     </div>
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
@@ -878,7 +932,7 @@ footer a{color:var(--blue);text-decoration:none}
         <div style="font-size:15px;font-weight:700" data-ar="لوحة العمليات الميدانية" data-en="Site Operations Dashboard">لوحة العمليات الميدانية</div>
         <div style="font-size:12px;color:var(--muted)" data-ar="حضور العمالة · المعدات · تقارير يومية تلقائية" data-en="Labor attendance · Equipment · Auto daily reports">حضور العمالة · المعدات · تقارير يومية تلقائية</div>
       </div>
-      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="مباشر" data-en="Live">مباشر</span></span>
+      <span class="badge badge-green"><span class="dot dot-green"></span> <span data-ar="محاكاة حية" data-en="Live Simulation">محاكاة حية</span></span>
     </div>
     <div class="grid-4" style="margin-bottom:16px">
       <div class="card">
@@ -931,7 +985,7 @@ footer a{color:var(--blue);text-decoration:none}
   <div class="sector-grid">
 
     <div class="sector-card s-medical">
-      <div class="sc-emoji">🏥</div>
+      <div class="sc-emoji"><svg viewBox="0 0 24 24" class="icon-line"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v6M9 11h6"/><path d="M9 21v-3h6v3"/></svg></div>
       <div class="sc-sector" data-ar="مستشفيات وعيادات" data-en="Hospitals & Clinics">مستشفيات وعيادات</div>
       <div class="sc-headline" data-ar="مراقبة التبريد الطبي على مدار الساعة" data-en="24/7 Medical Cold Storage Monitoring">مراقبة التبريد الطبي على مدار الساعة</div>
       <div class="sc-problem" data-ar="ثلاجات الأدوية والعينات بلا مراقبة = خطر حقيقي ومسؤولية قانونية" data-en="Unmonitored medicine fridges = real risk and legal liability">ثلاجات الأدوية والعينات بلا مراقبة = خطر حقيقي ومسؤولية قانونية</div>
@@ -941,11 +995,13 @@ footer a{color:var(--blue);text-decoration:none}
         <li data-ar="تقرير يومي تلقائي للإدارة" data-en="Automated daily report for management">تقرير يومي تلقائي للإدارة</li>
         <li data-ar="سجل كامل للقراءات لأغراض الامتثال" data-en="Full readings log for compliance">سجل كامل للقراءات لأغراض الامتثال</li>
       </ul>
-      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال 3–5 أيام" data-en="Ready in 3–5 days">جاهز خلال 3–5 أيام</span></div>
+      <div class="sc-timeline"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> <span data-ar="جاهز خلال 3–5 أيام" data-en="Ready in 3–5 days">جاهز خلال 3–5 أيام</span></div>
+    
+      <a class="sc-cta" href="https://wa.me/966531577741?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D9%86%20%D8%AC%D9%87%D8%A9%20%D8%B7%D8%A8%D9%8A%D8%A9%20%D9%88%D9%85%D9%87%D8%AA%D9%85%D9%8A%D9%86%20%D8%A8%D9%86%D8%B8%D8%A7%D9%85%20%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A8%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D8%A8%D9%8A%20%28%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA%20%2B%20%D9%84%D9%88%D8%AD%D8%A9%20%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9%20%2B%20%D8%B3%D8%AC%D9%84%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%29." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-ar="اطلب نظام المراقبة" data-en="Request monitoring system">اطلب نظام المراقبة</span></a>
     </div>
 
     <div class="sector-card s-hotel">
-      <div class="sc-emoji">🏨</div>
+      <div class="sc-emoji"><svg viewBox="0 0 24 24" class="icon-line"><path d="M3 11a14 14 0 0 1 18 0"/><path d="M6.5 14.5a9 9 0 0 1 11 0"/><path d="M10 18a4 4 0 0 1 4 0"/><circle cx="12" cy="20.5" r="1" fill="#06b6d4" stroke="none"/></svg></div>
       <div class="sc-sector" data-ar="فنادق وضيافة" data-en="Hotels & Hospitality">فنادق وضيافة</div>
       <div class="sc-headline" data-ar="لا شكاوى WiFi من الضيوف مرة ثانية" data-en="No More Guest WiFi Complaints">لا شكاوى WiFi من الضيوف مرة ثانية</div>
       <div class="sc-problem" data-ar="مشكلة الشبكة تُكتشف بعد فوات الأوان — عندما يشكو الضيف" data-en="Network issues found too late — when the guest already complains">مشكلة الشبكة تُكتشف بعد فوات الأوان — عندما يشكو الضيف</div>
@@ -954,11 +1010,13 @@ footer a{color:var(--blue);text-decoration:none}
         <li data-ar="لوحة تحكم لكل طابق بعدد الضيوف والسرعة" data-en="Per-floor dashboard with guest count and speed">لوحة تحكم لكل طابق بعدد الضيوف والسرعة</li>
         <li data-ar="تقرير uptime شهري للإدارة" data-en="Monthly uptime report for management">تقرير uptime شهري للإدارة</li>
       </ul>
-      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال أسبوع" data-en="Ready in 1 week">جاهز خلال أسبوع</span></div>
+      <div class="sc-timeline"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> <span data-ar="جاهز خلال أسبوع" data-en="Ready in 1 week">جاهز خلال أسبوع</span></div>
+    
+      <a class="sc-cta" href="https://wa.me/966531577741?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D9%86%20%D9%81%D9%86%D8%AF%D9%82%20%D9%88%D9%85%D9%87%D8%AA%D9%85%D9%8A%D9%86%20%D8%A8%D9%86%D8%B8%D8%A7%D9%85%20%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9%20%D9%88%D8%A7%D9%84%D9%80%20Access%20Points%20%D9%85%D8%B9%20%D8%AA%D9%86%D8%A8%D9%8A%D9%87%20%D9%81%D9%88%D8%B1%D9%8A%20%D9%84%D9%84%D8%A3%D8%B9%D8%B7%D8%A7%D9%84." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-ar="اطلب مراقبة الشبكة" data-en="Request network monitoring">اطلب مراقبة الشبكة</span></a>
     </div>
 
     <div class="sector-card s-contractor">
-      <div class="sc-emoji">🏗️</div>
+      <div class="sc-emoji"><svg viewBox="0 0 24 24" class="icon-line"><path d="M3 21h18"/><path d="M5 21V8h6v13M11 11h8v10"/><path d="M7 11h2M7 14h2M7 17h2M14 14h2M14 17h2"/></svg></div>
       <div class="sc-sector" data-ar="شركات المقاولات" data-en="Contractors">شركات المقاولات</div>
       <div class="sc-headline" data-ar="تقارير الموقع والأسعار تلقائياً كل يوم" data-en="Site Reports & Prices — Automated Daily">تقارير الموقع والأسعار تلقائياً كل يوم</div>
       <div class="sc-problem" data-ar="مدير المشروع يضيع ساعات يجمع البيانات يدوياً كل أسبوع" data-en="Project manager wastes hours collecting data manually every week">مدير المشروع يضيع ساعات يجمع البيانات يدوياً كل أسبوع</div>
@@ -967,11 +1025,13 @@ footer a{color:var(--blue);text-decoration:none}
         <li data-ar="تقرير حضور + إنجاز يُرسل تلقائياً للإدارة" data-en="Attendance + progress report auto-sent to management">تقرير حضور + إنجاز يُرسل تلقائياً للإدارة</li>
         <li data-ar="تنبيه فوري عند انحراف الميزانية أو الجدول" data-en="Instant alert on budget or schedule deviation">تنبيه فوري عند انحراف الميزانية أو الجدول</li>
       </ul>
-      <div class="sc-timeline">⚡ <span data-ar="جاهز خلال 3 أيام" data-en="Ready in 3 days">جاهز خلال 3 أيام</span></div>
+      <div class="sc-timeline"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> <span data-ar="جاهز خلال 3 أيام" data-en="Ready in 3 days">جاهز خلال 3 أيام</span></div>
+    
+      <a class="sc-cta" href="https://wa.me/966531577741?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D9%86%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%85%D9%82%D8%A7%D9%88%D9%84%D8%A7%D8%AA%20%D9%88%D9%85%D9%87%D8%AA%D9%85%D9%8A%D9%86%20%D8%A8%D8%A3%D8%AA%D9%85%D8%AA%D8%A9%20%D8%A7%D9%84%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%D9%8A%D8%A9%20%D9%88%D8%AA%D8%AA%D8%A8%D8%B9%20%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%AF." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-ar="اطلب أتمتة التقارير" data-en="Request report automation">اطلب أتمتة التقارير</span></a>
     </div>
 
     <div class="sector-card s-it">
-      <div class="sc-emoji">🖥️</div>
+      <div class="sc-emoji"><svg viewBox="0 0 24 24" class="icon-line"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/><path d="M9 21h6"/></svg></div>
       <div class="sc-sector" data-ar="شركات IT وتقنية" data-en="IT & Tech Companies">شركات IT وتقنية</div>
       <div class="sc-headline" data-ar="دعم تقني + أتمتة في موظف واحد" data-en="IT Support + Automation in One Person">دعم تقني + أتمتة في موظف واحد</div>
       <div class="sc-problem" data-ar="تدفع لموظف دعم تقني وتحتاج أيضاً أتمتة — أنا الاثنين" data-en="You pay for IT support and also need automation — I'm both">تدفع لموظف دعم تقني وتحتاج أيضاً أتمتة — أنا الاثنين</div>
@@ -980,7 +1040,9 @@ footer a{color:var(--blue);text-decoration:none}
         <li data-ar="أتمتة المهام المتكررة بـ Python وn8n" data-en="Automate repetitive tasks with Python & n8n">أتمتة المهام المتكررة بـ Python وn8n</li>
         <li data-ar="تكامل APIs وبناء لوحات تحكم مخصصة" data-en="API integration and custom dashboards">تكامل APIs وبناء لوحات تحكم مخصصة</li>
       </ul>
-      <div class="sc-timeline">📍 <span data-ar="دوام كامل — متاح فوراً" data-en="Full-time — available now">دوام كامل — متاح فوراً</span></div>
+      <div class="sc-timeline"><svg class="icon-line" width="22" height="22" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="#06b6d4" stroke="none"/></svg> <span data-ar="دوام كامل — متاح فوراً" data-en="Full-time — available now">دوام كامل — متاح فوراً</span></div>
+    
+      <a class="sc-cta" href="https://wa.me/966531577741?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D9%86%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%AA%D9%82%D9%86%D9%8A%D8%A9%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D9%81%D8%B1%D8%B5%D8%A9%20%D8%AF%D8%B9%D9%85%20%D9%81%D9%86%D9%8A%20/%20%D8%A3%D8%AA%D9%85%D8%AA%D8%A9.%20%D9%85%D8%AA%D9%89%20%D9%86%D9%82%D8%AF%D8%B1%20%D9%86%D8%B1%D8%AA%D8%A8%20%D9%85%D9%82%D8%A7%D8%A8%D9%84%D8%A9%20%D9%82%D8%B5%D9%8A%D8%B1%D8%A9%D8%9F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-ar="تواصل للتوظيف" data-en="Contact for hiring">تواصل للتوظيف</span></a>
     </div>
 
   </div>
@@ -1013,7 +1075,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(6,182,212,.1)">❄️</div>
+          <div class="wf-icon" style="background:rgba(6,182,212,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36M12 5l-1.5 2.5M12 5l1.5 2.5M12 19l-1.5-2.5M12 19l1.5-2.5M5 12l2.5-1.5M5 12l2.5 1.5M19 12l-2.5-1.5M19 12l-2.5 1.5"/></svg></div>
           <div>
             <div class="wf-title" data-ar="تنبيه التبريد الطبي" data-en="Medical Cold Storage Alert">تنبيه التبريد الطبي</div>
             <div class="wf-desc" data-ar="يراقب حرارة ثلاجات الحفظ كل 30 ثانية — ينبّه تلقائياً عند تجاوز 4.5°C" data-en="Monitors cold storage temps every 30s — auto-alerts when temp exceeds 4.5°C">يراقب حرارة ثلاجات الحفظ كل 30 ثانية — ينبّه تلقائياً عند تجاوز 4.5°C</div>
@@ -1033,13 +1095,13 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>30s</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">📡<br>IoT</div><div class="pnode-label" data-ar="قراءة المستشعر" data-en="Read Sensor">قراءة المستشعر</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12.5a9 9 0 0 1 14 0"/><path d="M1.5 9a14 14 0 0 1 21 0"/><path d="M9 16a4.5 4.5 0 0 1 6 0"/><circle cx="12" cy="20" r="1.2" fill="#06b6d4" stroke="none"/></svg><br>IoT</div><div class="pnode-label" data-ar="قراءة المستشعر" data-en="Read Sensor">قراءة المستشعر</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-logic">🔀<br>IF</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Threshold">فحص الحد</div></div>
+        <div class="pnode"><div class="pnode-box n-logic"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-6 6"/><path d="M16 21h5v-5M21 21l-6-6"/><path d="M3 3c4 4 14 14 18 18" opacity=".25"/><path d="M3 21l5-5"/></svg><br>IF</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Threshold">فحص الحد</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">📱<br>SMS</div><div class="pnode-label" data-ar="إرسال تنبيه" data-en="Send Alert">إرسال تنبيه</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="#06b6d4" stroke="none"/></svg><br>SMS</div><div class="pnode-label" data-ar="إرسال تنبيه" data-en="Send Alert">إرسال تنبيه</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">📊<br>Log</div><div class="pnode-label" data-ar="تسجيل السجل" data-en="Log Event">تسجيل السجل</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg><br>Log</div><div class="pnode-label" data-ar="تسجيل السجل" data-en="Log Event">تسجيل السجل</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="⏱ كل 30 ثانية" data-en="⏱ Every 30 seconds">⏱ كل 30 ثانية</span>
@@ -1051,7 +1113,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(59,130,246,.1)">🏨</div>
+          <div class="wf-icon" style="background:rgba(59,130,246,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="17" rx="1"/><path d="M2 11h20M10 5V3M14 5V3M7 15h2v2H7zM11 15h2v2h-2zM15 15h2v2h-2zM7 19h2v3H7zM15 19h2v3h-2z"/></svg></div>
           <div>
             <div class="wf-title" data-ar="مراقبة شبكة الفندق" data-en="Hotel WiFi Monitor">مراقبة شبكة الفندق</div>
             <div class="wf-desc" data-ar="يكتشف access points المعطوبة ويرسل تقريراً فورياً لمسؤول الشبكة" data-en="Detects failed access points and sends instant report to network admin">يكتشف access points المعطوبة ويرسل تقريراً فورياً لمسؤول الشبكة</div>
@@ -1071,13 +1133,13 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>5min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">🌐<br>Ping</div><div class="pnode-label" data-ar="اختبار APs" data-en="Test APs">اختبار APs</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg><br>Ping</div><div class="pnode-label" data-ar="اختبار APs" data-en="Test APs">اختبار APs</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Filter</div><div class="pnode-label" data-ar="فرز الأعطال" data-en="Filter Failures">فرز الأعطال</div></div>
+        <div class="pnode"><div class="pnode-box n-logic"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-6 6"/><path d="M16 21h5v-5M21 21l-6-6"/><path d="M3 3c4 4 14 14 18 18" opacity=".25"/><path d="M3 21l5-5"/></svg><br>Filter</div><div class="pnode-label" data-ar="فرز الأعطال" data-en="Filter Failures">فرز الأعطال</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Notify Admin">إشعار فوري</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg><br>Email</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Notify Admin">إشعار فوري</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">📈<br>Sheet</div><div class="pnode-label" data-ar="تحديث السجل" data-en="Update Log">تحديث السجل</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 9-9"/><path d="M14 7h6v6"/></svg><br>Sheet</div><div class="pnode-label" data-ar="تحديث السجل" data-en="Update Log">تحديث السجل</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="⏱ كل 5 دقائق" data-en="⏱ Every 5 minutes">⏱ كل 5 دقائق</span>
@@ -1089,7 +1151,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(245,158,11,.1)">🏗️</div>
+          <div class="wf-icon" style="background:rgba(245,158,11,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18M7 21V8M7 8l9-5v5M16 8v13"/><path d="M3 13h4M16 13h5"/><path d="M7 11h9"/></svg></div>
           <div>
             <div class="wf-title" data-ar="تتبع أسعار مواد البناء" data-en="Materials Price Tracker">تتبع أسعار مواد البناء</div>
             <div class="wf-desc" data-ar="يجمع أسعار الموردين يومياً ويرسل مقارنة تلقائية لمدير المشتريات على واتساب" data-en="Collects supplier prices daily and sends auto comparison to procurement manager via WhatsApp">يجمع أسعار الموردين يومياً ويرسل مقارنة تلقائية لمدير المشتريات على واتساب</div>
@@ -1107,15 +1169,15 @@ footer a{color:var(--blue);text-decoration:none}
         <span class="wf-stat-item"><strong style="color:var(--green)">100%</strong></span>
       </div>
       <div class="pipeline">
-        <div class="pnode"><div class="pnode-box n-trigger">📅<br>Daily</div><div class="pnode-label" data-ar="جدول يومي" data-en="Daily Schedule">جدول يومي</div></div>
+        <div class="pnode"><div class="pnode-box n-trigger"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4M8 14h2M12 14h2M8 17h2"/></svg><br>Daily</div><div class="pnode-label" data-ar="جدول يومي" data-en="Daily Schedule">جدول يومي</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">🕷<br>Scrape</div><div class="pnode-label" data-ar="جمع الأسعار" data-en="Fetch Prices">جمع الأسعار</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V4M12 20v-5M9 12H4M20 12h-5M10.17 10.17 7 7M16.83 16.83 14 14M10.17 13.83 7 17M16.83 7.17 14 10"/></svg><br>Scrape</div><div class="pnode-label" data-ar="جمع الأسعار" data-en="Fetch Prices">جمع الأسعار</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Compare</div><div class="pnode-label" data-ar="مقارنة الأسعار" data-en="Compare">مقارنة الأسعار</div></div>
+        <div class="pnode"><div class="pnode-box n-logic"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-6 6"/><path d="M16 21h5v-5M21 21l-6-6"/><path d="M3 3c4 4 14 14 18 18" opacity=".25"/><path d="M3 21l5-5"/></svg><br>Compare</div><div class="pnode-label" data-ar="مقارنة الأسعار" data-en="Compare">مقارنة الأسعار</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">📊<br>Excel</div><div class="pnode-label" data-ar="تحديث الجدول" data-en="Update Sheet">تحديث الجدول</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg><br>Excel</div><div class="pnode-label" data-ar="تحديث الجدول" data-en="Update Sheet">تحديث الجدول</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">💬<br>WA</div><div class="pnode-label" data-ar="إرسال واتساب" data-en="Send WhatsApp">إرسال واتساب</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><br>WA</div><div class="pnode-label" data-ar="إرسال واتساب" data-en="Send WhatsApp">إرسال واتساب</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="📅 كل إثنين 08:00" data-en="📅 Every Monday 08:00">📅 كل إثنين 08:00</span>
@@ -1127,7 +1189,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(139,92,246,.1)">📊</div>
+          <div class="wf-icon" style="background:rgba(139,92,246,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg></div>
           <div>
             <div class="wf-title" data-ar="تقرير الموقع اليومي" data-en="Daily Site Report">تقرير الموقع اليومي</div>
             <div class="wf-desc" data-ar="يجمع بيانات الحضور والمعدات وينشئ تقرير PDF تلقائي للإدارة" data-en="Aggregates attendance and equipment data, auto-generates PDF report for management">يجمع بيانات الحضور والمعدات وينشئ تقرير PDF تلقائي للإدارة</div>
@@ -1147,13 +1209,13 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏰<br>18:00</div><div class="pnode-label" data-ar="كل يوم" data-en="Daily">كل يوم</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">📋<br>Forms</div><div class="pnode-label" data-ar="جمع البيانات" data-en="Collect Data">جمع البيانات</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M4 4h2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M9 12h6M9 16h4"/></svg><br>Forms</div><div class="pnode-label" data-ar="جمع البيانات" data-en="Collect Data">جمع البيانات</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">🔧<br>Format</div><div class="pnode-label" data-ar="تنسيق التقرير" data-en="Format Report">تنسيق التقرير</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><br>Format</div><div class="pnode-label" data-ar="تنسيق التقرير" data-en="Format Report">تنسيق التقرير</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">📄<br>PDF</div><div class="pnode-label" data-ar="إنشاء PDF" data-en="Generate PDF">إنشاء PDF</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg><br>PDF</div><div class="pnode-label" data-ar="إنشاء PDF" data-en="Generate PDF">إنشاء PDF</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">📧<br>Send</div><div class="pnode-label" data-ar="إرسال للإدارة" data-en="Send to Mgmt">إرسال للإدارة</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg><br>Send</div><div class="pnode-label" data-ar="إرسال للإدارة" data-en="Send to Mgmt">إرسال للإدارة</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="⏰ يومياً 18:00" data-en="⏰ Daily at 18:00">⏰ يومياً 18:00</span>
@@ -1165,7 +1227,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(16,185,129,.1)">🖥️</div>
+          <div class="wf-icon" style="background:rgba(16,185,129,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2"/></svg></div>
           <div>
             <div class="wf-title" data-ar="مراقبة Uptime الخادم" data-en="Server Uptime Monitor">مراقبة Uptime الخادم</div>
             <div class="wf-desc" data-ar="يختبر الخوادم والمواقع كل دقيقة — ينبّه فوراً عند توقف أي خدمة" data-en="Tests servers and websites every minute — instantly alerts when any service goes down">يختبر الخوادم والمواقع كل دقيقة — ينبّه فوراً عند توقف أي خدمة</div>
@@ -1185,13 +1247,13 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="pipeline">
         <div class="pnode"><div class="pnode-box n-trigger">⏱<br>1min</div><div class="pnode-label" data-ar="مؤقت" data-en="Timer">مؤقت</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">🌐<br>HTTP</div><div class="pnode-label" data-ar="اختبار الخدمات" data-en="Check Services">اختبار الخدمات</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg><br>HTTP</div><div class="pnode-label" data-ar="اختبار الخدمات" data-en="Check Services">اختبار الخدمات</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Status</div><div class="pnode-label" data-ar="تحقق الحالة" data-en="Check Status">تحقق الحالة</div></div>
+        <div class="pnode"><div class="pnode-box n-logic"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-6 6"/><path d="M16 21h5v-5M21 21l-6-6"/><path d="M3 3c4 4 14 14 18 18" opacity=".25"/><path d="M3 21l5-5"/></svg><br>Status</div><div class="pnode-label" data-ar="تحقق الحالة" data-en="Check Status">تحقق الحالة</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">🔔<br>Alert</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Instant Alert">إشعار فوري</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><br>Alert</div><div class="pnode-label" data-ar="إشعار فوري" data-en="Instant Alert">إشعار فوري</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">📊<br>Stats</div><div class="pnode-label" data-ar="تحديث الإحصاء" data-en="Update Stats">تحديث الإحصاء</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg><br>Stats</div><div class="pnode-label" data-ar="تحديث الإحصاء" data-en="Update Stats">تحديث الإحصاء</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="⏱ كل دقيقة" data-en="⏱ Every minute">⏱ كل دقيقة</span>
@@ -1203,7 +1265,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="wf-card">
       <div class="wf-header">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div class="wf-icon" style="background:rgba(239,68,68,.1)">📦</div>
+          <div class="wf-icon" style="background:rgba(239,68,68,.1)"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v10l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v9"/><path d="M7.5 5.5l9 5"/></svg></div>
           <div>
             <div class="wf-title" data-ar="نظام تتبع المخزون" data-en="Inventory Tracking System">نظام تتبع المخزون</div>
             <div class="wf-desc" data-ar="يتتبع مخزون المواد تلقائياً ويرسل تنبيهاً عند وصول المخزون للحد الأدنى" data-en="Automatically tracks material stock and alerts when minimum threshold is reached">يتتبع مخزون المواد تلقائياً ويرسل تنبيهاً عند وصول المخزون للحد الأدنى</div>
@@ -1221,15 +1283,15 @@ footer a{color:var(--blue);text-decoration:none}
         <span class="wf-stat-item"><strong style="color:var(--green)">100%</strong></span>
       </div>
       <div class="pipeline">
-        <div class="pnode"><div class="pnode-box n-trigger">📅<br>Weekly</div><div class="pnode-label" data-ar="أسبوعي" data-en="Weekly">أسبوعي</div></div>
+        <div class="pnode"><div class="pnode-box n-trigger"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4M8 14h2M12 14h2M8 17h2"/></svg><br>Weekly</div><div class="pnode-label" data-ar="أسبوعي" data-en="Weekly">أسبوعي</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-data">📋<br>Sheet</div><div class="pnode-label" data-ar="قراءة المخزون" data-en="Read Stock">قراءة المخزون</div></div>
+        <div class="pnode"><div class="pnode-box n-data"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M4 4h2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M9 12h6M9 16h4"/></svg><br>Sheet</div><div class="pnode-label" data-ar="قراءة المخزون" data-en="Read Stock">قراءة المخزون</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-logic">🔀<br>Low?</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Level">فحص الحد</div></div>
+        <div class="pnode"><div class="pnode-box n-logic"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-6 6"/><path d="M16 21h5v-5M21 21l-6-6"/><path d="M3 3c4 4 14 14 18 18" opacity=".25"/><path d="M3 21l5-5"/></svg><br>Low?</div><div class="pnode-label" data-ar="فحص الحد" data-en="Check Level">فحص الحد</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-output">📧<br>Email</div><div class="pnode-label" data-ar="طلب تزويد" data-en="Restock Alert">طلب تزويد</div></div>
+        <div class="pnode"><div class="pnode-box n-output"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg><br>Email</div><div class="pnode-label" data-ar="طلب تزويد" data-en="Restock Alert">طلب تزويد</div></div>
         <div class="parrow"><div class="flow-dot"></div></div>
-        <div class="pnode"><div class="pnode-box n-action">📊<br>Report</div><div class="pnode-label" data-ar="تقرير المخزون" data-en="Stock Report">تقرير المخزون</div></div>
+        <div class="pnode"><div class="pnode-box n-action"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg><br>Report</div><div class="pnode-label" data-ar="تقرير المخزون" data-en="Stock Report">تقرير المخزون</div></div>
       </div>
       <div class="wf-footer">
         <span class="wf-trigger-info" data-ar="📅 كل أحد 09:00" data-en="📅 Every Sunday 09:00">📅 كل أحد 09:00</span>
@@ -1239,6 +1301,29 @@ footer a{color:var(--blue);text-decoration:none}
 
   </div>
 </section>
+
+<hr class="divider">
+
+<!-- ═══════════ PRODUCTION SYSTEMS ═══════════ -->
+<section class="section reveal" id="systems">
+  <div class="section-label" data-ar="أنظمة إنتاج" data-en="Production Systems">أنظمة إنتاج</div>
+  <h2 class="section-h2" data-ar="أنظمة بنيتها وتعمل فعلياً" data-en="Systems I built — running in production">أنظمة بنيتها وتعمل فعلياً</h2>
+  <div class="sys-grid">
+    <div class="sys-card">
+      <div class="sys-ic"><svg viewBox="0 0 24 24" class="icon-line"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M4 17h15"/><path d="M9 7h6M9 10h6"/></svg></div>
+      <h4 data-ar="خط إنتاج كتاب رقمي ثنائي اللغة — 250 برومبت" data-en="Bilingual digital book pipeline — 250 prompts">خط إنتاج كتاب رقمي ثنائي اللغة — 250 برومبت</h4>
+      <p data-ar="بنيت خط إنتاج كاملاً يحوّل محتوى عربي/إنجليزي إلى كتاب 265 صفحة: توليد HTML آلي، تحويل PDF عبر Chromium، فحص جودة وحقن أصول تلقائي، و450 رابطاً داخلياً تعمل كلها — مع خط رندرة فيديو تسويقي آلي." data-en="Built a full pipeline turning Arabic/English content into a 265-page book: automated HTML generation, Chromium PDF conversion, QA auditing and asset injection toolkit, 450 working internal links — plus an automated marketing video rendering pipeline.">بنيت خط إنتاج كاملاً يحوّل محتوى عربي/إنجليزي إلى كتاب 265 صفحة: توليد HTML آلي، تحويل PDF عبر Chromium، فحص جودة وحقن أصول تلقائي، و450 رابطاً داخلياً تعمل كلها — مع خط رندرة فيديو تسويقي آلي.</p>
+      <div class="sys-chips"><span>Python</span><span>Playwright</span><span>Chromium</span><span>FFmpeg</span><span>HTML/CSS RTL</span></div>
+    </div>
+    <div class="sys-card">
+      <div class="sys-ic"><svg viewBox="0 0 24 24" class="icon-line"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.4 10.5 16M16.2 7.4 13.5 16M8.2 6h7.6"/></svg></div>
+      <h4 data-ar="محرك مطابقة منتجات وتسعير آلي — متعدد المنصات" data-en="Product-matching & pricing engine — multi-platform">محرك مطابقة منتجات وتسعير آلي — متعدد المنصات</h4>
+      <p data-ar="نظام يكتشف عروض المنتجات، يطابق هوية المنتج بالذكاء الدلالي (SBERT) وبالباركود EAN/GTIN، يلتقط السعر الحي ويكشف انحرافه، وينشر تلقائياً على 3 منصات — يعمل 24/7 على سيرفر Linux بـ pm2 وcron مع سجلات منظمة." data-en="A system that discovers product deals, matches identity via semantic similarity (SBERT) and EAN/GTIN barcodes, captures live prices with drift detection, and auto-publishes to 3 platforms — running 24/7 on a Linux VPS with pm2, cron, and structured logging.">نظام يكتشف عروض المنتجات، يطابق هوية المنتج بالذكاء الدلالي (SBERT) وبالباركود EAN/GTIN، يلتقط السعر الحي ويكشف انحرافه، وينشر تلقائياً على 3 منصات — يعمل 24/7 على سيرفر Linux بـ pm2 وcron مع سجلات منظمة.</p>
+      <div class="sys-chips"><span>Python</span><span>SBERT / NLP</span><span>Web Scraping</span><span>Linux VPS</span><span>pm2 · cron</span><span>REST APIs</span></div>
+    </div>
+  </div>
+</section>
+
 
 <hr class="divider">
 
@@ -1257,7 +1342,7 @@ footer a{color:var(--blue);text-decoration:none}
     <div class="stack-item"><div class="stack-icon">🎭</div>Playwright<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
     <div class="stack-item"><div class="stack-icon">🗄️</div>SQL Server<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
     <div class="stack-item"><div class="stack-icon">🔀</div>Active Directory<span class="stack-level lvl-adv" data-ar="متقدم" data-en="Advanced">متقدم</span></div>
-    <div class="stack-item"><div class="stack-icon">📊</div>Excel / Power BI<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
+    <div class="stack-item"><div class="stack-icon"><svg class="icon-line" width="28" height="28" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="4" height="10"/><rect x="10" y="7" width="4" height="14"/><rect x="15" y="4" width="4" height="17"/></svg></div>Excel / Power BI<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
     <div class="stack-item"><div class="stack-icon">🐙</div>Git / GitHub<span class="stack-level lvl-mid" data-ar="متوسط" data-en="Intermediate">متوسط</span></div>
   </div>
 </section>
@@ -1293,14 +1378,14 @@ footer a{color:var(--blue);text-decoration:none}
       <div class="card" style="margin-bottom:16px">
         <div class="card-title" style="margin-bottom:14px" data-ar="مشاريع مستقلة" data-en="Independent Projects">مشاريع مستقلة</div>
         <div class="alert alert-blue">
-          <span class="alert-icon">🤖</span>
+          <span class="alert-icon"><svg class="icon-line" width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="13" rx="3"/><path d="M8 8V6a4 4 0 0 1 8 0v2M12 2v3"/><circle cx="9" cy="14.5" r="1.5" fill="#06b6d4" stroke="none"/><circle cx="15" cy="14.5" r="1.5" fill="#06b6d4" stroke="none"/><path d="M8.5 18h7"/></svg></span>
           <div>
             <strong data-ar="PROMID — منتج AI Prompt-Book" data-en="PROMID — AI Prompt-Book Product">PROMID — منتج AI Prompt-Book</strong><br>
             <span style="font-size:12px;color:var(--muted)" data-ar="265 صفحة · 250 prompt ثنائي اللغة · pipeline Playwright + Chromium تلقائي" data-en="265 pages · 250 bilingual prompts · automated Playwright + Chromium pipeline">265 صفحة · 250 prompt ثنائي اللغة · pipeline Playwright + Chromium تلقائي</span>
           </div>
         </div>
         <div class="alert alert-green" style="margin-top:8px">
-          <span class="alert-icon">📈</span>
+          <span class="alert-icon"><svg class="icon-line" width="20" height="20" viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 9-9"/><path d="M14 7h6v6"/></svg></span>
           <div>
             <strong data-ar="منصة تجارة إلكترونية آلية" data-en="Automated E-Commerce Pipeline">منصة تجارة إلكترونية آلية</strong><br>
             <span style="font-size:12px;color:var(--muted)" data-ar="Python · SBERT · EAN matching · نشر تلقائي · VPS بـ pm2 وcron" data-en="Python · SBERT · EAN matching · auto-publishing · VPS with pm2 & cron">Python · SBERT · EAN matching · نشر تلقائي · VPS بـ pm2 وcron</span>
@@ -1329,6 +1414,125 @@ footer a{color:var(--blue);text-decoration:none}
 
 <hr class="divider">
 
+
+<style>
+.sc-cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 16px;border-radius:10px;font-size:12.5px;font-weight:700;color:#fff;background:var(--grad);text-decoration:none;transition:filter .2s, transform .2s}
+.sc-cta:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.roi-wrap{max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px 28px;box-shadow:var(--glow)}
+.roi-row{margin-bottom:22px}
+.roi-row label{display:flex;justify-content:space-between;font-size:13px;color:var(--light);margin-bottom:10px;font-weight:600}
+.roi-row label b{color:var(--text);font-size:14px}
+.roi-wrap input[type=range]{width:100%;accent-color:var(--blue);cursor:pointer}
+.roi-result{text-align:center;border-top:1px dashed var(--border);margin-top:8px;padding-top:22px}
+.roi-result .roi-num{font-size:42px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.roi-result .roi-cap{font-size:13px;color:var(--muted);margin-top:6px}
+.roi-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:12px 26px;border-radius:12px;font-weight:800;font-size:14px;color:#fff;background:var(--grad);text-decoration:none}
+.roi-cta:hover{filter:brightness(1.15)}
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:900px;margin:0 auto}
+.proc-step{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;position:relative}
+.proc-num{width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px}
+.proc-step h4{font-size:15px;font-weight:800;margin:0 0 8px}
+.proc-step p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 22px;display:flex;flex-direction:column}
+.pkg-card.pkg-hot{border-color:rgba(59,130,246,.5);box-shadow:var(--glow)}
+.pkg-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.pkg-card h4{font-size:17px;font-weight:800;margin:0 0 10px}
+.pkg-card ul{list-style:none;padding:0;margin:0 0 16px;flex:1}
+.pkg-card li{font-size:12.5px;color:var(--light);padding:4px 0;line-height:1.5}
+.pkg-card li::before{content:"✓ ";color:var(--green);font-weight:800}
+.pkg-note{font-size:11.5px;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.sc-cta,.roi-cta{transition:none}}
+</style>
+
+<hr class="divider">
+
+<!-- ═══════════ ROI CALCULATOR ═══════════ -->
+<section class="section reveal" id="calculator">
+  <div class="section-label" data-ar="حاسبة الهدر" data-en="Waste Calculator">حاسبة الهدر</div>
+  <h2 class="section-h2" data-ar="كم يكلفك الشغل اليدوي سنوياً؟" data-en="What does manual work cost you yearly?">كم يكلفك الشغل اليدوي سنوياً؟</h2>
+  <div class="roi-wrap">
+    <div class="roi-row">
+      <label><span data-ar="ساعات الشغل اليدوي أسبوعياً (تقارير، جمع بيانات، متابعة)" data-en="Manual work hours per week (reports, data collection, follow-up)">ساعات الشغل اليدوي أسبوعياً (تقارير، جمع بيانات، متابعة)</span><b><span id="roi-h">10</span> <span data-ar="ساعة" data-en="hrs">ساعة</span></b></label>
+      <input type="range" id="roi-hours" min="2" max="40" value="10" step="1">
+    </div>
+    <div class="roi-row">
+      <label><span data-ar="تكلفة ساعة الموظف (ريال)" data-en="Employee hourly cost (SAR)">تكلفة ساعة الموظف (ريال)</span><b><span id="roi-c">60</span> <span data-ar="ر.س" data-en="SAR">ر.س</span></b></label>
+      <input type="range" id="roi-cost" min="25" max="200" value="60" step="5">
+    </div>
+    <div class="roi-result">
+      <div class="roi-num"><span id="roi-total">31,200</span> <span style="font-size:20px" data-ar="ر.س / سنة" data-en="SAR / yr">ر.س / سنة</span></div>
+      <div class="roi-cap" data-ar="تقدير تقريبي لتكلفة عمل يدوي قابل للأتمتة — بنظام يُبنى مرة واحدة بسعر ثابت" data-en="Rough estimate of automatable manual work — replaced by a one-time fixed-price system">تقدير تقريبي لتكلفة عمل يدوي قابل للأتمتة — بنظام يُبنى مرة واحدة بسعر ثابت</div>
+      <a class="roi-cta" id="roi-wa" href="https://wa.me/966531577741" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-ar="احسبها معي بدقة — تقييم مجاني" data-en="Get an exact assessment — free">احسبها معي بدقة — تقييم مجاني</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="section reveal" id="process">
+  <div class="section-label" data-ar="كيف نشتغل" data-en="How We Work">كيف نشتغل</div>
+  <h2 class="section-h2" data-ar="من أول رسالة لنظام شغّال" data-en="From first message to a running system">من أول رسالة لنظام شغّال</h2>
+  <div class="proc-grid">
+    <div class="proc-step">
+      <div class="proc-num">1</div>
+      <h4 data-ar="تقييم مجاني" data-en="Free assessment">تقييم مجاني</h4>
+      <p data-ar="مكالمة أو زيارة قصيرة أفهم فيها عملياتك، وأحدد بالضبط وش يستاهل أتمتة ووش لا — بدون أي التزام." data-en="A short call or visit to understand your operations and identify exactly what's worth automating — no commitment.">مكالمة أو زيارة قصيرة أفهم فيها عملياتك، وأحدد بالضبط وش يستاهل أتمتة ووش لا — بدون أي التزام.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">2</div>
+      <h4 data-ar="نموذج شغّال من بياناتك" data-en="Working demo from your data">نموذج شغّال من بياناتك</h4>
+      <p data-ar="خلال 3–7 أيام تشوف نموذجاً يعمل على بياناتك الحقيقية — تقرر بعد ما تشوف، مو قبل." data-en="Within 3–7 days you see a demo running on your real data — decide after you see it, not before.">خلال 3–7 أيام تشوف نموذجاً يعمل على بياناتك الحقيقية — تقرر بعد ما تشوف، مو قبل.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">3</div>
+      <h4 data-ar="تشغيل + دعم مستمر" data-en="Launch + ongoing support">تشغيل + دعم مستمر</h4>
+      <p data-ar="تسليم بسعر ثابت متفق عليه مسبقاً، مع خيار عقد صيانة ودعم شهري يبقي كل شيء شغالاً." data-en="Delivery at a pre-agreed fixed price, with an optional monthly support contract to keep everything running.">تسليم بسعر ثابت متفق عليه مسبقاً، مع خيار عقد صيانة ودعم شهري يبقي كل شيء شغالاً.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ PACKAGES ═══════════ -->
+<section class="section reveal" id="packages">
+  <div class="section-label" data-ar="طرق التعامل" data-en="Engagement Models">طرق التعامل</div>
+  <h2 class="section-h2" data-ar="اختر اللي يناسب منشأتك" data-en="Pick what fits your business">اختر اللي يناسب منشأتك</h2>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-tag" data-ar="مشروع" data-en="Project">مشروع</div>
+      <h4 data-ar="نظام بسعر ثابت" data-en="Fixed-price system">نظام بسعر ثابت</h4>
+      <ul>
+        <li data-ar="نطاق وسعر متفق عليهما قبل البدء" data-en="Scope and price agreed before starting">نطاق وسعر متفق عليهما قبل البدء</li>
+        <li data-ar="نموذج شغّال قبل أي دفعة نهائية" data-en="Working demo before final payment">نموذج شغّال قبل أي دفعة نهائية</li>
+        <li data-ar="تسليم خلال أيام، ليس أشهر" data-en="Delivery in days, not months">تسليم خلال أيام، ليس أشهر</li>
+      </ul>
+      <div class="pkg-note" data-ar="مناسب للمقاولات والفنادق والعيادات" data-en="Best for contractors, hotels, clinics">مناسب للمقاولات والفنادق والعيادات</div>
+    </div>
+    <div class="pkg-card pkg-hot">
+      <div class="pkg-tag" data-ar="عقد شهري" data-en="Monthly">عقد شهري</div>
+      <h4 data-ar="مساند تقني + أتمتة" data-en="Tech retainer + automation">مساند تقني + أتمتة</h4>
+      <ul>
+        <li data-ar="دعم فني عن بُعد طوال الشهر" data-en="Remote support all month">دعم فني عن بُعد طوال الشهر</li>
+        <li data-ar="زيارة ميدانية دورية (مكة/جدة)" data-en="Periodic on-site visit (Makkah/Jeddah)">زيارة ميدانية دورية (مكة/جدة)</li>
+        <li data-ar="تطوير أتمتة مستمر حسب الحاجة" data-en="Ongoing automation improvements">تطوير أتمتة مستمر حسب الحاجة</li>
+      </ul>
+      <div class="pkg-note" data-ar="بديل اقتصادي عن موظف IT بدوام كامل" data-en="An economical alternative to a full-time IT hire">بديل اقتصادي عن موظف IT بدوام كامل</div>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-tag" data-ar="توظيف" data-en="Full-time">توظيف</div>
+      <h4 data-ar="دوام كامل" data-en="Full-time role">دوام كامل</h4>
+      <ul>
+        <li data-ar="دعم فني + شبكات + سيرفرات" data-en="IT support + networking + servers">دعم فني + شبكات + سيرفرات</li>
+        <li data-ar="أتمتة داخلية بـ Python و n8n" data-en="Internal automation with Python & n8n">أتمتة داخلية بـ Python و n8n</li>
+        <li data-ar="متاح فوراً — مكة، جدة، أو عن بُعد" data-en="Available now — Makkah, Jeddah, or remote">متاح فوراً — مكة، جدة، أو عن بُعد</li>
+      </ul>
+      <div class="pkg-note" data-ar="A+ و CCNA قيد الإنجاز · عربي/إنجليزي/تركي" data-en="A+ & CCNA in progress · AR/EN/TR">A+ و CCNA قيد الإنجاز · عربي/إنجليزي/تركي</div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ CONTACT ═══════════ -->
 <section class="section reveal" id="contact">
   <div class="contact-wrap">
@@ -1336,12 +1540,12 @@ footer a{color:var(--blue);text-decoration:none}
     <p data-ar="متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة بسعر ثابت" data-en="Available for full-time in Makkah or Jeddah — or fixed-price freelance automation services">متاح للدوام في مكة المكرمة أو جدة — أو خدمات أتمتة مستقلة بسعر ثابت</p>
     <div class="contact-links">
       <a class="contact-link whatsapp" href="https://wa.me/966531577741" target="_blank">
-        💬 <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+        <svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
       </a>
-      <a class="contact-link" href="tel:+966531577741">📞 0531 577 741</a>
-      <a class="contact-link" href="mailto:1898.a9@gmail.com">✉️ 1898.a9@gmail.com</a>
-      <a class="contact-link" href="https://linkedin.com/in/abdulaziz-arnous-513530257" target="_blank">💼 LinkedIn</a>
-      <a class="contact-link" href="https://github.com/1898a9-hub/portfolio" target="_blank">⚙️ GitHub</a>
+      <a class="contact-link" href="tel:+966531577741"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.35 3.3A2 2 0 0 1 3.33 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 0531 577 741</a>
+      <a class="contact-link" href="mailto:1898.a9@gmail.com"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg> 1898.a9@gmail.com</a>
+      <a class="contact-link" href="https://linkedin.com/in/abdulaziz-arnous-513530257" target="_blank"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v.01"/><path d="M2 12h20" opacity=".4"/></svg> LinkedIn</a>
+      <a class="contact-link" href="https://github.com/1898a9-hub/portfolio" target="_blank"><svg class="icon-line" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> GitHub</a>
     </div>
   </div>
 </section>
@@ -1440,9 +1644,9 @@ function renderMedRooms(){
 }
 renderMedRooms();
 document.getElementById('med-alerts').innerHTML=`
-  <div class="alert alert-yellow"><span class="alert-icon">⚠️</span><div><strong>B-04</strong> — 4.3°C · اقتربت من الحد الأعلى <span style="color:var(--muted);font-size:11px">منذ 4 دقائق</span></div></div>
-  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>النظام</strong> — تحديث كل 30 ثانية · 12/12 وحدة متصلة</div></div>
-  <div class="alert alert-green"><span class="alert-icon">✅</span><div><strong>الخادم</strong> — نسخ احتياطي كل 6 ساعات · zero downtime موسم الحج</div></div>`;
+  <div class="alert alert-yellow"><span class="alert-icon"><svg class="icon-line" width="20" height="20" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="1" fill="#f59e0b" stroke="none"/></svg></span><div><strong>B-04</strong> — 4.3°C · اقتربت من الحد الأعلى <span style="color:var(--muted);font-size:11px">منذ 4 دقائق</span></div></div>
+  <div class="alert alert-green"><span class="alert-icon"><svg class="icon-line" width="20" height="20" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><div><strong>النظام</strong> — تحديث كل 30 ثانية · 12/12 وحدة متصلة</div></div>
+  <div class="alert alert-green"><span class="alert-icon"><svg class="icon-line" width="20" height="20" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><div><strong>الخادم</strong> — نسخ احتياطي كل 6 ساعات · zero downtime موسم الحج</div></div>`;
 
 let medT=2.8,medH=72;
 setInterval(()=>{
@@ -1538,6 +1742,132 @@ const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
 },{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+<script>
+(function(){
+  var h=document.getElementById('roi-hours'),c=document.getElementById('roi-cost');
+  if(!h)return;
+  function fmt(n){return n.toLocaleString('en-US');}
+  function upd(){
+    var hours=+h.value, cost=+c.value, total=hours*cost*52;
+    document.getElementById('roi-h').textContent=hours;
+    document.getElementById('roi-c').textContent=cost;
+    document.getElementById('roi-total').textContent=fmt(total);
+    var msg='السلام عليكم، استخدمت حاسبة الهدر بموقعك: عندنا تقريباً '+hours+' ساعة شغل يدوي أسبوعياً (~'+fmt(total)+' ريال سنوياً). نبي تقييماً مجانياً.';
+    document.getElementById('roi-wa').href='https://wa.me/966531577741?text='+encodeURIComponent(msg);
+  }
+  h.addEventListener('input',upd);c.addEventListener('input',upd);upd();
+})();
+</script>
+<!-- TODO (تتبع الزيارات): أنشئ حساباً مجانياً على goatcounter.com باسم مثل arnous
+     ثم أزل التعليق عن السطر التالي وبدّل MYCODE بالكود حقك.
+     بعدها استخدم روابط مميزة بالحملة: ?s=hosp للمستشفيات، ?s=hotel للفنادق، ?s=contr للمقاولات، ?s=it لشركات التقنية.
+<script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script defer>
+window.addEventListener('load', function(){
+  var cv = document.getElementById('iot3d');
+  if(!cv || !window.THREE) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas:cv, alpha:true, antialias:true}); }
+  catch(e){ return; }
+  var hero = cv.parentElement;
+  var W = hero.clientWidth, H = hero.clientHeight;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+  renderer.setSize(W, H, false);
+  var scene = new THREE.Scene();
+  var cam = new THREE.PerspectiveCamera(50, W/H, 1, 600);
+  cam.position.z = 170;
+  var grp = new THREE.Group(); scene.add(grp);
+
+  var BLUE=0x3b82f6, CYAN=0x06b6d4, RED=0xef4444, GREEN=0x10b981, EDGE=0x2a4a7f;
+  var mobile = W < 700;
+  var N = mobile ? 34 : 64, PK = mobile ? 7 : 14;
+
+  // core server
+  var core = new THREE.Mesh(new THREE.IcosahedronGeometry(16,1),
+    new THREE.MeshBasicMaterial({color:BLUE, wireframe:true, transparent:true, opacity:.9}));
+  grp.add(core);
+  var coreIn = new THREE.Mesh(new THREE.IcosahedronGeometry(7,1),
+    new THREE.MeshBasicMaterial({color:CYAN, transparent:true, opacity:.85}));
+  grp.add(coreIn);
+
+  // sensor nodes
+  var nodes=[], geoN = new THREE.SphereGeometry(1.7, 10, 10);
+  for(var i=0;i<N;i++){
+    var r = 48 + Math.random()*52;
+    var th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+    var m = new THREE.Mesh(geoN, new THREE.MeshBasicMaterial({color:CYAN, transparent:true, opacity:.95}));
+    m.position.set(r*Math.sin(ph)*Math.cos(th), r*Math.sin(ph)*Math.sin(th)*0.72, r*Math.cos(ph));
+    grp.add(m); nodes.push(m);
+  }
+
+  // edges: each node -> 2 nearest + some to core
+  var pts=[], edges=[];
+  function addEdge(a,b){ pts.push(a.position.clone(), b.position.clone()); edges.push([a,b]); }
+  nodes.forEach(function(n,idx){
+    var d = nodes.map(function(o,j){return {j:j, d:n.position.distanceTo(o.position)};})
+                 .filter(function(x){return x.j!==idx;})
+                 .sort(function(a,b){return a.d-b.d;});
+    addEdge(n, nodes[d[0].j]); addEdge(n, nodes[d[1].j]);
+    if(idx % 4 === 0) addEdge(n, core);
+  });
+  var lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
+  grp.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({color:EDGE, transparent:true, opacity:.38})));
+
+  // packets
+  var packets=[], geoP = new THREE.SphereGeometry(1.05, 8, 8);
+  for(var p=0;p<PK;p++){
+    var mesh = new THREE.Mesh(geoP, new THREE.MeshBasicMaterial({color:0x9bd8ff, transparent:true, opacity:.95}));
+    grp.add(mesh);
+    packets.push({m:mesh, e:edges[(Math.random()*edges.length)|0], t:Math.random(), v:.004+Math.random()*.007});
+  }
+
+  // alert cycle: node turns red, packet rushes to core, node recovers green->cyan
+  var alertNode=null, alertT=0;
+  function fireAlert(){
+    alertNode = nodes[(Math.random()*nodes.length)|0]; alertT=0;
+    var rush = packets[0]; rush.e=[alertNode, core]; rush.t=0; rush.v=.02;
+  }
+  setInterval(function(){ if(!document.hidden) fireAlert(); }, 4200);
+
+  var mx=0,my=0,tx=0,ty=0;
+  window.addEventListener('pointermove', function(e){
+    tx=(e.clientX/window.innerWidth-.5)*.5; ty=(e.clientY/window.innerHeight-.5)*.3;
+  }, {passive:true});
+
+  function resize(){
+    W=hero.clientWidth; H=hero.clientHeight;
+    renderer.setSize(W,H,false); cam.aspect=W/H; cam.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+
+  var clock = new THREE.Clock();
+  function frame(){
+    var dt = clock.getDelta();
+    grp.rotation.y += .0011;
+    mx+=(tx-mx)*.04; my+=(ty-my)*.04;
+    grp.rotation.x = my; grp.rotation.z = mx*.25;
+    core.rotation.y -= .002; coreIn.scale.setScalar(1+Math.sin(clock.elapsedTime*2.2)*.12);
+    packets.forEach(function(pk){
+      pk.t += pk.v; if(pk.t>=1){ pk.t=0; pk.e=edges[(Math.random()*edges.length)|0]; pk.v=.004+Math.random()*.007; }
+      pk.m.position.lerpVectors(pk.e[0].position, pk.e[1].position, pk.t);
+    });
+    if(alertNode){
+      alertT += dt;
+      if(alertT<1.4){ alertNode.material.color.setHex(RED); alertNode.scale.setScalar(1+Math.sin(alertT*14)*.5+.5); }
+      else if(alertT<2.2){ alertNode.material.color.setHex(GREEN); alertNode.scale.setScalar(1.4); }
+      else { alertNode.material.color.setHex(CYAN); alertNode.scale.setScalar(1); alertNode=null; }
+    }
+    renderer.render(scene, cam);
+    if(!reduced) requestAnimationFrame(function(){ if(!document.hidden) frame(); else document.addEventListener('visibilitychange', function on(){ if(!document.hidden){document.removeEventListener('visibilitychange',on); frame();} }); });
+  }
+  frame();
+});
 </script>
 </body>
 </html>
